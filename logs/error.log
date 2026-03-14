@@ -1,0 +1,78 @@
+2026-03-11 00:16:20.917 [ERROR]: Uncaught Exception
+ReferenceError: requireRole is not defined
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/routes/code.js:162:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:370:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:99:5)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "requireRole is not defined"
+}
+2026-03-11 00:17:03.872 [ERROR]: Uncaught Exception
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\docs\api.json' imported from C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\src\index.js
+    at finalizeResolution (node:internal/modules/esm/resolve:274:11)
+    at moduleResolve (node:internal/modules/esm/resolve:859:10)
+    at defaultResolve (node:internal/modules/esm/resolve:983:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:801:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:725:25)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:309:38)
+    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:659:36)
+    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)
+    at ModuleLoader.import (node:internal/modules/esm/loader:658:21)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "Cannot find module 'C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\docs\\api.json' imported from C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\src\\index.js"
+}
+2026-03-12 22:40:37.022 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.020 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.709 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.225 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.869 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.188 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.170 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.433 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}

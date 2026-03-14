@@ -1,0 +1,151 @@
+# liveMentor AI CodeStudio - Docker Compose Configuration
+# Production deployment with Redis cache and monitoring
+
+version: '3.8'
+
+services:
+  # Main backend API server
+  livementor-backend:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile
+    container_name: livementor-backend
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3001}:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - BASE44_PROJECT_ID=${BASE44_PROJECT_ID}
+      - BASE44_API_KEY=${BASE44_API_KEY}
+      - BASE44_REGION=${BASE44_REGION:-us-east-1}
+      - JWT_SECRET=${JWT_SECRET}
+      - RAPIDAPI_KEY=${RAPIDAPI_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - REDIS_URL=redis://redis:6379
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:5173}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - ENABLE_CACHING=true
+      - ENABLE_WEBSOCKETS=true
+      - RATE_LIMIT_MAX_REQUESTS=1000
+      - SENTRY_DSN=${SENTRY_DSN}
+    volumes:
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    networks:
+      - livementor-network
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis cache for session management and caching
+  redis:
+    image: redis:7-alpine
+    container_name: livementor-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis-data:/data
+    networks:
+      - livementor-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+  # Nginx reverse proxy (optional)
+  nginx:
+    image: nginx:alpine
+    container_name: livementor-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - livementor-network
+    depends_on:
+      - livementor-backend
+    profiles:
+      - with-proxy
+
+  # Monitoring with Prometheus (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: livementor-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - livementor-network
+    profiles:
+      - monitoring
+
+  # Grafana for metrics visualization (optional)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: livementor-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    networks:
+      - livementor-network
+    depends_on:
+      - prometheus
+    profiles:
+      - monitoring
+
+networks:
+  livementor-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  redis-data:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+
+# Environment file configuration
+# Create a .env file with the following variables:
+# BASE44_PROJECT_ID=your_project_id
+# BASE44_API_KEY=your_api_key
+# JWT_SECRET=your_jwt_secret
+# RAPIDAPI_KEY=your_rapidapi_key
+# OPENAI_API_KEY=your_openai_key
+# REDIS_PASSWORD=your_redis_password
+# SENTRY_DSN=your_sentry_dsn
+# CORS_ORIGIN=https://yourdomain.com
+# GRAFANA_PASSWORD=your_grafana_password

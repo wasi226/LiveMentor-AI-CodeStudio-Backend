@@ -1,0 +1,4117 @@
+2026-03-11 00:16:20.684 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:16:20.686 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:16:20.686 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:16:20.916 [ERROR]: uncaughtException: requireRole is not defined
+ReferenceError: requireRole is not defined
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/routes/code.js:162:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:370:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:99:5)
+ReferenceError: requireRole is not defined
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/routes/code.js:162:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:370:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:99:5)
+{
+  "error": {},
+  "exception": true,
+  "date": "Wed Mar 11 2026 00:16:20 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 4788,
+    "uid": null,
+    "gid": null,
+    "cwd": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend",
+    "execPath": "C:\\Program Files\\nodejs\\node.exe",
+    "version": "v24.4.0",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\src\\index.js"
+    ],
+    "memoryUsage": {
+      "rss": 79753216,
+      "heapTotal": 53002240,
+      "heapUsed": 20670936,
+      "external": 3765708,
+      "arrayBuffers": 87771
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 119927.265
+  },
+  "trace": [
+    {
+      "column": 8,
+      "file": "file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/routes/code.js",
+      "function": null,
+      "line": 162,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 25,
+      "file": "node:internal/modules/esm/module_job",
+      "function": "ModuleJob.run",
+      "line": 370,
+      "method": "run",
+      "native": false
+    },
+    {
+      "column": 26,
+      "file": "node:internal/modules/esm/loader",
+      "function": "async onImport.tracePromise.__proto__",
+      "line": 665,
+      "method": "__proto__",
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "node:internal/modules/run_main",
+      "function": "async asyncRunEntryPointWithESMLoader",
+      "line": 99,
+      "method": null,
+      "native": false
+    }
+  ],
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:16:20.916 [ERROR]: Uncaught Exception
+ReferenceError: requireRole is not defined
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/routes/code.js:162:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:370:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:99:5)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "requireRole is not defined"
+}
+2026-03-11 00:17:03.454 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:17:03.455 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:03.456 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:03.641 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:03.871 [ERROR]: uncaughtException: Cannot find module 'C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\docs\api.json' imported from C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\src\index.js
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\docs\api.json' imported from C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\src\index.js
+    at finalizeResolution (node:internal/modules/esm/resolve:274:11)
+    at moduleResolve (node:internal/modules/esm/resolve:859:10)
+    at defaultResolve (node:internal/modules/esm/resolve:983:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:801:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:725:25)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:309:38)
+    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:659:36)
+    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)
+    at ModuleLoader.import (node:internal/modules/esm/loader:658:21)
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\docs\api.json' imported from C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\src\index.js
+    at finalizeResolution (node:internal/modules/esm/resolve:274:11)
+    at moduleResolve (node:internal/modules/esm/resolve:859:10)
+    at defaultResolve (node:internal/modules/esm/resolve:983:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:801:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:725:25)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:309:38)
+    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:659:36)
+    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)
+    at ModuleLoader.import (node:internal/modules/esm/loader:658:21)
+{
+  "error": {
+    "code": "ERR_MODULE_NOT_FOUND",
+    "url": "file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/docs/api.json"
+  },
+  "exception": true,
+  "date": "Wed Mar 11 2026 00:17:03 GMT+0530 (India Standard Time)",
+  "process": {
+    "pid": 7504,
+    "uid": null,
+    "gid": null,
+    "cwd": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend",
+    "execPath": "C:\\Program Files\\nodejs\\node.exe",
+    "version": "v24.4.0",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\src\\index.js"
+    ],
+    "memoryUsage": {
+      "rss": 91725824,
+      "heapTotal": 61562880,
+      "heapUsed": 37611080,
+      "external": 3777333,
+      "arrayBuffers": 98228
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 119970.218
+  },
+  "trace": [
+    {
+      "column": 11,
+      "file": "node:internal/modules/esm/resolve",
+      "function": "finalizeResolution",
+      "line": 274,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/modules/esm/resolve",
+      "function": "moduleResolve",
+      "line": 859,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "node:internal/modules/esm/resolve",
+      "function": "defaultResolve",
+      "line": 983,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/modules/esm/loader",
+      "function": "ModuleLoader.defaultResolve",
+      "line": 801,
+      "method": "defaultResolve",
+      "native": false
+    },
+    {
+      "column": 25,
+      "file": "node:internal/modules/esm/loader",
+      "function": "#cachedDefaultResolve",
+      "line": 725,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 38,
+      "file": "node:internal/modules/esm/loader",
+      "function": "ModuleLoader.resolve",
+      "line": 708,
+      "method": "resolve",
+      "native": false
+    },
+    {
+      "column": 38,
+      "file": "node:internal/modules/esm/loader",
+      "function": "ModuleLoader.getModuleJobForImport",
+      "line": 309,
+      "method": "getModuleJobForImport",
+      "native": false
+    },
+    {
+      "column": 36,
+      "file": "node:internal/modules/esm/loader",
+      "function": "onImport.tracePromise.__proto__",
+      "line": 659,
+      "method": "__proto__",
+      "native": false
+    },
+    {
+      "column": 14,
+      "file": "node:diagnostics_channel",
+      "function": "TracingChannel.tracePromise",
+      "line": 344,
+      "method": "tracePromise",
+      "native": false
+    },
+    {
+      "column": 21,
+      "file": "node:internal/modules/esm/loader",
+      "function": "ModuleLoader.import",
+      "line": 658,
+      "method": "import",
+      "native": false
+    }
+  ],
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:03.872 [ERROR]: Uncaught Exception
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\docs\api.json' imported from C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\src\index.js
+    at finalizeResolution (node:internal/modules/esm/resolve:274:11)
+    at moduleResolve (node:internal/modules/esm/resolve:859:10)
+    at defaultResolve (node:internal/modules/esm/resolve:983:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:801:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:725:25)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:309:38)
+    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:659:36)
+    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)
+    at ModuleLoader.import (node:internal/modules/esm/loader:658:21)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "Cannot find module 'C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\docs\\api.json' imported from C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\src\\index.js"
+}
+2026-03-11 00:17:47.355 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:17:47.357 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.358 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.536 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.548 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.549 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.549 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.552 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.553 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.553 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.554 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.554 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.554 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.554 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:17:47.554 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.194 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:19:04.196 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.197 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.393 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.401 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.402 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.402 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.403 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.405 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.407 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.407 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.408 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.408 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.408 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:19:04.409 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:20:00.419 [INFO]: ::1 - - [10/Mar/2026:18:50:00 +0000] "GET /health HTTP/1.1" 200 378 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:07.851 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:24:07.852 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:07.853 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.085 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.100 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.101 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.102 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.102 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.103 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.103 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.104 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.104 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.104 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.104 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:24:08.105 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:25:02.426 [INFO]: ::1 - - [10/Mar/2026:18:55:02 +0000] "GET /api/health HTTP/1.1" 404 100 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:25:22.435 [INFO]: ::1 - - [10/Mar/2026:18:55:22 +0000] "GET /health HTTP/1.1" 200 379 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.559 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:27:26.561 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.561 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.756 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.767 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.767 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.767 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.768 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.768 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.768 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.769 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.769 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.769 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.769 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:27:26.770 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:28:13.824 [INFO]: ::1 - - [10/Mar/2026:18:58:13 +0000] "GET /health HTTP/1.1" 200 378 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.414 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:30:05.416 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.417 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.630 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.639 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.641 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.642 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.643 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.643 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.644 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.644 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.644 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.644 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.645 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:05.645 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:30:44.951 [INFO]: ::1 - - [10/Mar/2026:19:00:44 +0000] "GET /health HTTP/1.1" 200 379 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.385 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:32:57.387 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.387 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.585 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.596 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.598 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.599 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.599 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.600 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.601 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.601 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.601 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.601 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.601 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:32:57.601 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:34:23.303 [INFO]: ::1 - - [10/Mar/2026:19:04:23 +0000] "GET /health HTTP/1.1" 200 379 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.478 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:37:45.480 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.481 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.672 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.681 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.681 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.682 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.682 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.683 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.684 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.684 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.685 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.685 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.685 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:37:45.685 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:38:43.810 [INFO]: ::1 - - [10/Mar/2026:19:08:43 +0000] "GET /health HTTP/1.1" 200 378 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.376 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 00:39:34.378 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.380 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.572 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.582 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.582 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.583 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.583 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.584 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.584 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.584 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.584 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.585 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.585 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 00:39:34.585 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:17:59.373 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 17:17:59.380 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:17:59.384 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.062 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.082 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.084 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.086 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.089 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.098 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.102 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.103 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.104 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.107 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.111 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:18:00.114 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.261 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 17:44:28.262 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.263 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.614 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.626 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.627 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.627 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.628 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.629 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.629 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.630 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.630 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.630 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.630 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 17:44:28.631 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.313 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-11 18:40:32.314 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.315 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.462 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.467 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.467 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.467 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.468 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.468 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.469 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.469 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.469 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.469 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.469 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-11 18:40:32.469 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.308 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 12:32:14.311 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.312 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.735 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.754 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.755 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.756 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.758 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.763 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.765 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.765 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.766 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.766 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.767 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 12:32:14.768 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:18:02.287 [INFO]: User registered: undefine0187@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:18:02.291 [INFO]: ::1 - - [12/Mar/2026:07:48:02 +0000] "POST /api/auth/register HTTP/1.1" 201 168 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:18:16.154 [INFO]: User logged in: undefine0187@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:18:16.155 [INFO]: ::1 - - [12/Mar/2026:07:48:16 +0000] "POST /api/auth/login HTTP/1.1" 200 448 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:26:15.325 [INFO]: ::1 - - [12/Mar/2026:07:56:15 +0000] "GET /api/auth/me HTTP/1.1" 200 132 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:26:16.768 [INFO]: ::1 - - [12/Mar/2026:07:56:16 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:26:29.584 [INFO]: User logged out
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 13:26:29.586 [INFO]: ::1 - - [12/Mar/2026:07:56:29 +0000] "POST /api/auth/logout HTTP/1.1" 200 46 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.099 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 21:59:36.100 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.102 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.442 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.454 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.455 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.456 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.456 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.458 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.459 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.459 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.459 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.459 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.460 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 21:59:36.460 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:02:36.779 [INFO]: User registered: alamarashalan2021@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:02:36.782 [INFO]: ::1 - - [12/Mar/2026:16:32:36 +0000] "POST /api/auth/register HTTP/1.1" 201 176 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:03:02.668 [INFO]: User logged in: alamarashalan2021@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:03:02.670 [INFO]: ::1 - - [12/Mar/2026:16:33:02 +0000] "POST /api/auth/login HTTP/1.1" 200 467 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.402 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:11:48.403 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.404 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.554 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.559 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.560 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.560 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.560 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.561 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.561 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.561 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.561 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.562 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.562 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:11:48.562 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.138 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:12:34.140 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.140 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.305 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.316 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.317 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.317 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.317 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.318 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.318 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.318 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.319 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.319 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.319 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:12:34.319 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.485 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:13:54.488 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.489 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.737 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.747 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.747 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.748 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.748 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.749 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.749 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.749 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.749 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.750 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.750 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:13:54.750 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:15:09.461 [INFO]: ::1 - - [12/Mar/2026:16:45:09 +0000] "GET /api/auth/me HTTP/1.1" 401 84 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:16:13.274 [INFO]: ::1 - - [12/Mar/2026:16:46:13 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:16:41.814 [INFO]: ::1 - - [12/Mar/2026:16:46:41 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:16:45.673 [INFO]: ::1 - - [12/Mar/2026:16:46:45 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:17:04.567 [INFO]: ::1 - - [12/Mar/2026:16:47:04 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:18:21.847 [INFO]: ::1 - - [12/Mar/2026:16:48:21 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:18:40.648 [INFO]: ::1 - - [12/Mar/2026:16:48:40 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.260 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:20:47.261 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.262 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.424 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.429 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.430 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.431 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.433 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.434 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.435 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.436 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.436 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.436 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.437 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:20:47.437 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.425 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:24:22.427 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.428 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.660 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.665 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.666 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.666 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.666 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.666 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.667 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.667 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.667 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.667 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.667 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:24:22.667 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.275 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:25:16.276 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.277 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.419 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.428 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.429 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.429 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.430 [INFO]: Initializing database connection...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.431 [INFO]: Created entity: Classroom
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.431 [INFO]: Created entity: Assignment
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.432 [INFO]: Created entity: Submission
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.432 [INFO]: Created entity: ChatMessage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.432 [INFO]: Database initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.432 [INFO]: Database initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:25:16.433 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:26:23.703 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:36.625 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:40:36.854 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:36.855 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:36.997 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.010 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.011 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.012 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.012 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.013 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.013 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.022 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.022 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.022 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:40:37.023 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:42:33.024 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:08.636 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:43:08.879 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:08.880 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.005 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.013 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.013 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.013 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.013 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.014 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.014 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.020 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.020 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.020 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:43:09.021 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.423 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:54:02.610 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.610 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.693 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.700 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.701 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.701 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.702 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.702 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.703 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.709 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.710 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.711 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:54:02.712 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.003 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:55:54.121 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.122 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.211 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.217 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.218 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.218 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.219 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.219 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.219 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.225 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.225 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.226 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:55:54.226 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.639 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 22:58:18.756 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.758 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.854 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.863 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.863 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.863 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.864 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.864 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.864 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.869 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.869 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.869 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 22:58:18.870 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:25.821 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 23:00:26.063 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.064 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.170 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.178 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.178 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.179 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.179 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.180 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.180 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.188 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.189 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.189 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:00:26.189 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:33.925 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-12 23:01:34.039 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.039 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.149 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.159 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.160 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.160 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.161 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.161 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.162 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.170 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.171 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.171 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:01:34.171 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-12 23:08:33.859 [INFO]: ::1 - - [12/Mar/2026:17:38:33 +0000] "GET /api/health HTTP/1.1" 404 100 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.119 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-13 19:48:31.303 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.303 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.419 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.424 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.425 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.425 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.426 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.426 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.426 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.433 [ERROR]: Failed to connect to MongoDB:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.433 [WARN]: MongoDB connection failed, running without persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.433 [WARN]: User data will be stored in memory only
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:48:31.434 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:56:26.989 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-13 19:56:26.991 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:56:26.991 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:56:27.032 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:56:27.045 [WARN]: MongoDB disconnected
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:56:27.045 [INFO]: MongoDB connection closed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:25.860 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-13 19:57:25.941 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:25.941 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.018 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.023 [INFO]: 🚀 liveMentor Backend server running on port 3003
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.024 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.024 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.025 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.025 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.025 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.064 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.065 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.065 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.096 [INFO]: Creating default admin user...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.207 [INFO]: ✅ Default admin user created successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.207 [INFO]:    Email: admin@livementor.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.207 [INFO]:    Password: admin123
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.208 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.208 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:57:26.208 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 19:59:24.290 [INFO]: ::1 - - [13/Mar/2026:14:29:24 +0000] "GET / HTTP/1.1" 200 454 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:05:31.245 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.279 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-13 20:24:21.470 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.471 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.598 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.609 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.609 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.610 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.610 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.611 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.611 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.713 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.713 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.714 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.759 [INFO]: Default admin user already exists
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.759 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.760 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:24:21.760 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:25:41.121 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.473 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-13 20:26:14.602 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.602 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.701 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.707 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.707 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.708 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.708 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.708 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.709 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.747 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.748 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.748 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.767 [INFO]: Default admin user already exists
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.767 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.767 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:26:14.768 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:27:11.380 [INFO]: ::1 - - [13/Mar/2026:14:57:11 +0000] "GET /health HTTP/1.1" 200 378 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:27:12.965 [INFO]: User registered: check_142654076@demo.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:27:12.966 [INFO]: ::1 - - [13/Mar/2026:14:57:12 +0000] "POST /api/auth/register HTTP/1.1" 201 192 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:39:34.143 [INFO]: ::1 - - [13/Mar/2026:15:09:34 +0000] "GET /health HTTP/1.1" 200 380 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:40:04.405 [INFO]: User registered: check_1678193851@demo.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:40:04.406 [INFO]: ::1 - - [13/Mar/2026:15:10:04 +0000] "POST /api/auth/register HTTP/1.1" 201 193 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:41:12.727 [INFO]: User registered: rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:41:12.729 [INFO]: ::1 - - [13/Mar/2026:15:11:12 +0000] "POST /api/auth/register HTTP/1.1" 201 173 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:41:38.492 [INFO]: User logged in: rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:41:38.492 [INFO]: ::1 - - [13/Mar/2026:15:11:38 +0000] "POST /api/auth/login HTTP/1.1" 200 460 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:49:30.154 [WARN]: JWT verification failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:49:30.171 [INFO]: ::1 - - [13/Mar/2026:15:19:30 +0000] "GET /api/classrooms HTTP/1.1" 401 68 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:40.948 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-13 20:50:41.381 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.382 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.398 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.416 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.417 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.417 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.418 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.418 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.419 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.562 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.564 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.564 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.656 [INFO]: Default admin user already exists
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.657 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.657 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:50:41.658 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:18.921 [INFO]: User registered: faculty_333988387@demo.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:18.925 [INFO]: ::1 - - [13/Mar/2026:15:21:18 +0000] "POST /api/auth/register HTTP/1.1" 201 174 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:19.224 [INFO]: User logged in: faculty_333988387@demo.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:19.225 [INFO]: ::1 - - [13/Mar/2026:15:21:19 +0000] "POST /api/auth/login HTTP/1.1" 200 462 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:19.268 [INFO]: ::1 - - [13/Mar/2026:15:21:19 +0000] "GET /api/classrooms HTTP/1.1" 200 42 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:19.313 [INFO]: Classroom created: Algorithms Lab by faculty_333988387@demo.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:19.313 [INFO]: ::1 - - [13/Mar/2026:15:21:19 +0000] "POST /api/classrooms HTTP/1.1" 201 621 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:51:19.335 [INFO]: ::1 - - [13/Mar/2026:15:21:19 +0000] "GET /api/classrooms HTTP/1.1" 200 591 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:52:43.386 [WARN]: JWT verification failed: invalid signature
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:52:43.392 [INFO]: ::1 - - [13/Mar/2026:15:22:43 +0000] "GET /api/classrooms HTTP/1.1" 401 68 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:53:17.721 [WARN]: JWT verification failed: invalid signature
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:53:17.722 [INFO]: ::1 - - [13/Mar/2026:15:23:17 +0000] "POST /api/classrooms HTTP/1.1" 401 68 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:53:44.622 [WARN]: JWT verification failed: invalid signature
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:53:44.623 [INFO]: ::1 - - [13/Mar/2026:15:23:44 +0000] "POST /api/classrooms HTTP/1.1" 401 68 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:54:56.081 [INFO]: ::1 - - [13/Mar/2026:15:24:56 +0000] "GET /health HTTP/1.1" 200 380 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.7920"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:56:19.407 [WARN]: JWT verification failed: invalid signature
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:56:19.427 [INFO]: ::1 - - [13/Mar/2026:15:26:19 +0000] "GET /api/classrooms HTTP/1.1" 401 68 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-13 20:56:19.446 [INFO]: ::1 - - [13/Mar/2026:15:26:19 +0000] "GET /api/auth/me HTTP/1.1" 401 85 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.418 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-14 13:12:32.792 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.793 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.812 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.825 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.826 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.832 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.833 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.834 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.835 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.951 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.952 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:32.952 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:33.047 [INFO]: Default admin user already exists
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:33.047 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:33.047 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:12:33.048 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:13:21.579 [INFO]: User logged in: rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:13:21.585 [INFO]: ::1 - - [14/Mar/2026:07:43:21 +0000] "POST /api/auth/login HTTP/1.1" 200 460 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:13:21.665 [INFO]: ::1 - - [14/Mar/2026:07:43:21 +0000] "GET /api/classrooms HTTP/1.1" 200 42 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:14:23.509 [INFO]: Classroom created: Amit Rathore class by rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:14:23.510 [INFO]: ::1 - - [14/Mar/2026:07:44:23 +0000] "POST /api/classrooms HTTP/1.1" 201 616 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:14:23.529 [INFO]: ::1 - - [14/Mar/2026:07:44:23 +0000] "GET /api/classrooms HTTP/1.1" 200 586 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:20:35.668 [INFO]: ::1 - - [14/Mar/2026:07:50:35 +0000] "GET /api/auth/me HTTP/1.1" 200 137 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:24:05.675 [INFO]: User logged out
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:24:05.677 [INFO]: ::1 - - [14/Mar/2026:07:54:05 +0000] "POST /api/auth/logout HTTP/1.1" 200 46 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:24:57.340 [INFO]: User logged in: rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:24:57.341 [INFO]: ::1 - - [14/Mar/2026:07:54:57 +0000] "POST /api/auth/login HTTP/1.1" 200 460 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:24:57.446 [INFO]: ::1 - - [14/Mar/2026:07:54:57 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:25:12.072 [INFO]: User logged out
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:25:12.073 [INFO]: ::1 - - [14/Mar/2026:07:55:12 +0000] "POST /api/auth/logout HTTP/1.1" 200 46 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:26:06.450 [INFO]: ::1 - - [14/Mar/2026:07:56:06 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:27:03.918 [INFO]: User registered: pawanstr09@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:27:03.920 [INFO]: ::1 - - [14/Mar/2026:07:57:03 +0000] "POST /api/auth/register HTTP/1.1" 201 193 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:27:52.601 [INFO]: User logged in: pawanstr09@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:27:52.603 [INFO]: ::1 - - [14/Mar/2026:07:57:52 +0000] "POST /api/auth/login HTTP/1.1" 200 506 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:30:35.995 [INFO]: ::1 - - [14/Mar/2026:08:00:35 +0000] "GET /api/classrooms HTTP/1.1" 200 42 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:31:17.285 [INFO]: ::1 - - [14/Mar/2026:08:01:17 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:35:49.829 [INFO]: ::1 - - [14/Mar/2026:08:05:49 +0000] "GET /api/auth/me HTTP/1.1" 200 157 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 13:35:50.253 [INFO]: ::1 - - [14/Mar/2026:08:05:50 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:49:25.736 [INFO]: ::1 - - [14/Mar/2026:09:19:25 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:49:32.358 [INFO]: ::1 - - [14/Mar/2026:09:19:32 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:49:32.546 [INFO]: ::1 - - [14/Mar/2026:09:19:32 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:49:34.872 [INFO]: ::1 - - [14/Mar/2026:09:19:34 +0000] "GET /api/auth/me HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:49:34.967 [INFO]: ::1 - - [14/Mar/2026:09:19:34 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:49:59.389 [INFO]: User logged out
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:49:59.390 [INFO]: ::1 - - [14/Mar/2026:09:19:59 +0000] "POST /api/auth/logout HTTP/1.1" 200 46 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:22.960 [INFO]: User logged in: rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:22.962 [INFO]: ::1 - - [14/Mar/2026:09:20:22 +0000] "POST /api/auth/login HTTP/1.1" 200 460 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:23.033 [INFO]: ::1 - - [14/Mar/2026:09:20:23 +0000] "GET /api/classrooms HTTP/1.1" 200 586 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:40.140 [INFO]: User logged out
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:40.141 [INFO]: ::1 - - [14/Mar/2026:09:20:40 +0000] "POST /api/auth/logout HTTP/1.1" 200 46 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:59.442 [INFO]: User logged in: pawanstr09@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:59.443 [INFO]: ::1 - - [14/Mar/2026:09:20:59 +0000] "POST /api/auth/login HTTP/1.1" 200 506 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:50:59.515 [INFO]: ::1 - - [14/Mar/2026:09:20:59 +0000] "GET /api/classrooms HTTP/1.1" 200 42 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:51:10.637 [INFO]: User pawanstr09@gmail.com joined classroom Amit Rathore class
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:51:10.638 [INFO]: ::1 - - [14/Mar/2026:09:21:10 +0000] "POST /api/classrooms/join HTTP/1.1" 200 637 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:51:10.663 [INFO]: ::1 - - [14/Mar/2026:09:21:10 +0000] "GET /api/classrooms HTTP/1.1" 200 608 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:51:31.510 [INFO]: User logged out
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:51:31.511 [INFO]: ::1 - - [14/Mar/2026:09:21:31 +0000] "POST /api/auth/logout HTTP/1.1" 200 46 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:51:50.373 [INFO]: ::1 - - [14/Mar/2026:09:21:50 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:52:06.373 [INFO]: ::1 - - [14/Mar/2026:09:22:06 +0000] "POST /api/auth/login HTTP/1.1" 401 87 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:52:14.315 [INFO]: User logged in: rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:52:14.317 [INFO]: ::1 - - [14/Mar/2026:09:22:14 +0000] "POST /api/auth/login HTTP/1.1" 200 460 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 14:52:14.369 [INFO]: ::1 - - [14/Mar/2026:09:22:14 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-14 15:05:27.441 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
