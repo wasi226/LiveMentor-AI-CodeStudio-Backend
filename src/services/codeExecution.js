@@ -1,46 +1,62 @@
 /**
- * Secure Code Execution Service using Judge0 API
+ * Secure Code Execution Service using Piston API
  * Handles code compilation and execution in sandboxed environments
  */
 
 import axios from 'axios';
 import logger from '../utils/logger.js';
 
-// Judge0 Language ID mappings
-export const LANGUAGE_IDS = {
-  javascript: 63,
-  python: 71,
-  java: 62,
-  cpp: 54,
-  c: 50,
-  typescript: 74,
-  go: 60,
-  rust: 73,
-  php: 68,
-  ruby: 72,
-  csharp: 51,
-  kotlin: 78,
-  swift: 83,
-  scala: 81
+export const LANGUAGE_CONFIGS = {
+  javascript: { runtime: 'javascript', version: '*', fileName: 'main.js', displayName: 'JavaScript' },
+  python: { runtime: 'python', version: '*', fileName: 'main.py', displayName: 'Python' },
+  java: { runtime: 'java', version: '*', fileName: 'Main.java', displayName: 'Java' },
+  cpp: { runtime: 'c++', version: '*', fileName: 'main.cpp', displayName: 'C++' },
+  c: { runtime: 'c', version: '*', fileName: 'main.c', displayName: 'C' },
+  typescript: { runtime: 'typescript', version: '*', fileName: 'main.ts', displayName: 'TypeScript' },
+  go: { runtime: 'go', version: '*', fileName: 'main.go', displayName: 'Go' },
+  rust: { runtime: 'rust', version: '*', fileName: 'main.rs', displayName: 'Rust' },
+  php: { runtime: 'php', version: '*', fileName: 'main.php', displayName: 'PHP' },
+  ruby: { runtime: 'ruby', version: '*', fileName: 'main.rb', displayName: 'Ruby' },
+  csharp: { runtime: 'csharp', version: '*', fileName: 'Program.cs', displayName: 'C#' },
+  kotlin: { runtime: 'kotlin', version: '*', fileName: 'Main.kt', displayName: 'Kotlin' },
+  swift: { runtime: 'swift', version: '*', fileName: 'main.swift', displayName: 'Swift' },
+  scala: { runtime: 'scala', version: '*', fileName: 'Main.scala', displayName: 'Scala' }
 };
 
-// Default code execution timeouts and limits
+const DEFAULT_REQUEST_TIMEOUT = 15000;
+const DEFAULT_COMPILE_TIMEOUT = 10000;
+const DEFAULT_RUN_TIMEOUT = 5000;
+const DEFAULT_RUN_MEMORY_LIMIT = 128 * 1024 * 1024;
+const DEFAULT_COMPILE_MEMORY_LIMIT = 256 * 1024 * 1024;
+
 const EXECUTION_CONFIG = {
-  timeout: parseInt(process.env.JUDGE0_TIMEOUT) || 10000,
-  maxCpuTime: parseInt(process.env.JUDGE0_MAX_CPU_TIME) || 5,
-  maxMemory: parseInt(process.env.JUDGE0_MAX_MEMORY) || 128000,
-  pollInterval: 1000,
-  maxPollAttempts: 15
+  apiUrl: normalizePistonApiUrl(process.env.PISTON_API_URL),
+  requestTimeout: parseInteger(process.env.PISTON_REQUEST_TIMEOUT, DEFAULT_REQUEST_TIMEOUT),
+  compileTimeout: parseInteger(process.env.PISTON_COMPILE_TIMEOUT, DEFAULT_COMPILE_TIMEOUT),
+  runTimeout: parseInteger(process.env.PISTON_RUN_TIMEOUT, DEFAULT_RUN_TIMEOUT),
+  compileCpuTime: parseInteger(
+    process.env.PISTON_COMPILE_CPU_TIME,
+    parseInteger(process.env.PISTON_COMPILE_TIMEOUT, DEFAULT_COMPILE_TIMEOUT)
+  ),
+  runCpuTime: parseInteger(
+    process.env.PISTON_RUN_CPU_TIME,
+    parseInteger(process.env.PISTON_RUN_TIMEOUT, DEFAULT_RUN_TIMEOUT)
+  ),
+  compileMemoryLimit: parseInteger(process.env.PISTON_COMPILE_MEMORY_LIMIT, DEFAULT_COMPILE_MEMORY_LIMIT),
+  runMemoryLimit: parseInteger(
+    process.env.PISTON_RUN_MEMORY_LIMIT,
+    parseLegacyJudge0Memory(process.env.JUDGE0_MAX_MEMORY, DEFAULT_RUN_MEMORY_LIMIT)
+  )
 };
 
 /**
- * Execute code using Judge0 API
+ * Execute code using Piston API
  * @param {Object} params - Execution parameters
  * @param {string} params.code - Source code to execute
  * @param {string} params.language - Programming language
  * @param {string} params.input - Input data for the program
  * @param {Array} params.testCases - Test cases for validation
- * @returns {Object} Execution results
+ * @returns {Promise<Object>} Execution results
  */
 export async function executeCode({
   code,
@@ -49,33 +65,30 @@ export async function executeCode({
   testCases = []
 }) {
   try {
-    const languageId = LANGUAGE_IDS[language.toLowerCase()];
-    
-    if (!languageId) {
+    const runtimeConfig = LANGUAGE_CONFIGS[language.toLowerCase()];
+
+    if (!runtimeConfig) {
       throw new Error(`Unsupported language: ${language}`);
     }
 
-    if (!process.env.RAPIDAPI_KEY) {
-      logger.warn('RAPIDAPI_KEY not configured, using fallback execution service');
+    if (!EXECUTION_CONFIG.apiUrl) {
+      logger.warn('PISTON_API_URL not configured, using fallback execution service');
       return await fallbackExecution({ code, language, input, testCases });
     }
 
-    // Single execution if no test cases
     if (testCases.length === 0) {
       return await executeSingleRun({
         code,
-        languageId,
+        runtimeConfig,
         input
       });
     }
 
-    // Batch execution for test cases
-    return await executeBatchTestCases({
+    return await executeTestCases({
       code,
-      languageId,
+      runtimeConfig,
       testCases
     });
-
   } catch (error) {
     logger.error('Code execution failed:', error);
     return {
@@ -84,172 +97,288 @@ export async function executeCode({
       output: '',
       executionTime: 0,
       memoryUsage: 0,
-      testResults: []
+      testResults: [],
+      provider: EXECUTION_CONFIG.apiUrl ? 'piston' : 'fallback'
     };
   }
 }
 
-/**
- * Execute a single code run
- */
-async function executeSingleRun({ code, languageId, input }) {
-  const submission = {
-    source_code: Buffer.from(code).toString('base64'),
-    language_id: languageId,
-    stdin: Buffer.from(input).toString('base64'),
-    cpu_time_limit: EXECUTION_CONFIG.maxCpuTime,
-    memory_limit: EXECUTION_CONFIG.maxMemory,
-    wall_time_limit: EXECUTION_CONFIG.maxCpuTime + 2,
-    enable_per_process_and_thread_time_limit: true,
-    enable_per_process_and_thread_memory_limit: true
-  };
-
-  // Submit code for execution
-  const submitResponse = await axios.post(
-    `${process.env.JUDGE0_API_URL}/submissions`,
-    submission,
-    {
-      headers: {
-        'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
-        'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
-        'Content-Type': 'application/json'
-      },
-      timeout: EXECUTION_CONFIG.timeout
-    }
-  );
-
-  const token = submitResponse.data.token;
-  
-  // Poll for results
-  const result = await pollForResult(token);
-  
-  return {
-    success: result.status.id <= 3, // 1=In Queue, 2=Processing, 3=Accepted
-    output: result.stdout ? Buffer.from(result.stdout, 'base64').toString() : '',
-    error: result.stderr ? Buffer.from(result.stderr, 'base64').toString() : result.compile_output ? Buffer.from(result.compile_output, 'base64').toString() : '',
-    executionTime: parseFloat(result.time) || 0,
-    memoryUsage: parseInt(result.memory) || 0,
-    status: result.status.description,
-    statusId: result.status.id,
-    testResults: []
-  };
-}
-
-/**
- * Execute code against multiple test cases
- */
-async function executeBatchTestCases({ code, languageId, testCases }) {
-  const submissions = testCases.map((testCase, index) => ({
-    source_code: Buffer.from(code).toString('base64'),
-    language_id: languageId,
-    stdin: Buffer.from(testCase.input || '').toString('base64'),
-    expected_output: Buffer.from(testCase.expectedOutput || '').toString('base64'),
-    cpu_time_limit: EXECUTION_CONFIG.maxCpuTime,
-    memory_limit: EXECUTION_CONFIG.maxMemory,
-    wall_time_limit: EXECUTION_CONFIG.maxCpuTime + 2,
-    enable_per_process_and_thread_time_limit: true,
-    enable_per_process_and_thread_memory_limit: true
-  }));
-
+async function executeSingleRun({ code, runtimeConfig, input }) {
   try {
-    // Submit batch of test cases
-    const batchResponse = await axios.post(
-      `${process.env.JUDGE0_API_URL}/submissions/batch`,
-      { submissions },
+    const response = await axios.post(
+      `${EXECUTION_CONFIG.apiUrl}/execute`,
+      buildPistonPayload({ code, runtimeConfig, input }),
       {
-        headers: {
-          'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
-          'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com',
-          'Content-Type': 'application/json'
-        },
-        timeout: EXECUTION_CONFIG.timeout
+        headers: buildPistonHeaders(),
+        timeout: EXECUTION_CONFIG.requestTimeout
       }
     );
 
-    const tokens = batchResponse.data.map(result => result.token);
-    
-    // Poll for all results
-    const results = await Promise.all(
-      tokens.map(token => pollForResult(token))
-    );
+    return formatPistonResponse(response.data);
+  } catch (error) {
+    throw new Error(getPistonErrorMessage(error));
+  }
+}
 
-    // Process test results
-    const testResults = results.map((result, index) => {
-      const actualOutput = result.stdout ? Buffer.from(result.stdout, 'base64').toString().trim() : '';
-      const expectedOutput = testCases[index].expectedOutput?.trim() || '';
-      const passed = actualOutput === expectedOutput && result.status.id === 3;
+async function executeTestCases({ code, runtimeConfig, testCases }) {
+  const testResults = [];
+  let firstResult = null;
 
-      return {
-        testCaseIndex: index,
-        passed,
-        input: testCases[index].input || '',
-        expectedOutput,
-        actualOutput,
-        error: result.stderr ? Buffer.from(result.stderr, 'base64').toString() : '',
-        executionTime: parseFloat(result.time) || 0,
-        memoryUsage: parseInt(result.memory) || 0,
-        status: result.status.description
-      };
+  for (const [index, testCase] of testCases.entries()) {
+    const result = await executeSingleRun({
+      code,
+      runtimeConfig,
+      input: testCase.input || ''
     });
 
-    const passedTests = testResults.filter(t => t.passed).length;
-    const totalTests = testResults.length;
-    const score = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
+    if (!firstResult) {
+      firstResult = result;
+    }
 
-    return {
-      success: passedTests > 0,
-      output: results[0]?.stdout ? Buffer.from(results[0].stdout, 'base64').toString() : '',
-      error: results[0]?.stderr ? Buffer.from(results[0].stderr, 'base64').toString() : '',
-      executionTime: Math.max(...results.map(r => parseFloat(r.time) || 0)),
-      memoryUsage: Math.max(...results.map(r => parseInt(r.memory) || 0)),
-      testResults,
-      score,
-      passedTests,
-      totalTests
-    };
+    const actualOutput = (result.rawOutput || '').trim();
+    const expectedOutput = (testCase.expectedOutput || '').trim();
+    const passed = result.success && actualOutput === expectedOutput;
 
-  } catch (error) {
-    logger.error('Batch execution failed:', error);
-    throw error;
+    testResults.push({
+      testCaseIndex: index,
+      passed,
+      input: testCase.input || '',
+      expectedOutput,
+      actualOutput,
+      error: result.error,
+      executionTime: result.executionTime,
+      memoryUsage: result.memoryUsage,
+      status: result.status
+    });
+  }
+
+  const passedTests = testResults.filter(result => result.passed).length;
+  const totalTests = testResults.length;
+  const score = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
+  const primaryResult = firstResult || {
+    output: '',
+    error: '',
+    executionTime: 0,
+    memoryUsage: 0,
+    provider: 'piston',
+    status: 'completed'
+  };
+
+  return {
+    success: passedTests > 0,
+    output: primaryResult.output,
+    error: primaryResult.error,
+    executionTime: Math.max(...testResults.map(result => result.executionTime || 0), primaryResult.executionTime || 0),
+    memoryUsage: Math.max(...testResults.map(result => result.memoryUsage || 0), primaryResult.memoryUsage || 0),
+    testResults,
+    score,
+    passedTests,
+    totalTests,
+    provider: primaryResult.provider,
+    status: passedTests === totalTests ? 'completed' : 'tests_failed'
+  };
+}
+
+function buildPistonPayload({ code, runtimeConfig, input }) {
+  return {
+    language: runtimeConfig.runtime,
+    version: runtimeConfig.version,
+    files: [
+      {
+        name: runtimeConfig.fileName,
+        content: code
+      }
+    ],
+    stdin: input,
+    compile_timeout: EXECUTION_CONFIG.compileTimeout,
+    run_timeout: EXECUTION_CONFIG.runTimeout,
+    compile_cpu_time: EXECUTION_CONFIG.compileCpuTime,
+    run_cpu_time: EXECUTION_CONFIG.runCpuTime,
+    compile_memory_limit: EXECUTION_CONFIG.compileMemoryLimit,
+    run_memory_limit: EXECUTION_CONFIG.runMemoryLimit
+  };
+}
+
+function buildPistonHeaders() {
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+
+  const token = process.env.PISTON_API_TOKEN;
+
+  if (token) {
+    const headerName = process.env.PISTON_API_AUTH_HEADER || 'Authorization';
+    const authScheme = process.env.PISTON_API_AUTH_SCHEME;
+    headers[headerName] = authScheme ? `${authScheme} ${token}` : token;
+  }
+
+  return headers;
+}
+
+function formatPistonResponse(responseData) {
+  const compileStage = responseData.compile || null;
+  const runStage = responseData.run || null;
+  const compileFailed = stageFailed(compileStage);
+  const runFailed = stageFailed(runStage);
+  const success = !compileFailed && !runFailed;
+  const rawOutput = runStage?.stdout || '';
+  const warningText = success
+    ? [compileStage?.stderr, runStage?.stderr].filter(Boolean).map(text => text.trim()).filter(Boolean).join('\n\n')
+    : '';
+
+  const outputSections = [];
+
+  if (rawOutput.trim()) {
+    outputSections.push(rawOutput);
+  }
+
+  if (warningText) {
+    outputSections.push(`Warnings:\n${warningText}`);
+  }
+
+  return {
+    success,
+    output: success ? outputSections.join('\n\n') || 'Program executed successfully (no output)' : rawOutput,
+    rawOutput,
+    error: success ? '' : formatExecutionError(compileStage, runStage),
+    executionTime: Math.max(Number(compileStage?.wall_time) || 0, Number(runStage?.wall_time) || 0),
+    memoryUsage: Math.max(Number(compileStage?.memory) || 0, Number(runStage?.memory) || 0),
+    status: success ? 'completed' : getFailureStatus(compileStage, runStage),
+    testResults: [],
+    provider: 'piston',
+    version: responseData.version,
+    runtimeLanguage: responseData.language
+  };
+}
+
+function stageFailed(stage) {
+  if (!stage) {
+    return false;
+  }
+
+  return Boolean(
+    stage.code !== 0 ||
+    stage.signal ||
+    stage.message ||
+    stage.status
+  );
+}
+
+function formatExecutionError(compileStage, runStage) {
+  if (stageFailed(compileStage)) {
+    return formatStageError('Compilation', compileStage);
+  }
+
+  if (stageFailed(runStage)) {
+    return formatStageError('Execution', runStage);
+  }
+
+  return 'Execution failed';
+}
+
+function formatStageError(label, stage) {
+  const details = [];
+  const translatedStatus = translateStageStatus(stage?.status);
+
+  if (translatedStatus) {
+    details.push(translatedStatus);
+  }
+
+  if (stage?.message) {
+    details.push(stage.message);
+  }
+
+  if (stage?.stderr?.trim()) {
+    details.push(stage.stderr.trim());
+  }
+
+  if (stage?.signal) {
+    details.push(`Signal: ${stage.signal}`);
+  }
+
+  if (stage?.code !== undefined && stage?.code !== null && stage.code !== 0) {
+    details.push(`Exit code: ${stage.code}`);
+  }
+
+  const uniqueDetails = [...new Set(details.filter(Boolean))];
+
+  return uniqueDetails.length > 0
+    ? `${label} failed\n${uniqueDetails.join('\n')}`
+    : `${label} failed`;
+}
+
+function getFailureStatus(compileStage, runStage) {
+  const failingStage = stageFailed(compileStage) ? compileStage : runStage;
+  return translateStageStatus(failingStage?.status) || failingStage?.message || 'failed';
+}
+
+function translateStageStatus(status) {
+  switch (status) {
+    case 'TO':
+      return 'Time limit exceeded';
+    case 'RE':
+      return 'Runtime error';
+    case 'SG':
+      return 'Process terminated by signal';
+    case 'OL':
+      return 'Standard output limit exceeded';
+    case 'EL':
+      return 'Standard error limit exceeded';
+    case 'XX':
+      return 'Internal execution service error';
+    default:
+      return status || '';
   }
 }
 
-/**
- * Poll for execution result
- */
-async function pollForResult(token, attempt = 0) {
-  if (attempt >= EXECUTION_CONFIG.maxPollAttempts) {
-    throw new Error('Execution timeout: Maximum poll attempts reached');
+function getPistonErrorMessage(error) {
+  const statusCode = error.response?.status;
+  const apiMessage = error.response?.data?.message || error.response?.data?.error || error.message;
+
+  if (statusCode === 401 || statusCode === 403) {
+    return 'Piston API authorization failed. Set PISTON_API_TOKEN for the public API or use a self-hosted Piston instance.';
   }
 
-  try {
-    const response = await axios.get(
-      `${process.env.JUDGE0_API_URL}/submissions/${token}`,
-      {
-        headers: {
-          'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
-          'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
-        },
-        timeout: EXECUTION_CONFIG.timeout
-      }
-    );
-
-    const result = response.data;
-    
-    // Status 1 = In Queue, 2 = Processing
-    if (result.status.id <= 2) {
-      await new Promise(resolve => setTimeout(resolve, EXECUTION_CONFIG.pollInterval));
-      return await pollForResult(token, attempt + 1);
-    }
-
-    return result;
-    
-  } catch (error) {
-    if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
-      throw new Error('Execution timeout: Request timed out');
-    }
-    throw error;
+  if (statusCode === 400) {
+    return `Piston request rejected: ${apiMessage}`;
   }
+
+  if (error.code === 'ECONNABORTED') {
+    return 'Piston request timed out before the execution service responded.';
+  }
+
+  if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
+    return `Unable to reach Piston API at ${EXECUTION_CONFIG.apiUrl}.`;
+  }
+
+  return `Piston API request failed: ${apiMessage}`;
+}
+
+function normalizePistonApiUrl(url) {
+  return (url || '').replace(/\/+$/, '');
+}
+
+function parseInteger(value, fallback) {
+  if (value === undefined || value === null || value === '') {
+    return fallback;
+  }
+
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function parseLegacyJudge0Memory(value, fallback) {
+  if (value === undefined || value === null || value === '') {
+    return fallback;
+  }
+
+  const parsed = Number(value);
+
+  if (!Number.isFinite(parsed)) {
+    return fallback;
+  }
+
+  return parsed * 1024;
 }
 
 /**
@@ -257,25 +386,23 @@ async function pollForResult(token, attempt = 0) {
  */
 async function fallbackExecution({ code, language, input, testCases }) {
   logger.info('Using fallback execution service (development mode)');
-  
-  // Simulate execution delay
+
   await new Promise(resolve => setTimeout(resolve, 1000));
-  
-  // Mock execution results
+
   const mockResults = {
     success: true,
     output: `Mock execution result for ${language}\nCode length: ${code.length} characters\nInput: ${input || 'none'}`,
     error: '',
     executionTime: Math.random() * 100,
     memoryUsage: Math.floor(Math.random() * 10000),
-    testResults: []
+    testResults: [],
+    provider: 'fallback'
   };
 
-  // Mock test case results if provided
   if (testCases.length > 0) {
     mockResults.testResults = testCases.map((testCase, index) => ({
       testCaseIndex: index,
-      passed: Math.random() > 0.3, // 70% pass rate
+      passed: Math.random() > 0.3,
       input: testCase.input || '',
       expectedOutput: testCase.expectedOutput || '',
       actualOutput: testCase.expectedOutput || 'mock output',
@@ -284,46 +411,41 @@ async function fallbackExecution({ code, language, input, testCases }) {
       memoryUsage: Math.floor(Math.random() * 5000),
       status: 'Accepted'
     }));
-    
-    const passedTests = mockResults.testResults.filter(t => t.passed).length;
+
+    const passedTests = mockResults.testResults.filter(testResult => testResult.passed).length;
     mockResults.passedTests = passedTests;
     mockResults.totalTests = testCases.length;
     mockResults.score = Math.round((passedTests / testCases.length) * 100);
   }
-  
+
   return mockResults;
 }
 
-/**
- * Get supported languages
- */
 export function getSupportedLanguages() {
-  return Object.keys(LANGUAGE_IDS).map(lang => ({
-    name: lang,
-    id: LANGUAGE_IDS[lang],
-    displayName: lang.charAt(0).toUpperCase() + lang.slice(1)
+  return Object.entries(LANGUAGE_CONFIGS).map(([name, config]) => ({
+    name,
+    id: config.runtime,
+    runtime: config.runtime,
+    version: config.version,
+    displayName: config.displayName
   }));
 }
 
-/**
- * Validate code before execution
- */
 export function validateCode(code, language) {
   const errors = [];
-  
+
   if (!code || code.trim().length === 0) {
     errors.push('Code cannot be empty');
   }
-  
+
   if (code.length > 65000) {
     errors.push('Code is too long (maximum 65KB)');
   }
-  
-  if (!LANGUAGE_IDS[language.toLowerCase()]) {
+
+  if (!LANGUAGE_CONFIGS[language.toLowerCase()]) {
     errors.push(`Unsupported language: ${language}`);
   }
-  
-  // Language-specific validation
+
   switch (language.toLowerCase()) {
     case 'python':
       if (code.includes('import os') || code.includes('import subprocess')) {
@@ -336,7 +458,7 @@ export function validateCode(code, language) {
       }
       break;
   }
-  
+
   return {
     isValid: errors.length === 0,
     errors
@@ -347,5 +469,5 @@ export default {
   executeCode,
   getSupportedLanguages,
   validateCode,
-  LANGUAGE_IDS
+  LANGUAGE_CONFIGS
 };

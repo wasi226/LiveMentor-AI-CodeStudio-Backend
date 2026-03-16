@@ -11,10 +11,10 @@ import compression from 'compression';
 import { RateLimiterMemory } from 'rate-limiter-flexible';
 import dotenv from 'dotenv';
 import { connectMongoDB, getConnectionStatus } from './config/mongodb.js';
-import winston from 'winston';
 
 // Import routes
 import authRoutes from './routes/auth.js';
+import aiRoutes from './routes/ai.js';
 import classroomRoutes from './routes/classrooms.js';
 import assignmentRoutes from './routes/assignments.js';
 import submissionRoutes from './routes/submissions.js';
@@ -27,10 +27,9 @@ import debugRoutes from './routes/debug.js';
 // Import middleware
 import errorHandler from './middleware/errorHandler.js';
 import authMiddleware from './middleware/auth.js';
-import validationMiddleware from './middleware/validation.js';
 
 // Import services
-import { startWebSocketServer } from './services/websocket.js';
+import { startSocketIOServer } from './services/socketio.js';
 import { initializeCache } from './services/cache.js';
 import { initializeDatabase } from './services/database_init.js';
 import logger from './utils/logger.js';
@@ -54,8 +53,8 @@ const rateLimitMiddleware = async (req, res, next) => {
   try {
     await rateLimiter.consume(req.ip);
     next();
-  } catch (rejRes) {
-    const secs = Math.round(rejRes.msBeforeNext / 1000) || 1;
+  } catch (error) {
+    const secs = Math.round((error?.msBeforeNext || 1000) / 1000) || 1;
     res.set('Retry-After', String(secs));
     res.status(429).json({
       error: 'Too Many Requests',
@@ -114,12 +113,13 @@ if (process.env.ENABLE_SWAGGER_DOCS === 'true') {
     app.use('/api-docs', swaggerUi.default.serve, swaggerUi.default.setup(swaggerDocument.default));
     logger.info('Swagger documentation available at /api-docs');
   } catch (error) {
-    logger.warn('Swagger documentation disabled: API docs file not found');
+    logger.warn(`Swagger documentation disabled: ${error.message}`);
   }
 }
 
 // API routes
 app.use('/api/auth', authRoutes);
+app.use('/api/ai', authMiddleware, aiRoutes);
 app.use('/api/classrooms', authMiddleware, classroomRoutes);
 app.use('/api/assignments', authMiddleware, assignmentRoutes);
 app.use('/api/submissions', authMiddleware, submissionRoutes);
@@ -139,6 +139,7 @@ app.get('/', (req, res) => {
       health: '/health',
       docs: process.env.ENABLE_SWAGGER_DOCS === 'true' ? '/api-docs' : 'disabled',
       auth: '/api/auth',
+      ai: '/api/ai',
       classrooms: '/api/classrooms',
       assignments: '/api/assignments',
       submissions: '/api/submissions',
@@ -180,7 +181,7 @@ async function initializeServices() {
       logger.info('Database initialized with MongoDB');
     } catch (error) {
       // MongoDB connection failed
-      logger.warn('MongoDB connection failed, running without persistent storage');
+      logger.warn(`MongoDB connection failed, running without persistent storage: ${error.message}`);
       logger.warn('User data will be stored in memory only');
     }
 
@@ -190,10 +191,10 @@ async function initializeServices() {
       logger.info('Cache initialized');
     }
 
-    // Start WebSocket server if enabled
+    // Start Socket.IO server if enabled
     if (process.env.ENABLE_WEBSOCKETS === 'true') {
-      await startWebSocketServer(server);
-      logger.info('WebSocket server started');
+      await startSocketIOServer(server);
+      logger.info('Socket.IO server started');
     }
 
   } catch (error) {

@@ -2,14 +2,14 @@
 
 Backend API for the LiveMentor platform, built with Express and a hybrid data approach.
 
-This service handles authentication, classroom management, coding workflows, analytics, and integration with external services such as Judge0 and optional AI providers.
+This service handles authentication, classroom management, coding workflows, analytics, and integration with external services such as Piston and optional AI providers.
 
 ## Highlights
 
 - JWT based authentication and role-aware access control
 - Classroom creation and student join by invite code
 - Assignment and submission APIs
-- Code execution endpoints with Judge0 integration
+- Code execution endpoints with Piston integration
 - Analytics and health endpoints
 - MongoDB primary storage for core user and classroom flows
 - Base44 compatibility in selected modules
@@ -21,7 +21,7 @@ This service handles authentication, classroom management, coding workflows, ana
 - MongoDB with Mongoose
 - Joi validation
 - JWT and bcrypt
-- Judge0 API integration
+- Piston API integration
 - Optional Base44 integration for selected routes
 
 ## Project Structure
@@ -60,8 +60,8 @@ CORS_ORIGIN=http://localhost:5173
 Useful optional variables:
 
 ```env
-RAPIDAPI_KEY=<judge0-key>
-JUDGE0_API_URL=https://judge0-ce.p.rapidapi.com
+PISTON_API_URL=http://localhost:2000/api/v2/piston
+PISTON_API_TOKEN=<optional-public-piston-token>
 OPENAI_API_KEY=<optional>
 BASE44_PROJECT_ID=<optional-or-required-for-base44-routes>
 BASE44_API_KEY=<optional-or-required-for-base44-routes>
@@ -133,7 +133,8 @@ Set production env vars in your host dashboard, including:
 - MONGODB_URI
 - JWT_SECRET
 - CORS_ORIGIN (your frontend URL)
-- RAPIDAPI_KEY (if code execution is enabled)
+- PISTON_API_URL (if code execution is enabled)
+- PISTON_API_TOKEN (optional for authorized public Piston)
 
 ## Important Notes
 
@@ -144,7 +145,7 @@ Set production env vars in your host dashboard, including:
 
 - If you see authentication failures, verify JWT_SECRET and token flow.
 - If classrooms or users do not persist, verify MONGODB_URI and MongoDB network access.
-- If code execution fails, verify RAPIDAPI_KEY and Judge0 quota.
+- If code execution fails, verify PISTON_API_URL and any required PISTON_API_TOKEN, or confirm your self-hosted Piston instance is running.
 
 ## License
 

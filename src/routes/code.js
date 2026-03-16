@@ -5,7 +5,6 @@
 
 import express from 'express';
 import { executeCode, getSupportedLanguages, validateCode } from '../services/codeExecution.js';
-// import authMiddleware from '../middleware/auth.js'; // Not needed - auth is handled at router level
 import { validateBody, codeSchemas } from '../middleware/validation.js';
 import logger from '../utils/logger.js';
 
@@ -13,7 +12,7 @@ const router = express.Router();
 
 /**
  * @route POST /api/code/execute
- * @desc Execute code securely using Judge0 API
+ * @desc Execute code securely using Piston API
  * @access Authenticated users (students, faculty)
  * @body {
  *   code: string,
@@ -41,12 +40,12 @@ router.post('/execute', validateBody(codeSchemas.execute), async (req, res) => {
 
     // Execute code
     const startTime = Date.now();
-    const result = await executeCode({
+    const result = await Promise.resolve(executeCode({
       code,
       language,
       input: input || '',
       testCases: testCases || []
-    });
+    }));
     const executionDuration = Date.now() - startTime;
 
     // Log execution results for monitoring
@@ -193,12 +192,12 @@ router.post('/batch-execute', async (req, res) => {
             };
           }
 
-          const result = await executeCode({
+          const result = await Promise.resolve(executeCode({
             code: submission.code,
             language: submission.language,
             input: submission.input || '',
             testCases: submission.testCases || []
-          });
+          }));
 
           return {
             index,
@@ -252,23 +251,25 @@ router.post('/batch-execute', async (req, res) => {
 
 /**
  * @route GET /api/code/health
- * @desc Check Judge0 API health status
+ * @desc Check code execution provider health status
  * @access Faculty and Admin only
  */
 router.get('/health', async (req, res) => {
   try {
     // Test with simple code execution
-    const testResult = await executeCode({
+    const testResult = await Promise.resolve(executeCode({
       code: 'console.log("Health check");',
       language: 'javascript',
       input: ''
-    });
+    }));
 
-    const isHealthy = testResult.success && !testResult.error;
+    const isHealthy = testResult.success && !testResult.error && testResult.provider === 'piston';
 
     res.json({
       status: isHealthy ? 'healthy' : 'degraded',
-      judge0Available: !!process.env.RAPIDAPI_KEY,
+      provider: testResult.provider || 'unknown',
+      pistonConfigured: !!process.env.PISTON_API_URL,
+      pistonAuthConfigured: !!process.env.PISTON_API_TOKEN,
       testExecution: {
         success: testResult.success,
         executionTime: testResult.executionTime,

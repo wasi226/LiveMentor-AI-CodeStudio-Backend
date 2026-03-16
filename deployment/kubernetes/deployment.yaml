@@ -59,11 +59,17 @@ spec:
             secretKeyRef:
               name: livementor-secrets
               key: jwt-secret
-        - name: RAPIDAPI_KEY
+        - name: PISTON_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: livementor-config
+              key: piston-api-url
+        - name: PISTON_API_TOKEN
           valueFrom:
             secretKeyRef:
               name: livementor-secrets
-              key: rapidapi-key
+              key: piston-api-token
+              optional: true
         - name: OPENAI_API_KEY
           valueFrom:
             secretKeyRef:

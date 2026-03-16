@@ -36,7 +36,7 @@
     "nodemailer": "^6.9.3",
     "pino": "^8.14.1",
     "rate-limiter-flexible": "^2.4.2",
-    "socket.io-client": "^4.8.3",
+    "socket.io": "^4.8.3",
     "winston": "^3.9.0",
     "ws": "^8.13.0"
   },

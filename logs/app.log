@@ -4115,3 +4115,141 @@ Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\wasi haider\OneDrive\
   "environment": "development",
   "version": "1.0.0"
 }
+2026-03-16 10:49:33.994 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-16 10:49:34.304 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.304 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.314 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.323 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.324 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.324 [INFO]: 🔗 CORS enabled for: http://localhost:5173
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.325 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.325 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.326 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.412 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.412 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.412 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.506 [INFO]: Default admin user already exists
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.507 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.507 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 10:49:34.507 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-16 11:23:22.654 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-16 11:54:20.450 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-03-16 19:08:29.101 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}

@@ -20,7 +20,8 @@ services:
       - BASE44_API_KEY=${BASE44_API_KEY}
       - BASE44_REGION=${BASE44_REGION:-us-east-1}
       - JWT_SECRET=${JWT_SECRET}
-      - RAPIDAPI_KEY=${RAPIDAPI_KEY}
+      - PISTON_API_URL=${PISTON_API_URL}
+      - PISTON_API_TOKEN=${PISTON_API_TOKEN}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - REDIS_URL=redis://redis:6379
       - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:5173}
@@ -143,7 +144,8 @@ volumes:
 # BASE44_PROJECT_ID=your_project_id
 # BASE44_API_KEY=your_api_key
 # JWT_SECRET=your_jwt_secret
-# RAPIDAPI_KEY=your_rapidapi_key
+# PISTON_API_URL=http://localhost:2000/api/v2/piston
+# PISTON_API_TOKEN=
 # OPENAI_API_KEY=your_openai_key
 # REDIS_PASSWORD=your_redis_password
 # SENTRY_DSN=your_sentry_dsn
