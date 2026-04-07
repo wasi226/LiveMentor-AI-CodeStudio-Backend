@@ -76,3 +76,1065 @@ Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\wasi haider\OneDrive\
   "environment": "development",
   "version": "1.0.0"
 }
+2026-03-19 12:44:51.284 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 12:44:52.338 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 12:51:50.554 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 12:53:23.290 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 12:53:40.202 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 12:53:41.434 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 12:56:03.442 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 12:57:41.461 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 13:14:25.884 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 13:18:14.049 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:96:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:376:14)
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:421:3)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/classrooms/69b511d7c04600bb4822040f",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-03-19 13:22:32.842 [ERROR]: Uncaught Exception
+Error: Schema can only contain plain objects
+    at new module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\error.js:23:19)
+    at module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\assert.js:21:11)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:88:5)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+    at internals.Base.$_compile (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\base.js:646:24)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:92
+    at exports.tryWithPath (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\common.js:176:16)
+    at internals.Base.method [as keys] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:32)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:90:25)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "Schema can only contain plain objects"
+}
+2026-03-19 13:22:44.499 [ERROR]: Uncaught Exception
+Error: Schema can only contain plain objects
+    at new module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\error.js:23:19)
+    at module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\assert.js:21:11)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:88:5)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+    at internals.Base.$_compile (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\base.js:646:24)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:92
+    at exports.tryWithPath (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\common.js:176:16)
+    at internals.Base.method [as keys] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:32)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:90:25)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "Schema can only contain plain objects"
+}
+2026-03-19 13:25:22.819 [ERROR]: Uncaught Exception
+Error: Schema can only contain plain objects
+    at new module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\error.js:23:19)
+    at module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\assert.js:21:11)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:88:5)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+    at internals.Base.$_compile (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\base.js:646:24)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:92
+    at exports.tryWithPath (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\common.js:176:16)
+    at internals.Base.method [as keys] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:32)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:90:25)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "Schema can only contain plain objects"
+}
+2026-03-19 13:26:44.058 [ERROR]: Uncaught Exception
+Error: Schema can only contain plain objects
+    at new module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\error.js:23:19)
+    at module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\assert.js:21:11)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:88:5)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+    at internals.Base.$_compile (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\base.js:646:24)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:92
+    at exports.tryWithPath (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\common.js:176:16)
+    at internals.Base.method [as keys] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:32)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:90:25)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "Schema can only contain plain objects"
+}
+2026-03-19 13:29:16.736 [ERROR]: Uncaught Exception
+Error: Schema can only contain plain objects
+    at new module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\error.js:23:19)
+    at module.exports (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\@hapi\hoek\lib\assert.js:21:11)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:88:5)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+    at internals.Base.$_compile (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\base.js:646:24)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:92
+    at exports.tryWithPath (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\common.js:176:16)
+    at internals.Base.method [as keys] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\types\keys.js:262:32)
+    at internals.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:90:25)
+    at exports.schema (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\joi\lib\compile.js:17:26)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "Schema can only contain plain objects"
+}
+2026-03-19 13:48:52.239 [ERROR]: Code execution failed: Piston API authorization failed. Set PISTON_API_TOKEN for the public API or use a self-hosted Piston instance.
+Error: Piston API authorization failed. Set PISTON_API_TOKEN for the public API or use a self-hosted Piston instance.
+    at executeSingleRun (file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/services/codeExecution.js:128:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async executeCode (file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/services/codeExecution.js:86:14)
+    at async file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/routes/code.js:43:20
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-03-19 13:56:10.358 [ERROR]: OpenAI assistant request failed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "status": 401,
+  "payload": {
+    "error": {
+      "message": "Incorrect API key provided: sk-proj-*********************************************************************************************************************************************************D8Ax. You can find your API key at https://platform.openai.com/account/api-keys.",
+      "type": "invalid_request_error",
+      "code": "invalid_api_key",
+      "param": null
+    },
+    "status": 401
+  }
+}
+2026-04-03 22:51:47.789 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:51:49.479 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:52:18.213 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:52:24.143 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:53:04.211 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:53:10.150 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:53:21.154 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:58:13.506 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:58:18.179 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:58:19.104 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:58:59.152 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:59:03.143 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:59:22.135 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:59:29.131 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:59:31.108 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:59:52.157 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 22:59:53.108 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:00:30.255 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:00:31.120 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:03:15.650 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:03:16.329 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:03:42.154 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:03:44.131 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:06:07.312 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:06:14.154 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:07:49.534 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:08:21.611 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:09:12.327 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:10:25.451 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:10:28.234 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:11:54.797 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:16:56.154 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:16:57.117 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:20:01.147 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}
+2026-04-03 23:20:04.108 [ERROR]: Error occurred: schema.validate is not a function
+TypeError: schema.validate is not a function
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/middleware/validation.js:56:37
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\wasi haider\OneDrive\Desktop\Major project 2\liveMentor AI CodeStudio\Backend\node_modules\express\lib\router\index.js:47:12)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+}

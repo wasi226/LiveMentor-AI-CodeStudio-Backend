@@ -27,10 +27,15 @@ router.post('/execute', validateBody(codeSchemas.execute), async (req, res) => {
     const userEmail = req.user.email;
 
     logger.info(`Code execution request from ${userEmail} for ${language}`);
+    console.log('[DEBUG] Code to execute:', code.substring(0, 100) + (code.length > 100 ? '...' : ''));
+    console.log('[DEBUG] Language:', language);
+    console.log('[DEBUG] Input:', input);
+    console.log('[DEBUG] Test cases:', testCases?.length || 0);
 
     // Validate code before execution
     const validation = validateCode(code, language);
     if (!validation.isValid) {
+      console.log('[DEBUG] Validation failed:', validation.errors);
       return res.status(400).json({
         error: 'Code Validation Failed',
         message: 'The provided code contains errors or security violations',
@@ -40,6 +45,7 @@ router.post('/execute', validateBody(codeSchemas.execute), async (req, res) => {
 
     // Execute code
     const startTime = Date.now();
+    console.log('[DEBUG] Starting code execution...');
     const result = await Promise.resolve(executeCode({
       code,
       language,
@@ -47,12 +53,20 @@ router.post('/execute', validateBody(codeSchemas.execute), async (req, res) => {
       testCases: testCases || []
     }));
     const executionDuration = Date.now() - startTime;
+    console.log('[DEBUG] Execution completed in', executionDuration, 'ms');
+    console.log('[DEBUG] Result:', {
+      success: result.success,
+      outputLength: result.output?.length || 0,
+      errorLength: result.error?.length || 0,
+      provider: result.provider,
+      status: result.status
+    });
 
     // Log execution results for monitoring
     logger.info(`Code execution completed for ${userEmail}: ${result.success ? 'success' : 'failed'} in ${executionDuration}ms`);
 
     // Return structured response
-    res.json({
+    const responseData = {
       success: result.success,
       output: result.output,
       error: result.error,
@@ -71,7 +85,17 @@ router.post('/execute', validateBody(codeSchemas.execute), async (req, res) => {
         codeLength: code.length,
         hasTestCases: (testCases || []).length > 0
       }
+    };
+    
+    console.log('[DEBUG] Sending response:', {
+      success: responseData.success,
+      outputLength: responseData.output?.length || 0,
+      errorLength: responseData.error?.length || 0,
+      status: responseData.status,
+      timestamp: responseData.timestamp
     });
+    
+    res.json(responseData);
 
   } catch (error) {
     logger.error('Code execution error:', error);

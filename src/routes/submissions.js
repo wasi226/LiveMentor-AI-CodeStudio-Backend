@@ -4,13 +4,31 @@
  */
 
 import express from 'express';
-import { base44 } from '../services/base44.js';
+import { Assignment, Classroom, Submission } from '../models/index.js';
 import { validateBody, validateQuery, validateParams, schemas } from '../middleware/validation.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
 import logger from '../utils/logger.js';
 import Joi from 'joi';
 
 const router = express.Router();
+
+const emitSubmissionEvent = (eventName, submission) => {
+  const socketServer = globalThis.__socketIO;
+
+  if (!socketServer || !submission?.classroom_id) {
+    return;
+  }
+
+  socketServer.to(String(submission.classroom_id)).emit(eventName, {
+    classroomId: String(submission.classroom_id),
+    submissionId: submission.id || submission._id?.toString(),
+    studentEmail: submission.student_email,
+    status: submission.status,
+    score: submission.score,
+    createdAt: submission.created_at || submission.createdAt || new Date().toISOString(),
+    updatedAt: submission.updated_at || submission.updatedAt || new Date().toISOString()
+  });
+};
 
 // Submission validation schemas
 const submissionSchemas = {
@@ -33,13 +51,12 @@ const submissionSchemas = {
  * Get submissions for a user or assignment
  */
 router.get('/',
-  validateQuery({
+  validateQuery(Joi.object({
     assignment_id: Joi.string().optional(),
     classroom_id: Joi.string().optional(),
     student_email: Joi.string().email().optional(),
     status: Joi.string().valid('draft', 'submitted', 'grading', 'graded', 'returned').optional(),
-    ...schemas.pagination
-  }),
+  }).concat(schemas.pagination)),
   asyncHandler(async (req, res) => {
     try {
       const user = await base44.auth.me();
@@ -55,7 +72,7 @@ router.get('/',
         // Faculty can see submissions in their classrooms
         if (classroom_id) {
           const classroom = await base44.database.entity.findById('Classroom', classroom_id);
-          if (!classroom || classroom.faculty_email !== user.email) {
+          if (!classroom?.faculty_email || classroom.faculty_email !== user.email) {
             return res.status(403).json({
               error: 'Access denied to this classroom'
             });
@@ -82,8 +99,8 @@ router.get('/',
         success: true,
         submissions,
         pagination: {
-          page: parseInt(page),
-          limit: parseInt(limit),
+          page: Number.parseInt(page, 10),
+          limit: Number.parseInt(limit, 10),
           total: submissions.length
         }
       });
@@ -106,10 +123,10 @@ router.post('/',
   validateBody(submissionSchemas.create),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       
       // Verify assignment exists and user has access
-      const assignment = await base44.database.entity.findById('Assignment', req.body.assignment_id);
+      const assignment = await Assignment.findById(req.body.assignment_id).lean();
       if (!assignment) {
         return res.status(404).json({
           error: 'Assignment not found'
@@ -117,7 +134,7 @@ router.post('/',
       }
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', req.body.classroom_id);
+      const classroom = await Classroom.findById(req.body.classroom_id).lean();
       if (!classroom) {
         return res.status(404).json({
           error: 'Classroom not found'
@@ -143,7 +160,10 @@ router.post('/',
       }
 
       const submissionData = {
-        ...req.body,
+        assignment_id: req.body.assignment_id,
+        classroom_id: req.body.classroom_id,
+        code: req.body.code,
+        language: req.body.language,
         student_email: user.email,
         status: 'draft',
         score: 0,
@@ -152,13 +172,19 @@ router.post('/',
         updated_at: new Date().toISOString()
       };
 
-      const submission = await base44.database.entity.create('Submission', submissionData);
+      const submission = await Submission.create(submissionData);
+      const serializedSubmission = {
+        ...submission.toObject(),
+        id: submission._id.toString()
+      };
 
       res.status(201).json({
         success: true,
-        submission,
+        submission: serializedSubmission,
         message: 'Submission created successfully'
       });
+
+      emitSubmissionEvent('submission:created', serializedSubmission);
 
       logger.info(`Submission created for assignment ${assignment.title} by ${user.email}`);
 
@@ -285,8 +311,8 @@ router.post('/:id/submit',
   validateParams({ id: schemas.objectId }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const submission = await base44.database.entity.findById('Submission', req.params.id);
+      const user = req.user;
+      const submission = await Submission.findById(req.params.id);
 
       if (!submission) {
         return res.status(404).json({
@@ -308,18 +334,28 @@ router.post('/:id/submit',
       }
 
       // Check assignment deadline
-      const assignment = await base44.database.entity.findById('Assignment', submission.assignment_id);
+      const assignment = await Assignment.findById(submission.assignment_id).lean();
+      if (!assignment) {
+        return res.status(404).json({
+          error: 'Assignment not found'
+        });
+      }
+
       if (assignment.due_date && new Date(assignment.due_date) < new Date()) {
         return res.status(400).json({
           error: 'Assignment submission deadline has passed'
         });
       }
 
-      const updatedSubmission = await base44.database.entity.update('Submission', req.params.id, {
-        status: assignment.auto_grade ? 'grading' : 'submitted',
-        submitted_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
-      });
+      submission.status = assignment.auto_grade ? 'grading' : 'submitted';
+      submission.submitted_at = new Date();
+      submission.updated_at = new Date();
+      await submission.save();
+
+      const updatedSubmission = {
+        ...submission.toObject(),
+        id: submission._id.toString()
+      };
 
       res.json({
         success: true,
@@ -327,7 +363,8 @@ router.post('/:id/submit',
         message: 'Submission submitted successfully'
       });
 
-      // TODO: Trigger auto-grading if enabled
+      emitSubmissionEvent('submission:updated', updatedSubmission);
+
       if (assignment.auto_grade) {
         logger.info(`Auto-grading triggered for submission ${req.params.id}`);
         // This would integrate with the code execution service
@@ -379,6 +416,11 @@ router.delete('/:id',
       }
 
       await base44.database.entity.delete('Submission', req.params.id);
+
+      emitSubmissionEvent('submission:updated', {
+        ...submission,
+        status: 'deleted'
+      });
 
       res.json({
         success: true,

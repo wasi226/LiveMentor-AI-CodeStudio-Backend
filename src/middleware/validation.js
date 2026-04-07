@@ -13,7 +13,11 @@ import logger from '../utils/logger.js';
  */
 export const validateBody = (schema) => {
   return (req, res, next) => {
-    const { error, value } = schema.validate(req.body, {
+    const validationSchema = schema && typeof schema.validate === 'function'
+      ? schema
+      : Joi.object(schema || {});
+
+    const { error, value } = validationSchema.validate(req.body, {
       abortEarly: false,
       stripUnknown: true,
       allowUnknown: false
@@ -22,7 +26,7 @@ export const validateBody = (schema) => {
     if (error) {
       const validationErrors = error.details.map(detail => ({
         field: detail.path.join('.'),
-        message: detail.message.replace(/"/g, ''),
+        message: detail.message.replaceAll('"', ''),
         value: detail.context?.value
       }));
 
@@ -53,7 +57,11 @@ export const validateBody = (schema) => {
  */
 export const validateQuery = (schema) => {
   return (req, res, next) => {
-    const { error, value } = schema.validate(req.query, {
+    const validationSchema = schema && typeof schema.validate === 'function'
+      ? schema
+      : Joi.object(schema || {});
+
+    const { error, value } = validationSchema.validate(req.query, {
       abortEarly: false,
       stripUnknown: true,
       allowUnknown: false
@@ -62,7 +70,7 @@ export const validateQuery = (schema) => {
     if (error) {
       const validationErrors = error.details.map(detail => ({
         field: detail.path.join('.'),
-        message: detail.message.replace(/"/g, ''),
+        message: detail.message.replaceAll('"', ''),
         value: detail.context?.value
       }));
 
@@ -93,7 +101,11 @@ export const validateQuery = (schema) => {
  */
 export const validateParams = (schema) => {
   return (req, res, next) => {
-    const { error, value } = schema.validate(req.params, {
+    const validationSchema = schema && typeof schema.validate === 'function'
+      ? schema
+      : Joi.object(schema || {});
+
+    const { error, value } = validationSchema.validate(req.params, {
       abortEarly: false,
       stripUnknown: true,
       allowUnknown: false
@@ -102,7 +114,7 @@ export const validateParams = (schema) => {
     if (error) {
       const validationErrors = error.details.map(detail => ({
         field: detail.path.join('.'),
-        message: detail.message.replace(/"/g, ''),
+        message: detail.message.replaceAll('"', ''),
         value: detail.context?.value
       }));
 

@@ -207,6 +207,11 @@ const SubmissionSchema = new Schema({
     ref: 'Assignment',
     required: true
   },
+  classroom_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Classroom',
+    required: true
+  },
   student_email: {
     type: String,
     required: true,
@@ -223,8 +228,11 @@ const SubmissionSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['submitted', 'running', 'passed', 'failed', 'error', 'graded'],
+    enum: ['draft', 'submitted', 'grading', 'graded', 'returned', 'running', 'passed', 'failed', 'error'],
     default: 'submitted'
+  },
+  submitted_at: {
+    type: Date
   },
   score: {
     type: Number,
@@ -278,6 +286,7 @@ const SubmissionSchema = new Schema({
 
 // Indexes for Submission
 SubmissionSchema.index({ assignment_id: 1, student_email: 1 });
+SubmissionSchema.index({ classroom_id: 1, student_email: 1 });
 SubmissionSchema.index({ student_email: 1 });
 SubmissionSchema.index({ status: 1 });
 SubmissionSchema.index({ createdAt: -1 });
@@ -333,12 +342,98 @@ const ChatMessageSchema = new Schema({
 ChatMessageSchema.index({ classroom_id: 1, createdAt: -1 });
 ChatMessageSchema.index({ sender_email: 1 });
 
+// StudentActivity Model
+const StudentActivitySchema = new Schema({
+  classroom_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Classroom',
+    required: true,
+    index: true
+  },
+  room_id: {
+    type: String,
+    index: true
+  },
+  sender_email: {
+    type: String,
+    required: true,
+    index: true
+  },
+  sender_name: {
+    type: String,
+    required: true
+  },
+  event_type: {
+    type: String,
+    required: true,
+    index: true
+  },
+  is_private: {
+    type: Boolean,
+    default: false,
+    index: true
+  },
+  metadata: {
+    type: Schema.Types.Mixed,
+    default: {}
+  }
+}, {
+  timestamps: true,
+  collection: 'student_activities'
+});
+
+StudentActivitySchema.index({ classroom_id: 1, createdAt: -1 });
+StudentActivitySchema.index({ classroom_id: 1, sender_email: 1, createdAt: -1 });
+
+// InterventionRoom Model
+const InterventionRoomSchema = new Schema({
+  room_id: {
+    type: String,
+    required: true,
+    unique: true,
+    index: true
+  },
+  classroom_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Classroom',
+    required: true,
+    index: true
+  },
+  faculty_email: {
+    type: String,
+    required: true,
+    index: true
+  },
+  student_email: {
+    type: String,
+    required: true,
+    index: true
+  },
+  status: {
+    type: String,
+    enum: ['active', 'closed'],
+    default: 'active',
+    index: true
+  },
+  closed_at: {
+    type: Date,
+    default: null
+  }
+}, {
+  timestamps: true,
+  collection: 'intervention_rooms'
+});
+
+InterventionRoomSchema.index({ classroom_id: 1, student_email: 1, status: 1, createdAt: -1 });
+
 // Create and export models
 export const User = mongoose.model('User', UserSchema);
 export const Classroom = mongoose.model('Classroom', ClassroomSchema);
 export const Assignment = mongoose.model('Assignment', AssignmentSchema);
 export const Submission = mongoose.model('Submission', SubmissionSchema);
 export const ChatMessage = mongoose.model('ChatMessage', ChatMessageSchema);
+export const StudentActivity = mongoose.model('StudentActivity', StudentActivitySchema);
+export const InterventionRoom = mongoose.model('InterventionRoom', InterventionRoomSchema);
 
 // Export all models as default
 export default {
@@ -346,5 +441,7 @@ export default {
   Classroom,
   Assignment,
   Submission,
-  ChatMessage
+  ChatMessage,
+  StudentActivity,
+  InterventionRoom
 };

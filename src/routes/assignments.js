@@ -4,7 +4,7 @@
  */
 
 import express from 'express';
-import { base44 } from '../services/base44.js';
+import { Assignment, Classroom } from '../models/index.js';
 import { validateBody, validateQuery, validateParams, schemas } from '../middleware/validation.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
 import logger from '../utils/logger.js';
@@ -61,17 +61,16 @@ const assignmentSchemas = {
  * Get assignments for a classroom
  */
 router.get('/', 
-  validateQuery({
+  validateQuery(Joi.object({
     classroom_id: Joi.string().required(),
-    ...schemas.pagination
-  }),
+  }).concat(schemas.pagination)),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       const { classroom_id, page, limit, sort, sortBy } = req.query;
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', classroom_id);
+      const classroom = await Classroom.findById(classroom_id).lean();
       if (!classroom) {
         return res.status(404).json({
           error: 'Classroom not found'
@@ -89,22 +88,32 @@ router.get('/',
         });
       }
 
-      const assignments = await base44.database.entity.find('Assignment', 
-        { classroom_id },
-        {
-          page,
-          limit,
-          sort: { [sortBy]: sort === 'asc' ? 1 : -1 }
-        }
-      );
+      const normalizedPage = Math.max(Number.parseInt(page, 10) || 1, 1);
+      const normalizedLimit = Math.max(Number.parseInt(limit, 10) || 20, 1);
+      const sortDirection = sort === 'asc' ? 1 : -1;
+      const allowedSortFields = new Set(['createdAt', 'updatedAt', 'due_date', 'title', 'difficulty', 'max_score']);
+      const sortField = allowedSortFields.has(sortBy) ? sortBy : 'createdAt';
+
+      const assignments = await Assignment.find({ classroom_id })
+        .sort({ [sortField]: sortDirection })
+        .skip((normalizedPage - 1) * normalizedLimit)
+        .limit(normalizedLimit)
+        .lean();
+
+      const total = await Assignment.countDocuments({ classroom_id });
+
+      const serializedAssignments = assignments.map((assignment) => ({
+        ...assignment,
+        id: assignment._id?.toString()
+      }));
 
       res.json({
         success: true,
-        assignments,
+        assignments: serializedAssignments,
         pagination: {
-          page: parseInt(page),
-          limit: parseInt(limit),
-          total: assignments.length
+          page: normalizedPage,
+          limit: normalizedLimit,
+          total
         }
       });
 

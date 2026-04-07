@@ -8,7 +8,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import compression from 'compression';
-import { RateLimiterMemory } from 'rate-limiter-flexible';
 import dotenv from 'dotenv';
 import { connectMongoDB, getConnectionStatus } from './config/mongodb.js';
 
@@ -40,29 +39,6 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-// Rate limiting configuration
-const rateLimiter = new RateLimiterMemory({
-  keyGenerator: (req) => req.ip,
-  points: process.env.RATE_LIMIT_MAX_REQUESTS || 100,
-  duration: process.env.RATE_LIMIT_WINDOW_MS || 900, // 15 minutes
-});
-
-// Rate limiting middleware
-const rateLimitMiddleware = async (req, res, next) => {
-  try {
-    await rateLimiter.consume(req.ip);
-    next();
-  } catch (error) {
-    const secs = Math.round((error?.msBeforeNext || 1000) / 1000) || 1;
-    res.set('Retry-After', String(secs));
-    res.status(429).json({
-      error: 'Too Many Requests',
-      message: 'Rate limit exceeded. Please try again later.',
-      retryAfter: secs
-    });
-  }
-};
 
 // Base44 client is initialized in services/base44.js
 logger.info('Using Base44 client for backend services');
@@ -97,9 +73,6 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 if (process.env.ENABLE_REQUEST_LOGGING === 'true') {
   app.use(morgan('combined', { stream: { write: (msg) => logger.info(msg.trim()) } }));
 }
-
-// Apply rate limiting
-app.use(rateLimitMiddleware);
 
 // Health check (before auth middleware)
 app.use('/health', healthRoutes);
@@ -193,7 +166,7 @@ async function initializeServices() {
 
     // Start Socket.IO server if enabled
     if (process.env.ENABLE_WEBSOCKETS === 'true') {
-      await startSocketIOServer(server);
+      globalThis.__socketIO = await startSocketIOServer(server);
       logger.info('Socket.IO server started');
     }
 
@@ -207,15 +180,33 @@ async function initializeServices() {
 }
 
 // Start server
-const server = app.listen(PORT, async () => {
+let server = null;
+let servicesInitialized = false;
+
+server = app.listen(PORT);
+
+server.on('listening', async () => {
   logger.info(`🚀 liveMentor Backend server running on port ${PORT}`);
   logger.info(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
   logger.info(`🔗 CORS enabled for: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
-  
-  // Initialize services after server starts
-  await initializeServices();
-  
-  logger.info('✅ All services initialized successfully');
+
+  if (!servicesInitialized) {
+    // Initialize services after server starts
+    await initializeServices();
+    servicesInitialized = true;
+    logger.info('✅ All services initialized successfully');
+  }
+});
+
+server.on('error', (error) => {
+  if (error?.code === 'EADDRINUSE') {
+    logger.warn(`Port ${PORT} is already in use. A backend instance is probably already running.`);
+    process.exit(0);
+    return;
+  }
+
+  logger.error('Server startup error:', error);
+  process.exit(1);
 });
 
 // Graceful shutdown

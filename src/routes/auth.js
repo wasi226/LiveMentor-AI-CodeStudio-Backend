@@ -19,8 +19,9 @@ const getJwtSecret = () => process.env.JWT_SECRET || 'your-jwt-secret-key-change
 router.post('/register', async (req, res) => {
   try {
     const { email, password, fullName, role = 'student', rollNumber } = req.body;
+    const normalizedEmail = String(email || '').trim().toLowerCase();
 
-    if (!email || !password || !fullName) {
+    if (!normalizedEmail || !password || !fullName) {
       return res.status(400).json({
         success: false,
         error: 'Missing required fields',
@@ -38,7 +39,7 @@ router.post('/register', async (req, res) => {
     }
 
     // Check if user already exists
-    const existingUser = await userService.findByEmail(email);
+    const existingUser = await userService.findByEmail(normalizedEmail);
     if (existingUser) {
       return res.status(409).json({
         success: false,
@@ -53,7 +54,7 @@ router.post('/register', async (req, res) => {
 
     // Create user using hybrid service
     const user = await userService.createUser({
-      email,
+      email: normalizedEmail,
       password: hashedPassword,
       full_name: fullName,
       role: role === 'admin' ? 'student' : role, // Don't allow admin registration through API
@@ -72,7 +73,7 @@ router.post('/register', async (req, res) => {
       message: 'Registration successful'
     });
 
-    logger.info(`User registered: ${email}`);
+    logger.info(`User registered: ${normalizedEmail}`);
     
   } catch (error) {
     logger.error('Registration error:', error);
@@ -102,8 +103,9 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    const normalizedEmail = String(email || '').trim().toLowerCase();
 
-    if (!email || !password) {
+    if (!normalizedEmail || !password) {
       return res.status(400).json({
         success: false,
         error: 'Missing credentials',
@@ -112,7 +114,7 @@ router.post('/login', async (req, res) => {
     }
 
     // Find user using hybrid service
-    const user = await userService.findByEmail(email);
+    const user = await userService.findByEmail(normalizedEmail);
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -160,7 +162,7 @@ router.post('/login', async (req, res) => {
       message: 'Login successful'
     });
 
-    logger.info(`User logged in: ${email}`);
+    logger.info(`User logged in: ${normalizedEmail}`);
     
   } catch (error) {
     logger.error('Login error:', error);

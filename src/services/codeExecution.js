@@ -4,6 +4,10 @@
  */
 
 import axios from 'axios';
+import { spawn } from 'node:child_process';
+import { promises as fs } from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import logger from '../utils/logger.js';
 
 export const LANGUAGE_CONFIGS = {
@@ -29,25 +33,27 @@ const DEFAULT_RUN_TIMEOUT = 5000;
 const DEFAULT_RUN_MEMORY_LIMIT = 128 * 1024 * 1024;
 const DEFAULT_COMPILE_MEMORY_LIMIT = 256 * 1024 * 1024;
 
-const EXECUTION_CONFIG = {
-  apiUrl: normalizePistonApiUrl(process.env.PISTON_API_URL),
-  requestTimeout: parseInteger(process.env.PISTON_REQUEST_TIMEOUT, DEFAULT_REQUEST_TIMEOUT),
-  compileTimeout: parseInteger(process.env.PISTON_COMPILE_TIMEOUT, DEFAULT_COMPILE_TIMEOUT),
-  runTimeout: parseInteger(process.env.PISTON_RUN_TIMEOUT, DEFAULT_RUN_TIMEOUT),
-  compileCpuTime: parseInteger(
-    process.env.PISTON_COMPILE_CPU_TIME,
-    parseInteger(process.env.PISTON_COMPILE_TIMEOUT, DEFAULT_COMPILE_TIMEOUT)
-  ),
-  runCpuTime: parseInteger(
-    process.env.PISTON_RUN_CPU_TIME,
-    parseInteger(process.env.PISTON_RUN_TIMEOUT, DEFAULT_RUN_TIMEOUT)
-  ),
-  compileMemoryLimit: parseInteger(process.env.PISTON_COMPILE_MEMORY_LIMIT, DEFAULT_COMPILE_MEMORY_LIMIT),
-  runMemoryLimit: parseInteger(
-    process.env.PISTON_RUN_MEMORY_LIMIT,
-    parseLegacyJudge0Memory(process.env.JUDGE0_MAX_MEMORY, DEFAULT_RUN_MEMORY_LIMIT)
-  )
-};
+function getExecutionConfig() {
+  return {
+    apiUrl: normalizePistonApiUrl(process.env.PISTON_API_URL),
+    requestTimeout: parseInteger(process.env.PISTON_REQUEST_TIMEOUT, DEFAULT_REQUEST_TIMEOUT),
+    compileTimeout: parseInteger(process.env.PISTON_COMPILE_TIMEOUT, DEFAULT_COMPILE_TIMEOUT),
+    runTimeout: parseInteger(process.env.PISTON_RUN_TIMEOUT, DEFAULT_RUN_TIMEOUT),
+    compileCpuTime: parseInteger(
+      process.env.PISTON_COMPILE_CPU_TIME,
+      parseInteger(process.env.PISTON_COMPILE_TIMEOUT, DEFAULT_COMPILE_TIMEOUT)
+    ),
+    runCpuTime: parseInteger(
+      process.env.PISTON_RUN_CPU_TIME,
+      parseInteger(process.env.PISTON_RUN_TIMEOUT, DEFAULT_RUN_TIMEOUT)
+    ),
+    compileMemoryLimit: parseInteger(process.env.PISTON_COMPILE_MEMORY_LIMIT, DEFAULT_COMPILE_MEMORY_LIMIT),
+    runMemoryLimit: parseInteger(
+      process.env.PISTON_RUN_MEMORY_LIMIT,
+      parseLegacyJudge0Memory(process.env.JUDGE0_MAX_MEMORY, DEFAULT_RUN_MEMORY_LIMIT)
+    )
+  };
+}
 
 /**
  * Execute code using Piston API
@@ -65,31 +71,56 @@ export async function executeCode({
   testCases = []
 }) {
   try {
-    const runtimeConfig = LANGUAGE_CONFIGS[language.toLowerCase()];
+    const executionConfig = getExecutionConfig();
+    const normalizedLanguage = String(language || '').toLowerCase();
+    const runtimeConfig = LANGUAGE_CONFIGS[normalizedLanguage];
 
     if (!runtimeConfig) {
       throw new Error(`Unsupported language: ${language}`);
     }
 
-    if (!EXECUTION_CONFIG.apiUrl) {
+    const preparedCode = prepareSourceCode(code, normalizedLanguage);
+
+    if (!executionConfig.apiUrl) {
       logger.warn('PISTON_API_URL not configured, using fallback execution service');
-      return await fallbackExecution({ code, language, input, testCases });
+      return await fallbackExecution({ code: preparedCode, language: normalizedLanguage, input, testCases });
     }
 
     if (testCases.length === 0) {
-      return await executeSingleRun({
-        code,
-        runtimeConfig,
-        input
-      });
+      try {
+        return await executeSingleRun({
+          code: preparedCode,
+          runtimeConfig,
+          input,
+          executionConfig
+        });
+      } catch (executionError) {
+        if (executionError?.code === 'PISTON_AUTH') {
+          logger.warn('Piston authorization unavailable, using fallback execution service');
+          return await fallbackExecution({ code: preparedCode, language: normalizedLanguage, input, testCases });
+        }
+
+        throw executionError;
+      }
     }
 
-    return await executeTestCases({
-      code,
-      runtimeConfig,
-      testCases
-    });
+    try {
+      return await executeTestCases({
+        code: preparedCode,
+        runtimeConfig,
+        testCases,
+        executionConfig
+      });
+    } catch (executionError) {
+      if (executionError?.code === 'PISTON_AUTH') {
+        logger.warn('Piston authorization unavailable, using fallback execution service for test-case run');
+        return await fallbackExecution({ code: preparedCode, language: normalizedLanguage, input, testCases });
+      }
+
+      throw executionError;
+    }
   } catch (error) {
+    const executionConfig = getExecutionConfig();
     logger.error('Code execution failed:', error);
     return {
       success: false,
@@ -98,29 +129,35 @@ export async function executeCode({
       executionTime: 0,
       memoryUsage: 0,
       testResults: [],
-      provider: EXECUTION_CONFIG.apiUrl ? 'piston' : 'fallback'
+      provider: executionConfig.apiUrl ? 'piston' : 'fallback'
     };
   }
 }
 
-async function executeSingleRun({ code, runtimeConfig, input }) {
+async function executeSingleRun({ code, runtimeConfig, input, executionConfig }) {
   try {
     const response = await axios.post(
-      `${EXECUTION_CONFIG.apiUrl}/execute`,
-      buildPistonPayload({ code, runtimeConfig, input }),
+      `${executionConfig.apiUrl}/execute`,
+      buildPistonPayload({ code, runtimeConfig, input, executionConfig }),
       {
         headers: buildPistonHeaders(),
-        timeout: EXECUTION_CONFIG.requestTimeout
+        timeout: executionConfig.requestTimeout
       }
     );
 
     return formatPistonResponse(response.data);
   } catch (error) {
-    throw new Error(getPistonErrorMessage(error));
+    if (error.response?.status === 401 || error.response?.status === 403) {
+      const authorizationError = new Error('Piston authorization failed');
+      authorizationError.code = 'PISTON_AUTH';
+      throw authorizationError;
+    }
+
+    throw new Error(getPistonErrorMessage(error, executionConfig));
   }
 }
 
-async function executeTestCases({ code, runtimeConfig, testCases }) {
+async function executeTestCases({ code, runtimeConfig, testCases, executionConfig }) {
   const testResults = [];
   let firstResult = null;
 
@@ -128,7 +165,8 @@ async function executeTestCases({ code, runtimeConfig, testCases }) {
     const result = await executeSingleRun({
       code,
       runtimeConfig,
-      input: testCase.input || ''
+      input: testCase.input || '',
+      executionConfig
     });
 
     if (!firstResult) {
@@ -179,7 +217,7 @@ async function executeTestCases({ code, runtimeConfig, testCases }) {
   };
 }
 
-function buildPistonPayload({ code, runtimeConfig, input }) {
+function buildPistonPayload({ code, runtimeConfig, input, executionConfig }) {
   return {
     language: runtimeConfig.runtime,
     version: runtimeConfig.version,
@@ -190,12 +228,12 @@ function buildPistonPayload({ code, runtimeConfig, input }) {
       }
     ],
     stdin: input,
-    compile_timeout: EXECUTION_CONFIG.compileTimeout,
-    run_timeout: EXECUTION_CONFIG.runTimeout,
-    compile_cpu_time: EXECUTION_CONFIG.compileCpuTime,
-    run_cpu_time: EXECUTION_CONFIG.runCpuTime,
-    compile_memory_limit: EXECUTION_CONFIG.compileMemoryLimit,
-    run_memory_limit: EXECUTION_CONFIG.runMemoryLimit
+    compile_timeout: executionConfig.compileTimeout,
+    run_timeout: executionConfig.runTimeout,
+    compile_cpu_time: executionConfig.compileCpuTime,
+    run_cpu_time: executionConfig.runCpuTime,
+    compile_memory_limit: executionConfig.compileMemoryLimit,
+    run_memory_limit: executionConfig.runMemoryLimit
   };
 }
 
@@ -331,7 +369,7 @@ function translateStageStatus(status) {
   }
 }
 
-function getPistonErrorMessage(error) {
+function getPistonErrorMessage(error, executionConfig) {
   const statusCode = error.response?.status;
   const apiMessage = error.response?.data?.message || error.response?.data?.error || error.message;
 
@@ -348,14 +386,44 @@ function getPistonErrorMessage(error) {
   }
 
   if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
-    return `Unable to reach Piston API at ${EXECUTION_CONFIG.apiUrl}.`;
+    return `Unable to reach Piston API at ${executionConfig?.apiUrl || 'unknown URL'}.`;
   }
 
   return `Piston API request failed: ${apiMessage}`;
 }
 
 function normalizePistonApiUrl(url) {
-  return (url || '').replace(/\/+$/, '');
+  const normalizedUrl = (url || '').replace(/\/+$/, '');
+
+  if (normalizedUrl.endsWith('/execute')) {
+    return normalizedUrl.slice(0, -('/execute'.length));
+  }
+
+  return normalizedUrl;
+}
+
+function prepareSourceCode(code, language) {
+  const source = String(code || '');
+
+  if (language !== 'java') {
+    return source;
+  }
+
+  // Piston executes Java code from Main.java by default in this service.
+  // Rename common classroom template class names so student code runs without file-name mismatch errors.
+  if (/\bpublic\s+class\s+Main\b/.test(source) || /\bclass\s+Main\b/.test(source)) {
+    return source;
+  }
+
+  if (/\bpublic\s+class\s+\w+\b/.test(source)) {
+    return source.replace(/\bpublic\s+class\s+\w+\b/, 'public class Main');
+  }
+
+  if (/\bclass\s+\w+\b/.test(source)) {
+    return source.replace(/\bclass\s+\w+\b/, 'class Main');
+  }
+
+  return source;
 }
 
 function parseInteger(value, fallback) {
@@ -385,40 +453,257 @@ function parseLegacyJudge0Memory(value, fallback) {
  * Fallback execution service for development/testing
  */
 async function fallbackExecution({ code, language, input, testCases }) {
-  logger.info('Using fallback execution service (development mode)');
-
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
-  const mockResults = {
-    success: true,
-    output: `Mock execution result for ${language}\nCode length: ${code.length} characters\nInput: ${input || 'none'}`,
-    error: '',
-    executionTime: Math.random() * 100,
-    memoryUsage: Math.floor(Math.random() * 10000),
-    testResults: [],
-    provider: 'fallback'
-  };
+  logger.info(`Using local fallback execution service for ${language}`);
 
   if (testCases.length > 0) {
-    mockResults.testResults = testCases.map((testCase, index) => ({
-      testCaseIndex: index,
-      passed: Math.random() > 0.3,
-      input: testCase.input || '',
-      expectedOutput: testCase.expectedOutput || '',
-      actualOutput: testCase.expectedOutput || 'mock output',
-      error: Math.random() > 0.8 ? 'Mock runtime error' : '',
-      executionTime: Math.random() * 50,
-      memoryUsage: Math.floor(Math.random() * 5000),
-      status: 'Accepted'
-    }));
-
-    const passedTests = mockResults.testResults.filter(testResult => testResult.passed).length;
-    mockResults.passedTests = passedTests;
-    mockResults.totalTests = testCases.length;
-    mockResults.score = Math.round((passedTests / testCases.length) * 100);
+    return executeLocalTestCases({ code, language, testCases });
   }
 
-  return mockResults;
+  return executeLocalSingleRun({ code, language, input });
+}
+
+async function executeLocalTestCases({ code, language, testCases }) {
+  const testResults = [];
+  let firstResult = null;
+
+  for (const [index, testCase] of testCases.entries()) {
+    const result = await executeLocalSingleRun({
+      code,
+      language,
+      input: testCase.input || ''
+    });
+
+    if (!firstResult) {
+      firstResult = result;
+    }
+
+    const actualOutput = String(result.rawOutput || result.output || '').trim();
+    const expectedOutput = String(testCase.expectedOutput || '').trim();
+    const passed = result.success && actualOutput === expectedOutput;
+
+    testResults.push({
+      testCaseIndex: index,
+      passed,
+      input: testCase.input || '',
+      expectedOutput,
+      actualOutput,
+      error: result.error,
+      executionTime: result.executionTime,
+      memoryUsage: result.memoryUsage,
+      status: passed ? 'Accepted' : 'Wrong Answer'
+    });
+  }
+
+  const passedTests = testResults.filter((result) => result.passed).length;
+  const totalTests = testResults.length;
+  const score = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
+  const primaryResult = firstResult || {
+    success: false,
+    output: '',
+    error: 'No test cases executed.',
+    executionTime: 0,
+    memoryUsage: 0,
+    status: 'failed',
+    provider: 'fallback-local'
+  };
+
+  return {
+    success: passedTests === totalTests && totalTests > 0,
+    output: primaryResult.output,
+    error: primaryResult.error,
+    executionTime: Math.max(...testResults.map((result) => result.executionTime || 0), primaryResult.executionTime || 0),
+    memoryUsage: Math.max(...testResults.map((result) => result.memoryUsage || 0), primaryResult.memoryUsage || 0),
+    testResults,
+    score,
+    passedTests,
+    totalTests,
+    provider: 'fallback-local',
+    status: passedTests === totalTests ? 'completed' : 'tests_failed'
+  };
+}
+
+async function executeLocalSingleRun({ code, language, input }) {
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'lm-exec-'));
+  const startedAt = process.hrtime.bigint();
+
+  try {
+    const runtimePlan = getLocalRuntimePlan(language, tempDir);
+    if (!runtimePlan) {
+      return {
+        success: false,
+        output: '',
+        rawOutput: '',
+        error: `Local fallback does not support language: ${language}. Configure PISTON_API_URL and PISTON_API_TOKEN for remote execution.`,
+        executionTime: 0,
+        memoryUsage: 0,
+        testResults: [],
+        status: 'unsupported_language',
+        provider: 'fallback-local'
+      };
+    }
+
+    await fs.writeFile(runtimePlan.sourceFilePath, code, 'utf8');
+
+    if (runtimePlan.compile) {
+      const compileResult = await runLocalCommand({
+        command: runtimePlan.compile.command,
+        args: runtimePlan.compile.args,
+        cwd: tempDir,
+        input: '',
+        timeoutMs: DEFAULT_COMPILE_TIMEOUT
+      });
+
+      if (!compileResult.success) {
+        const executionTime = Number(process.hrtime.bigint() - startedAt) / 1_000_000;
+        return {
+          success: false,
+          output: compileResult.stdout,
+          rawOutput: compileResult.stdout,
+          error: compileResult.error,
+          executionTime,
+          memoryUsage: 0,
+          testResults: [],
+          status: 'compilation_failed',
+          provider: 'fallback-local'
+        };
+      }
+    }
+
+    const runResult = await runLocalCommand({
+      command: runtimePlan.run.command,
+      args: runtimePlan.run.args,
+      cwd: tempDir,
+      input,
+      timeoutMs: DEFAULT_RUN_TIMEOUT
+    });
+
+    const executionTime = Number(process.hrtime.bigint() - startedAt) / 1_000_000;
+    const hasRuntimeError = runResult.success === false;
+    const outputText = runResult.stdout || '';
+
+    return {
+      success: runResult.success,
+      output: hasRuntimeError ? outputText : (outputText || 'Program executed successfully (no output)'),
+      rawOutput: outputText,
+      error: hasRuntimeError ? runResult.error : '',
+      executionTime,
+      memoryUsage: 0,
+      testResults: [],
+      status: hasRuntimeError ? 'runtime_failed' : 'completed',
+      provider: 'fallback-local'
+    };
+  } catch (error) {
+    const executionTime = Number(process.hrtime.bigint() - startedAt) / 1_000_000;
+    return {
+      success: false,
+      output: '',
+      rawOutput: '',
+      error: error.message || 'Local fallback execution failed',
+      executionTime,
+      memoryUsage: 0,
+      testResults: [],
+      status: 'failed',
+      provider: 'fallback-local'
+    };
+  } finally {
+    await fs.rm(tempDir, { recursive: true, force: true }).catch(() => {});
+  }
+}
+
+function getLocalRuntimePlan(language, tempDir) {
+  switch (language) {
+    case 'javascript':
+      return {
+        sourceFilePath: path.join(tempDir, 'main.js'),
+        run: { command: process.execPath, args: ['main.js'] }
+      };
+    case 'python':
+      return {
+        sourceFilePath: path.join(tempDir, 'main.py'),
+        run: { command: 'python', args: ['main.py'] }
+      };
+    case 'java':
+      return {
+        sourceFilePath: path.join(tempDir, 'Main.java'),
+        compile: { command: 'javac', args: ['Main.java'] },
+        run: { command: 'java', args: ['-cp', tempDir, 'Main'] }
+      };
+    default:
+      return null;
+  }
+}
+
+function runLocalCommand({ command, args, cwd, input, timeoutMs }) {
+  return new Promise((resolve) => {
+    let stdout = '';
+    let stderr = '';
+    let settled = false;
+
+    const child = spawn(command, args, {
+      cwd,
+      stdio: ['pipe', 'pipe', 'pipe'],
+      windowsHide: true
+    });
+
+    const timer = setTimeout(() => {
+      if (!settled) {
+        settled = true;
+        child.kill();
+        resolve({
+          success: false,
+          stdout,
+          error: 'Time limit exceeded'
+        });
+      }
+    }, timeoutMs);
+
+    child.stdout.on('data', (chunk) => {
+      stdout += chunk.toString();
+    });
+
+    child.stderr.on('data', (chunk) => {
+      stderr += chunk.toString();
+    });
+
+    child.on('error', (error) => {
+      if (settled) {
+        return;
+      }
+
+      settled = true;
+      clearTimeout(timer);
+      const notInstalled = error.code === 'ENOENT';
+
+      resolve({
+        success: false,
+        stdout,
+        error: notInstalled
+          ? `Runtime not available: ${command} is not installed or not in PATH.`
+          : (error.message || stderr || 'Execution error')
+      });
+    });
+
+    child.on('close', (exitCode) => {
+      if (settled) {
+        return;
+      }
+
+      settled = true;
+      clearTimeout(timer);
+
+      const success = exitCode === 0;
+      resolve({
+        success,
+        stdout,
+        error: success ? '' : (stderr.trim() || `Process exited with code ${exitCode}`)
+      });
+    });
+
+    if (input) {
+      child.stdin.write(String(input));
+    }
+    child.stdin.end();
+  });
 }
 
 export function getSupportedLanguages() {
