@@ -18454,3 +18454,669 @@ TypeError: schema.validate is not a function
   "environment": "development",
   "version": "1.0.0"
 }
+2026-04-08 00:00:37.466 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-04-08 00:00:38.693 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:38.716 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.065 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.099 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.101 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.109 [INFO]: 🔗 CORS enabled for: http://localhost:5173, https://live-mentor.vercel.app
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.117 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.120 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.122 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.439 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.440 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.441 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.774 [INFO]: Default admin user already exists
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.779 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.780 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.789 [INFO]: Socket.IO server started on path: /socket.io
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.789 [INFO]: Socket.IO server started
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:39.804 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:00:54.207 [INFO]: ::1 - - [07/Apr/2026:18:30:54 +0000] "GET /api/auth/me HTTP/1.1" 200 157 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.400 [INFO]: User logged in: rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.401 [INFO]: ::1 - - [07/Apr/2026:18:31:14 +0000] "POST /api/auth/login HTTP/1.1" 200 460 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.524 [INFO]: ::1 - - [07/Apr/2026:18:31:14 +0000] "GET /api/classrooms HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.563 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:01:14.564 [INFO]: ::1 - - [07/Apr/2026:18:31:14 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.567 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 00:01:14.569 [INFO]: ::1 - - [07/Apr/2026:18:31:14 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.652 [INFO]: Socket connected: bpcMPlZGVh7FuWwFAAAB (rathoreamit1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.658 [INFO]: Socket bpcMPlZGVh7FuWwFAAAB joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:14.696 [INFO]: ::1 - - [07/Apr/2026:18:31:14 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/activity-history?limit=250&only_errors=false&only_active=false&top_struggling=false HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:29.628 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:01:29.629 [INFO]: ::1 - - [07/Apr/2026:18:31:29 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:34.633 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 00:01:34.634 [INFO]: ::1 - - [07/Apr/2026:18:31:34 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:34.751 [INFO]: ::1 - - [07/Apr/2026:18:31:34 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/activity-history?limit=250&only_errors=false&only_active=false&top_struggling=false HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:44.649 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:01:44.650 [INFO]: ::1 - - [07/Apr/2026:18:31:44 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:54.652 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 00:01:54.653 [INFO]: ::1 - - [07/Apr/2026:18:31:54 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:54.797 [INFO]: ::1 - - [07/Apr/2026:18:31:54 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/activity-history?limit=250&only_errors=false&only_active=false&top_struggling=false HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:01:59.667 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:01:59.669 [INFO]: ::1 - - [07/Apr/2026:18:31:59 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:02:14.670 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 00:02:14.671 [INFO]: ::1 - - [07/Apr/2026:18:32:14 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:02:14.682 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:02:14.683 [INFO]: ::1 - - [07/Apr/2026:18:32:14 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:02:14.837 [INFO]: ::1 - - [07/Apr/2026:18:32:14 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/activity-history?limit=250&only_errors=false&only_active=false&top_struggling=false HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:02:29.692 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:02:29.693 [INFO]: ::1 - - [07/Apr/2026:18:32:29 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:02:34.680 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 00:02:34.681 [INFO]: ::1 - - [07/Apr/2026:18:32:34 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:02:34.867 [INFO]: ::1 - - [07/Apr/2026:18:32:34 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/activity-history?limit=250&only_errors=false&only_active=false&top_struggling=false HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:02:44.702 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:02:44.703 [INFO]: ::1 - - [07/Apr/2026:18:32:44 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:09:59.822 [INFO]: Socket disconnected: bpcMPlZGVh7FuWwFAAAB (rathoreamit1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:09:59.881 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:09:59.883 [INFO]: ::1 - - [07/Apr/2026:18:39:59 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:09:59.888 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 00:09:59.889 [INFO]: ::1 - - [07/Apr/2026:18:39:59 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:09:59.972 [INFO]: ::1 - - [07/Apr/2026:18:39:59 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:00.045 [INFO]: ::1 - - [07/Apr/2026:18:40:00 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/activity-history?limit=250&only_errors=false&only_active=false&top_struggling=false HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:00.365 [INFO]: Socket connected: DYEOrnV3B3Gk0eGKAAAD (rathoreamit1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:00.375 [INFO]: Socket DYEOrnV3B3Gk0eGKAAAD joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:07.378 [INFO]: Socket disconnected: DYEOrnV3B3Gk0eGKAAAD (rathoreamit1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:07.401 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200"
+  }
+}
+2026-04-08 00:10:07.405 [INFO]: ::1 - - [07/Apr/2026:18:40:07 +0000] "GET /api/submissions?classroom_id=69b511d7c04600bb4822040f&limit=200 HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:07.408 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "classroom_id": "69b511d7c04600bb4822040f",
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 00:10:07.409 [INFO]: ::1 - - [07/Apr/2026:18:40:07 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:07.416 [INFO]: ::1 - - [07/Apr/2026:18:40:07 +0000] "GET /api/classrooms HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:07.428 [INFO]: ::1 - - [07/Apr/2026:18:40:07 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/activity-history?limit=250&only_errors=false&only_active=false&top_struggling=false HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:07.459 [INFO]: Socket connected: 6_U3GirBOCQC6gxUAAAF (rathoreamit1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:10:07.462 [INFO]: Socket 6_U3GirBOCQC6gxUAAAF joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as rathoreamit1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 00:13:11.540 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
