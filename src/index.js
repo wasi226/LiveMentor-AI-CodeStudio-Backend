@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import dotenv from 'dotenv';
 import { connectMongoDB, getConnectionStatus } from './config/mongodb.js';
+import { parseCorsOrigins } from './config/cors.js';
 
 // Import routes
 import authRoutes from './routes/auth.js';
@@ -39,6 +40,7 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3001;
+const resolvedCorsOrigins = parseCorsOrigins(process.env.CORS_ORIGIN);
 
 // Base44 client is initialized in services/base44.js
 logger.info('Using Base44 client for backend services');
@@ -58,7 +60,7 @@ app.use(helmet({
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.CORS_ORIGIN?.split(',') || 'http://localhost:5173',
+  origin: resolvedCorsOrigins,
   credentials: process.env.CORS_CREDENTIALS === 'true',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key'],
@@ -186,7 +188,7 @@ let servicesInitialized = false;
 server = app.listen(PORT, async () => {
   logger.info(`🚀 liveMentor Backend server running on port ${PORT}`);
   logger.info(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
-  logger.info(`🔗 CORS enabled for: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
+  logger.info(`🔗 CORS enabled for: ${resolvedCorsOrigins.join(', ')}`);
 
   if (!servicesInitialized) {
     // Initialize services after server starts
