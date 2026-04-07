@@ -183,9 +183,7 @@ async function initializeServices() {
 let server = null;
 let servicesInitialized = false;
 
-server = app.listen(PORT);
-
-server.on('listening', async () => {
+server = app.listen(PORT, async () => {
   logger.info(`🚀 liveMentor Backend server running on port ${PORT}`);
   logger.info(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
   logger.info(`🔗 CORS enabled for: ${process.env.CORS_ORIGIN || 'http://localhost:5173'}`);
