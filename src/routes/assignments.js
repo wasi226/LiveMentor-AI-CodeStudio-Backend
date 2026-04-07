@@ -12,6 +12,30 @@ import Joi from 'joi';
 
 const router = express.Router();
 
+const mapTestCasesFromRequest = (testCases = []) => {
+  return testCases.map((testCase) => ({
+    input: testCase.input || '',
+    expected_output: testCase.expectedOutput || testCase.expected_output || '',
+    description: testCase.description || '',
+    weight: testCase.weight || 1
+  }));
+};
+
+const serializeAssignment = (assignment) => {
+  const plain = assignment?.toObject ? assignment.toObject() : assignment;
+
+  return {
+    ...plain,
+    id: plain?._id?.toString() || plain?.id,
+    test_cases: (plain?.test_cases || []).map((testCase) => ({
+      input: testCase.input || '',
+      expectedOutput: testCase.expected_output || testCase.expectedOutput || '',
+      description: testCase.description || '',
+      weight: testCase.weight || 1
+    }))
+  };
+};
+
 // Assignment validation schemas
 const assignmentSchemas = {
   create: Joi.object({
@@ -135,10 +159,10 @@ router.post('/',
   validateBody(assignmentSchemas.create),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       
       // Verify classroom and permissions
-      const classroom = await base44.database.entity.findById('Classroom', req.body.classroom_id);
+      const classroom = await Classroom.findById(req.body.classroom_id).lean();
       if (!classroom) {
         return res.status(404).json({
           error: 'Classroom not found'
@@ -152,16 +176,30 @@ router.post('/',
       }
 
       const assignmentData = {
-        ...req.body,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
+        title: req.body.title,
+        description: req.body.description || '',
+        classroom_id: req.body.classroom_id,
+        language: classroom.language || 'javascript',
+        difficulty: req.body.difficulty,
+        starter_code: req.body.starter_code || '',
+        solution_code: req.body.solution_code || '',
+        test_cases: mapTestCasesFromRequest(req.body.test_cases || []),
+        max_score: req.body.max_score,
+        time_limit: req.body.time_limit,
+        memory_limit: req.body.memory_limit,
+        due_date: req.body.due_date,
+        is_published: true,
+        created_by: user.email,
+        metadata: {
+          auto_grade: req.body.auto_grade
+        }
       };
 
-      const assignment = await base44.database.entity.create('Assignment', assignmentData);
+      const assignment = await Assignment.create(assignmentData);
 
       res.status(201).json({
         success: true,
-        assignment,
+        assignment: serializeAssignment(assignment),
         message: 'Assignment created successfully'
       });
 
@@ -185,8 +223,8 @@ router.get('/:id',
   validateParams({ id: schemas.objectId }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const assignment = await base44.database.entity.findById('Assignment', req.params.id);
+      const user = req.user;
+      const assignment = await Assignment.findById(req.params.id).lean();
 
       if (!assignment) {
         return res.status(404).json({
@@ -195,7 +233,13 @@ router.get('/:id',
       }
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', assignment.classroom_id);
+      const classroom = await Classroom.findById(assignment.classroom_id).lean();
+      if (!classroom) {
+        return res.status(404).json({
+          error: 'Classroom not found'
+        });
+      }
+
       const hasAccess = 
         classroom.faculty_email === user.email ||
         classroom.student_emails.includes(user.email) ||
@@ -208,13 +252,17 @@ router.get('/:id',
       }
 
       // Hide solution code from students
+      const safeAssignment = {
+        ...assignment
+      };
+
       if (user.role === 'student' && classroom.faculty_email !== user.email) {
-        delete assignment.solution_code;
+        delete safeAssignment.solution_code;
       }
 
       res.json({
         success: true,
-        assignment
+        assignment: serializeAssignment(safeAssignment)
       });
 
     } catch (error) {
@@ -236,8 +284,8 @@ router.put('/:id',
   validateBody(assignmentSchemas.update),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const assignment = await base44.database.entity.findById('Assignment', req.params.id);
+      const user = req.user;
+      const assignment = await Assignment.findById(req.params.id);
 
       if (!assignment) {
         return res.status(404).json({
@@ -246,21 +294,34 @@ router.put('/:id',
       }
 
       // Verify permissions
-      const classroom = await base44.database.entity.findById('Classroom', assignment.classroom_id);
+      const classroom = await Classroom.findById(assignment.classroom_id).lean();
       if (classroom.faculty_email !== user.email && user.role !== 'admin') {
         return res.status(403).json({
           error: 'Only the classroom faculty can update assignments'
         });
       }
 
-      const updatedAssignment = await base44.database.entity.update('Assignment', req.params.id, {
-        ...req.body,
-        updated_at: new Date().toISOString()
-      });
+      if (req.body.title !== undefined) assignment.title = req.body.title;
+      if (req.body.description !== undefined) assignment.description = req.body.description;
+      if (req.body.starter_code !== undefined) assignment.starter_code = req.body.starter_code;
+      if (req.body.solution_code !== undefined) assignment.solution_code = req.body.solution_code;
+      if (req.body.test_cases !== undefined) assignment.test_cases = mapTestCasesFromRequest(req.body.test_cases);
+      if (req.body.difficulty !== undefined) assignment.difficulty = req.body.difficulty;
+      if (req.body.max_score !== undefined) assignment.max_score = req.body.max_score;
+      if (req.body.time_limit !== undefined) assignment.time_limit = req.body.time_limit;
+      if (req.body.memory_limit !== undefined) assignment.memory_limit = req.body.memory_limit;
+      if (req.body.due_date !== undefined) assignment.due_date = req.body.due_date;
+      if (req.body.auto_grade !== undefined) {
+        const nextMetadata = assignment.metadata ? { ...assignment.metadata } : {};
+        nextMetadata.auto_grade = req.body.auto_grade;
+        assignment.metadata = nextMetadata;
+      }
+
+      const updatedAssignment = await assignment.save();
 
       res.json({
         success: true,
-        assignment: updatedAssignment,
+        assignment: serializeAssignment(updatedAssignment),
         message: 'Assignment updated successfully'
       });
 
@@ -282,8 +343,8 @@ router.delete('/:id',
   validateParams({ id: schemas.objectId }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const assignment = await base44.database.entity.findById('Assignment', req.params.id);
+      const user = req.user;
+      const assignment = await Assignment.findById(req.params.id);
 
       if (!assignment) {
         return res.status(404).json({
@@ -292,14 +353,14 @@ router.delete('/:id',
       }
 
       // Verify permissions
-      const classroom = await base44.database.entity.findById('Classroom', assignment.classroom_id);
+      const classroom = await Classroom.findById(assignment.classroom_id).lean();
       if (classroom.faculty_email !== user.email && user.role !== 'admin') {
         return res.status(403).json({
           error: 'Only the classroom faculty can delete assignments'
         });
       }
 
-      await base44.database.entity.delete('Assignment', req.params.id);
+      await Assignment.deleteOne({ _id: req.params.id });
 
       res.json({
         success: true,

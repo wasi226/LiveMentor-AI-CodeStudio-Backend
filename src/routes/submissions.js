@@ -59,7 +59,7 @@ router.get('/',
   }).concat(schemas.pagination)),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       const { assignment_id, classroom_id, student_email, status, page, limit, sort, sortBy } = req.query;
 
       // Build query based on user role and filters
@@ -71,7 +71,7 @@ router.get('/',
       } else if (user.role === 'faculty') {
         // Faculty can see submissions in their classrooms
         if (classroom_id) {
-          const classroom = await base44.database.entity.findById('Classroom', classroom_id);
+          const classroom = await Classroom.findById(classroom_id).lean();
           if (!classroom?.faculty_email || classroom.faculty_email !== user.email) {
             return res.status(403).json({
               error: 'Access denied to this classroom'
@@ -89,19 +89,32 @@ router.get('/',
       if (assignment_id) query.assignment_id = assignment_id;
       if (status) query.status = status;
 
-      const submissions = await base44.database.entity.find('Submission', query, {
-        page,
-        limit,
-        sort: { [sortBy]: sort === 'asc' ? 1 : -1 }
-      });
+      const normalizedPage = Math.max(Number.parseInt(page, 10) || 1, 1);
+      const normalizedLimit = Math.max(Number.parseInt(limit, 10) || 20, 1);
+      const sortDirection = sort === 'asc' ? 1 : -1;
+      const allowedSortFields = new Set(['createdAt', 'updatedAt', 'submitted_at', 'score', 'status']);
+      const sortField = allowedSortFields.has(sortBy) ? sortBy : 'createdAt';
+
+      const submissions = await Submission.find(query)
+        .sort({ [sortField]: sortDirection })
+        .skip((normalizedPage - 1) * normalizedLimit)
+        .limit(normalizedLimit)
+        .lean();
+
+      const total = await Submission.countDocuments(query);
+
+      const serializedSubmissions = submissions.map((submission) => ({
+        ...submission,
+        id: submission._id?.toString()
+      }));
 
       res.json({
         success: true,
-        submissions,
+        submissions: serializedSubmissions,
         pagination: {
-          page: Number.parseInt(page, 10),
-          limit: Number.parseInt(limit, 10),
-          total: submissions.length
+          page: normalizedPage,
+          limit: normalizedLimit,
+          total
         }
       });
 
@@ -206,8 +219,8 @@ router.get('/:id',
   validateParams({ id: schemas.objectId }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const submission = await base44.database.entity.findById('Submission', req.params.id);
+      const user = req.user;
+      const submission = await Submission.findById(req.params.id).lean();
 
       if (!submission) {
         return res.status(404).json({
@@ -216,7 +229,7 @@ router.get('/:id',
       }
 
       // Check access permissions
-      const classroom = await base44.database.entity.findById('Classroom', submission.classroom_id);
+      const classroom = await Classroom.findById(submission.classroom_id).lean();
       const hasAccess = 
         submission.student_email === user.email ||
         classroom.faculty_email === user.email ||
@@ -230,7 +243,10 @@ router.get('/:id',
 
       res.json({
         success: true,
-        submission
+        submission: {
+          ...submission,
+          id: submission._id?.toString()
+        }
       });
 
     } catch (error) {
@@ -252,8 +268,8 @@ router.put('/:id',
   validateBody(submissionSchemas.update),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const submission = await base44.database.entity.findById('Submission', req.params.id);
+      const user = req.user;
+      const submission = await Submission.findById(req.params.id);
 
       if (!submission) {
         return res.status(404).json({
@@ -270,7 +286,7 @@ router.put('/:id',
         // Students can't change status
         delete req.body.status;
       } else if (user.role === 'faculty' || user.role === 'admin') {
-        const classroom = await base44.database.entity.findById('Classroom', submission.classroom_id);
+        const classroom = await Classroom.findById(submission.classroom_id).lean();
         if (classroom.faculty_email === user.email || user.role === 'admin') {
           canUpdate = true;
         }
@@ -282,16 +298,24 @@ router.put('/:id',
         });
       }
 
-      const updatedSubmission = await base44.database.entity.update('Submission', req.params.id, {
-        ...req.body,
-        updated_at: new Date().toISOString()
-      });
+      if (req.body.code !== undefined) submission.code = req.body.code;
+      if (req.body.language !== undefined) submission.language = req.body.language;
+      if (req.body.status !== undefined) submission.status = req.body.status;
+      submission.updated_at = new Date();
+
+      const updatedSubmission = await submission.save();
+      const serializedSubmission = {
+        ...updatedSubmission.toObject(),
+        id: updatedSubmission._id.toString()
+      };
 
       res.json({
         success: true,
-        submission: updatedSubmission,
+        submission: serializedSubmission,
         message: 'Submission updated successfully'
       });
+
+      emitSubmissionEvent('submission:updated', serializedSubmission);
 
     } catch (error) {
       logger.error('Update submission error:', error);
@@ -388,8 +412,8 @@ router.delete('/:id',
   validateParams({ id: schemas.objectId }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const submission = await base44.database.entity.findById('Submission', req.params.id);
+      const user = req.user;
+      const submission = await Submission.findById(req.params.id).lean();
 
       if (!submission) {
         return res.status(404).json({
@@ -403,7 +427,7 @@ router.delete('/:id',
       if (user.role === 'student' && submission.student_email === user.email && submission.status === 'draft') {
         canDelete = true;
       } else if (user.role === 'faculty' || user.role === 'admin') {
-        const classroom = await base44.database.entity.findById('Classroom', submission.classroom_id);
+        const classroom = await Classroom.findById(submission.classroom_id).lean();
         if (classroom.faculty_email === user.email || user.role === 'admin') {
           canDelete = true;
         }
@@ -415,7 +439,7 @@ router.delete('/:id',
         });
       }
 
-      await base44.database.entity.delete('Submission', req.params.id);
+      await Submission.deleteOne({ _id: req.params.id });
 
       emitSubmissionEvent('submission:updated', {
         ...submission,

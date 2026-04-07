@@ -202,6 +202,7 @@ router.post('/join',
     try {
       const user = req.user;
       const { code } = req.body;
+      const normalizedUserEmail = String(user.email || '').trim().toLowerCase();
 
       const classroom = await Classroom.findOne({ code: code.toUpperCase() });
 
@@ -211,14 +212,18 @@ router.post('/join',
         });
       }
 
-      if (classroom.faculty_email === user.email) {
+      if (String(classroom.faculty_email || '').toLowerCase() === normalizedUserEmail) {
         return res.status(409).json({
           error: 'Already owns this classroom',
           message: 'You are the creator of this classroom'
         });
       }
 
-      if (classroom.student_emails.includes(user.email)) {
+      const alreadyJoined = (classroom.student_emails || []).some(
+        (email) => String(email || '').toLowerCase() === normalizedUserEmail
+      );
+
+      if (alreadyJoined) {
         return res.status(409).json({
           error: 'Already joined this classroom'
         });
@@ -230,10 +235,24 @@ router.post('/join',
         });
       }
 
-      classroom.student_emails.push(user.email);
-      await classroom.save();
+      const updated = await Classroom.findOneAndUpdate(
+        {
+          _id: classroom._id,
+          student_emails: { $ne: normalizedUserEmail }
+        },
+        {
+          $addToSet: { student_emails: normalizedUserEmail }
+        },
+        { new: true }
+      );
 
-      const serializedClassroom = serializeClassroom(classroom);
+      if (!updated) {
+        return res.status(409).json({
+          error: 'Already joined this classroom'
+        });
+      }
+
+      const serializedClassroom = serializeClassroom(updated);
       const [classroomWithDetails] = await attachStudentDetails([serializedClassroom]);
 
       res.json({
@@ -242,7 +261,7 @@ router.post('/join',
         message: 'Successfully joined classroom'
       });
 
-      logger.info(`User ${user.email} joined classroom ${classroom.name}`);
+      logger.info(`User ${normalizedUserEmail} joined classroom ${updated.name}`);
 
     } catch (error) {
       logger.error(`Join classroom error: ${error.message}`);
