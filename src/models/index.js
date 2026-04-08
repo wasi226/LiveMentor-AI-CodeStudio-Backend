@@ -52,9 +52,7 @@ const UserSchema = new Schema({
 });
 
 // Indexes for User
-UserSchema.index({ email: 1 }, { unique: true });
 UserSchema.index({ role: 1 });
-UserSchema.index({ rollNumber: 1 }, { sparse: true });
 
 // Classroom Model
 const ClassroomSchema = new Schema({
@@ -113,7 +111,6 @@ const ClassroomSchema = new Schema({
 });
 
 // Indexes for Classroom
-ClassroomSchema.index({ code: 1 }, { unique: true });
 ClassroomSchema.index({ faculty_email: 1 });
 ClassroomSchema.index({ is_active: 1, faculty_email: 1 });
 
