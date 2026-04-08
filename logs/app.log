@@ -20100,3 +20100,39 @@ TypeError: schema.validate is not a function
   "environment": "development",
   "version": "1.0.0"
 }
+2026-04-08 18:38:13.136 [INFO]: Socket disconnected: wzVuts1yaeX_Fz75AAAp (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:43:52.473 [INFO]: Socket connected: KdoEGYpmiF-KJPn2AAAr (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:43:52.633 [INFO]: Socket KdoEGYpmiF-KJPn2AAAr joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:43:53.095 [INFO]: Socket disconnected: KdoEGYpmiF-KJPn2AAAr (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 23:14:49.970 [WARN]: MongoDB disconnected
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 23:15:00.345 [INFO]: MongoDB reconnected
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
