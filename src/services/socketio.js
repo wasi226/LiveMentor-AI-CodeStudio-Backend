@@ -11,7 +11,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { Classroom, InterventionRoom, StudentActivity } from '../models/index.js';
 import { validateCode } from './codeExecution.js';
-import { parseCorsOrigins } from '../config/cors.js';
+import { createCorsOriginChecker } from '../config/cors.js';
 import logger from '../utils/logger.js';
 
 let io = null;
@@ -640,7 +640,7 @@ export const startSocketIOServer = (httpServer) => {
   io = new Server(httpServer, {
     path: process.env.SOCKET_IO_PATH || '/socket.io',
     cors: {
-      origin: parseCorsOrigins(process.env.CORS_ORIGIN),
+      origin: createCorsOriginChecker(process.env.CORS_ORIGIN),
       credentials: process.env.CORS_CREDENTIALS === 'true'
     },
     transports: ['websocket', 'polling']

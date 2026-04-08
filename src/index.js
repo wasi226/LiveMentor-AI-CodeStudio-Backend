@@ -10,7 +10,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import dotenv from 'dotenv';
 import { connectMongoDB, getConnectionStatus } from './config/mongodb.js';
-import { parseCorsOrigins } from './config/cors.js';
+import { createCorsOriginChecker, parseCorsOrigins } from './config/cors.js';
 
 // Import routes
 import authRoutes from './routes/auth.js';
@@ -60,7 +60,7 @@ app.use(helmet({
 
 // CORS configuration
 app.use(cors({
-  origin: resolvedCorsOrigins,
+  origin: createCorsOriginChecker(process.env.CORS_ORIGIN),
   credentials: process.env.CORS_CREDENTIALS === 'true',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key'],

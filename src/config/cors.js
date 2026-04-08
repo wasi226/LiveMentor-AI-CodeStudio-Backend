@@ -52,3 +52,38 @@ export const parseCorsOrigins = (rawValue, fallback = DEFAULT_ALLOWED_ORIGINS) =
 
   return uniqueOrigins.length ? uniqueOrigins : [...fallback];
 };
+
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const originMatchesPattern = (origin, pattern) => {
+  if (pattern === '*') {
+    return true;
+  }
+
+  if (!pattern.includes('*')) {
+    return origin === pattern;
+  }
+
+  const regex = new RegExp(`^${escapeRegExp(pattern).replace(/\\\*/g, '.*')}$`);
+  return regex.test(origin);
+};
+
+export const createCorsOriginChecker = (rawValue, fallback = DEFAULT_ALLOWED_ORIGINS) => {
+  const allowedOrigins = parseCorsOrigins(rawValue, fallback);
+
+  return (origin, callback) => {
+    if (!origin) {
+      callback(null, true);
+      return;
+    }
+
+    const isAllowed = allowedOrigins.some((pattern) => originMatchesPattern(origin, pattern));
+
+    if (isAllowed) {
+      callback(null, true);
+      return;
+    }
+
+    callback(new Error(`CORS origin not allowed: ${origin}`), false);
+  };
+};

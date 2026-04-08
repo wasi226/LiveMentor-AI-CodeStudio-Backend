@@ -57,6 +57,12 @@ JWT_SECRET=<strong-random-secret>
 CORS_ORIGIN=http://localhost:5173
 ```
 
+For a Vercel-hosted frontend, you can also use a wildcard origin such as:
+
+```env
+CORS_ORIGIN=http://localhost:5173,https://*.vercel.app
+```
+
 Useful optional variables:
 
 ```env
@@ -133,6 +139,7 @@ Set production env vars in your host dashboard, including:
 - MONGODB_URI
 - JWT_SECRET
 - CORS_ORIGIN (your frontend URL)
+- CORS_ORIGIN (your frontend URL, or a wildcard like `https://*.vercel.app` if you deploy on Vercel)
 - PISTON_API_URL (if code execution is enabled)
 - PISTON_API_TOKEN (optional for authorized public Piston)
 
