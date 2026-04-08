@@ -41,6 +41,7 @@ const buildCollaborationPayload = ({ classroomId, eventType, user, data }) => ({
   classroom_id: classroomId,
   sender_email: user.email,
   sender_name: user.name,
+  sender_role: user.role,
   type: eventType,
   metadata: {
     ...data,
@@ -593,6 +594,16 @@ const handleCollaborationEvent = async (socket, payload = {}) => {
   if (!eventType) {
     socket.emit('collaboration:error', {
       message: 'eventType is required for collaboration events.'
+    });
+    return;
+  }
+
+  const restrictedToFacultyEvents = new Set(['code_change', 'language_change']);
+  const isFacultyOrAdmin = socket.user?.role === 'faculty' || socket.user?.role === 'admin';
+
+  if (restrictedToFacultyEvents.has(eventType) && !isFacultyOrAdmin) {
+    socket.emit('collaboration:error', {
+      message: 'Only faculty can broadcast code or language updates.'
     });
     return;
   }

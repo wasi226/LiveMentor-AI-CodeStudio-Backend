@@ -220,6 +220,10 @@ export const classroomSchemas = {
     code: schemas.classroomCode.required()
   }),
 
+  removeStudent: Joi.object({
+    student_email: schemas.email.required()
+  }),
+
   update: Joi.object({
     name: Joi.string().min(3).max(100).trim(),
     description: Joi.string().max(500).trim().allow(''),

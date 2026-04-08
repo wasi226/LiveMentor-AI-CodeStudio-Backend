@@ -19120,3 +19120,983 @@ TypeError: schema.validate is not a function
   "environment": "development",
   "version": "1.0.0"
 }
+2026-04-08 17:37:56.459 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-04-08 17:37:57.040 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.041 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.171 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.187 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.188 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.189 [INFO]: 🔗 CORS enabled for: http://localhost:5173, https://live-mentor.vercel.app
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.190 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.191 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.192 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.388 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.389 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.390 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.523 [INFO]: Default admin user already exists
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.525 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.528 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.540 [INFO]: Socket.IO server started on path: /socket.io
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.552 [INFO]: Socket.IO server started
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:37:57.554 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:49.741 [INFO]: User logged in: haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:49.745 [INFO]: ::1 - - [08/Apr/2026:12:09:49 +0000] "POST /api/auth/login HTTP/1.1" 200 523 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:49.862 [WARN]: Query validation failed:
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "url": "/api/submissions?limit=200&sort=desc&sortBy=createdAt",
+  "method": "GET",
+  "errors": [
+    {
+      "field": "limit",
+      "message": "limit must be less than or equal to 100",
+      "value": 200
+    }
+  ],
+  "query": {
+    "limit": "200",
+    "sort": "desc",
+    "sortBy": "createdAt"
+  }
+}
+2026-04-08 17:39:49.867 [INFO]: ::1 - - [08/Apr/2026:12:09:49 +0000] "GET /api/submissions?limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 400 208 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:49.921 [INFO]: ::1 - - [08/Apr/2026:12:09:49 +0000] "GET /api/classrooms HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:50.078 [INFO]: ::1 - - [08/Apr/2026:12:09:50 +0000] "GET /api/assignments?classroom_id=69b511d7c04600bb4822040f&limit=100&sort=desc&sortBy=createdAt HTTP/1.1" 200 79 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:55.494 [INFO]: ::1 - - [08/Apr/2026:12:09:55 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:55.585 [INFO]: ::1 - - [08/Apr/2026:12:09:55 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:55.625 [INFO]: Socket connected: _Jg6lf5pM5Wh_ofrAAAB (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:55.629 [INFO]: ::1 - - [08/Apr/2026:12:09:55 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 200 28 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:39:55.660 [INFO]: Socket _Jg6lf5pM5Wh_ofrAAAB joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:40:56.322 [INFO]: Code execution request from haiderwasi22630@gmail.com for java
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:40:59.637 [WARN]: Piston authorization unavailable, using fallback execution service
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:40:59.638 [INFO]: Using local fallback execution service for java
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:41:00.957 [INFO]: Code execution completed for haiderwasi22630@gmail.com: success in 4630ms
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:41:00.960 [INFO]: ::1 - - [08/Apr/2026:12:11:00 +0000] "POST /api/code/execute HTTP/1.1" 200 347 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:55:15.247 [INFO]: Code execution request from kumaraman1999@gmail.com for java
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:55:16.564 [WARN]: Piston authorization unavailable, using fallback execution service
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:55:16.564 [INFO]: Using local fallback execution service for java
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:55:17.737 [INFO]: Code execution completed for kumaraman1999@gmail.com: success in 2472ms
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 17:55:17.791 [INFO]: ::1 - - [08/Apr/2026:12:25:17 +0000] "POST /api/code/execute HTTP/1.1" 200 345 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:38.944 [INFO]: ::1 - - [08/Apr/2026:12:36:38 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:38.997 [INFO]: ::1 - - [08/Apr/2026:12:36:38 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:39.004 [INFO]: ::1 - - [08/Apr/2026:12:36:39 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:39.081 [INFO]: Socket disconnected: _Jg6lf5pM5Wh_ofrAAAB (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:39.206 [INFO]: Socket connected: 9QyIv9xOGeSNCkPgAAAD (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:39.213 [INFO]: Socket 9QyIv9xOGeSNCkPgAAAD joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:43.002 [INFO]: ::1 - - [08/Apr/2026:12:36:43 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:43.023 [INFO]: ::1 - - [08/Apr/2026:12:36:43 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:43.029 [INFO]: ::1 - - [08/Apr/2026:12:36:43 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:43.081 [INFO]: Socket disconnected: 9QyIv9xOGeSNCkPgAAAD (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:43.087 [INFO]: Socket connected: AskMDn8oWs8LITlAAAAF (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:43.092 [INFO]: Socket AskMDn8oWs8LITlAAAAF joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:45.033 [INFO]: ::1 - - [08/Apr/2026:12:36:45 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:45.042 [INFO]: ::1 - - [08/Apr/2026:12:36:45 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:45.043 [INFO]: ::1 - - [08/Apr/2026:12:36:45 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:45.057 [INFO]: Socket disconnected: AskMDn8oWs8LITlAAAAF (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:45.062 [INFO]: Socket connected: 7vAcPBMKmEQD80reAAAH (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:45.065 [INFO]: Socket 7vAcPBMKmEQD80reAAAH joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:56.014 [INFO]: ::1 - - [08/Apr/2026:12:36:56 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:56.023 [INFO]: ::1 - - [08/Apr/2026:12:36:56 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:56.025 [INFO]: ::1 - - [08/Apr/2026:12:36:56 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:56.052 [INFO]: Socket disconnected: 7vAcPBMKmEQD80reAAAH (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:56.057 [INFO]: Socket connected: gylxkRnty02Q1OqaAAAJ (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:06:56.066 [INFO]: Socket gylxkRnty02Q1OqaAAAJ joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:05.023 [INFO]: ::1 - - [08/Apr/2026:12:37:05 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:05.033 [INFO]: ::1 - - [08/Apr/2026:12:37:05 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:05.036 [INFO]: ::1 - - [08/Apr/2026:12:37:05 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:05.047 [INFO]: Socket disconnected: gylxkRnty02Q1OqaAAAJ (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:05.050 [INFO]: Socket connected: jVjilOV-PoljgQp-AAAL (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:05.060 [INFO]: Socket jVjilOV-PoljgQp-AAAL joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:18.047 [INFO]: ::1 - - [08/Apr/2026:12:37:18 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:18.052 [INFO]: ::1 - - [08/Apr/2026:12:37:18 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:18.057 [INFO]: ::1 - - [08/Apr/2026:12:37:18 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:18.079 [INFO]: Socket disconnected: jVjilOV-PoljgQp-AAAL (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:18.083 [INFO]: Socket connected: 5qth10UU7Zzo9HxyAAAN (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:18.089 [INFO]: Socket 5qth10UU7Zzo9HxyAAAN joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:22.006 [INFO]: ::1 - - [08/Apr/2026:12:37:22 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:22.020 [INFO]: ::1 - - [08/Apr/2026:12:37:22 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:22.022 [INFO]: ::1 - - [08/Apr/2026:12:37:22 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:22.033 [INFO]: Socket disconnected: 5qth10UU7Zzo9HxyAAAN (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:22.037 [INFO]: Socket connected: BoH4vDhzJPBFaxR0AAAP (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:22.040 [INFO]: Socket BoH4vDhzJPBFaxR0AAAP joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:55.017 [INFO]: ::1 - - [08/Apr/2026:12:37:55 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:55.029 [INFO]: ::1 - - [08/Apr/2026:12:37:55 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:55.030 [INFO]: ::1 - - [08/Apr/2026:12:37:55 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:55.034 [INFO]: Socket disconnected: BoH4vDhzJPBFaxR0AAAP (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:55.044 [INFO]: Socket connected: r9O-GDzxr87cRAssAAAR (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:07:55.052 [INFO]: Socket r9O-GDzxr87cRAssAAAR joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:08:04.006 [INFO]: ::1 - - [08/Apr/2026:12:38:04 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:08:04.016 [INFO]: ::1 - - [08/Apr/2026:12:38:04 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:08:04.018 [INFO]: ::1 - - [08/Apr/2026:12:38:04 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:08:04.035 [INFO]: Socket disconnected: r9O-GDzxr87cRAssAAAR (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:08:04.040 [INFO]: Socket connected: xaESFsUtH3qniN_-AAAT (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:08:04.044 [INFO]: Socket xaESFsUtH3qniN_-AAAT joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:22.532 [INFO]: ::1 - - [08/Apr/2026:12:46:22 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:22.545 [INFO]: ::1 - - [08/Apr/2026:12:46:22 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:22.547 [INFO]: Socket disconnected: xaESFsUtH3qniN_-AAAT (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:22.556 [INFO]: ::1 - - [08/Apr/2026:12:46:22 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:22.572 [INFO]: Socket connected: ouhrFEH7KshqwcJqAAAV (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:22.579 [INFO]: Socket ouhrFEH7KshqwcJqAAAV joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:27.010 [INFO]: ::1 - - [08/Apr/2026:12:46:27 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:27.028 [INFO]: ::1 - - [08/Apr/2026:12:46:27 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:27.029 [INFO]: ::1 - - [08/Apr/2026:12:46:27 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:27.051 [INFO]: Socket disconnected: ouhrFEH7KshqwcJqAAAV (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:27.054 [INFO]: Socket connected: OtW4C7yyvw_7qXf7AAAX (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:27.059 [INFO]: Socket OtW4C7yyvw_7qXf7AAAX joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:35.013 [INFO]: ::1 - - [08/Apr/2026:12:46:35 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:35.025 [INFO]: ::1 - - [08/Apr/2026:12:46:35 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:35.029 [INFO]: ::1 - - [08/Apr/2026:12:46:35 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:35.053 [INFO]: Socket disconnected: OtW4C7yyvw_7qXf7AAAX (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:35.057 [INFO]: Socket connected: T3xMWr593HTMAX0SAAAZ (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:35.061 [INFO]: Socket T3xMWr593HTMAX0SAAAZ joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:37.007 [INFO]: ::1 - - [08/Apr/2026:12:46:37 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:37.020 [INFO]: ::1 - - [08/Apr/2026:12:46:37 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:37.021 [INFO]: ::1 - - [08/Apr/2026:12:46:37 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:37.049 [INFO]: Socket disconnected: T3xMWr593HTMAX0SAAAZ (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:37.053 [INFO]: Socket connected: s50kOAijd7ovvpKWAAAb (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:16:37.057 [INFO]: Socket s50kOAijd7ovvpKWAAAb joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:19.547 [INFO]: ::1 - - [08/Apr/2026:12:51:19 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:19.593 [INFO]: ::1 - - [08/Apr/2026:12:51:19 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:19.598 [INFO]: ::1 - - [08/Apr/2026:12:51:19 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:19.627 [INFO]: Socket disconnected: s50kOAijd7ovvpKWAAAb (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:19.709 [INFO]: Socket connected: KJ8K_YwndAdd2LKnAAAd (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:19.713 [INFO]: Socket KJ8K_YwndAdd2LKnAAAd joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:32.008 [INFO]: ::1 - - [08/Apr/2026:12:51:32 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:32.019 [INFO]: ::1 - - [08/Apr/2026:12:51:32 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:32.021 [INFO]: ::1 - - [08/Apr/2026:12:51:32 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:32.060 [INFO]: Socket disconnected: KJ8K_YwndAdd2LKnAAAd (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:32.064 [INFO]: Socket connected: jq9ZgkuNOpHhaJLTAAAf (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:32.071 [INFO]: Socket jq9ZgkuNOpHhaJLTAAAf joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:49.015 [INFO]: ::1 - - [08/Apr/2026:12:51:49 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:49.026 [INFO]: ::1 - - [08/Apr/2026:12:51:49 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:49.036 [INFO]: ::1 - - [08/Apr/2026:12:51:49 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:49.072 [INFO]: Socket disconnected: jq9ZgkuNOpHhaJLTAAAf (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:49.076 [INFO]: Socket connected: 49cDWZZ-YONK36F4AAAh (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:49.080 [INFO]: Socket 49cDWZZ-YONK36F4AAAh joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:49.993 [INFO]: ::1 - - [08/Apr/2026:12:51:49 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:50.004 [INFO]: ::1 - - [08/Apr/2026:12:51:50 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:50.005 [INFO]: ::1 - - [08/Apr/2026:12:51:50 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:50.031 [INFO]: Socket disconnected: 49cDWZZ-YONK36F4AAAh (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:50.036 [INFO]: Socket connected: 5IccsZjxPbC8HVLCAAAj (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:21:50.039 [INFO]: Socket 5IccsZjxPbC8HVLCAAAj joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:31.071 [INFO]: ::1 - - [08/Apr/2026:12:53:31 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:31.083 [INFO]: ::1 - - [08/Apr/2026:12:53:31 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:31.084 [INFO]: ::1 - - [08/Apr/2026:12:53:31 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:31.115 [INFO]: Socket disconnected: 5IccsZjxPbC8HVLCAAAj (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:31.119 [INFO]: Socket connected: 9YaQn2gw_sop0gvqAAAl (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:31.121 [INFO]: Socket 9YaQn2gw_sop0gvqAAAl joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:37.003 [INFO]: ::1 - - [08/Apr/2026:12:53:37 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:37.018 [INFO]: ::1 - - [08/Apr/2026:12:53:37 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:37.020 [INFO]: ::1 - - [08/Apr/2026:12:53:37 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:37.038 [INFO]: Socket disconnected: 9YaQn2gw_sop0gvqAAAl (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:37.040 [INFO]: Socket connected: kHMmEmzwf3FQxsOvAAAn (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:37.044 [INFO]: Socket kHMmEmzwf3FQxsOvAAAn joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:42.075 [INFO]: ::1 - - [08/Apr/2026:12:53:42 +0000] "GET /api/chat/messages?classroom_id=69b511d7c04600bb4822040f&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:42.084 [INFO]: ::1 - - [08/Apr/2026:12:53:42 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f/interventions/active HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:42.085 [INFO]: ::1 - - [08/Apr/2026:12:53:42 +0000] "GET /api/classrooms/69b511d7c04600bb4822040f HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:42.100 [INFO]: Socket disconnected: kHMmEmzwf3FQxsOvAAAn (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:42.105 [INFO]: Socket connected: wzVuts1yaeX_Fz75AAAp (haiderwasi22630@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-08 18:23:42.108 [INFO]: Socket wzVuts1yaeX_Fz75AAAp joined room 69b511d7c04600bb4822040f (classroom 69b511d7c04600bb4822040f) as haiderwasi22630@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}

@@ -181,6 +181,25 @@ const AssignmentSchema = new Schema({
     type: Boolean,
     default: false
   },
+  is_assigned: {
+    type: Boolean,
+    default: false
+  },
+  assigned_to: {
+    type: String,
+    enum: ['all', 'specific'],
+    default: null,
+    sparse: true
+  },
+  assigned_date: {
+    type: Date,
+    sparse: true
+  },
+  assigned_by: {
+    type: String,
+    ref: 'User',
+    sparse: true
+  },
   created_by: {
     type: String,
     required: true,
@@ -199,6 +218,7 @@ const AssignmentSchema = new Schema({
 AssignmentSchema.index({ classroom_id: 1 });
 AssignmentSchema.index({ created_by: 1 });
 AssignmentSchema.index({ is_published: 1, due_date: 1 });
+AssignmentSchema.index({ is_assigned: 1, classroom_id: 1 });
 
 // Submission Model
 const SubmissionSchema = new Schema({

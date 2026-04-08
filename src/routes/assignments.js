@@ -379,4 +379,124 @@ router.delete('/:id',
   })
 );
 
+/**
+ * POST /api/assignments/:id/assign-to-class
+ * Assign assignment to all students in a classroom (faculty only)
+ */
+router.post('/:id/assign-to-class',
+  validateParams({ id: schemas.objectId }),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const assignmentId = req.params.id;
+
+      // Get the assignment
+      const assignment = await Assignment.findById(assignmentId);
+      if (!assignment) {
+        return res.status(404).json({
+          error: 'Assignment not found'
+        });
+      }
+
+      // Get the classroom
+      const classroom = await Classroom.findById(assignment.classroom_id);
+      if (!classroom) {
+        return res.status(404).json({
+          error: 'Classroom not found'
+        });
+      }
+
+      // Check permissions - only faculty or admin can assign
+      if (classroom.faculty_email !== user.email && user.role !== 'admin') {
+        return res.status(403).json({
+          error: 'Only faculty can assign assignments to students'
+        });
+      }
+
+      // Update assignment to mark as assigned to all students
+      assignment.assigned_to = 'all'; // Mark as assigned to all students in classroom
+      assignment.is_assigned = true;
+      assignment.assigned_date = new Date();
+      assignment.assigned_by = user.email;
+
+      const updatedAssignment = await assignment.save();
+
+      logger.info(`Assignment ${assignment.title} assigned to all students in classroom ${classroom.name} by ${user.email}`);
+
+      res.json({
+        success: true,
+        assignment: serializeAssignment(updatedAssignment),
+        message: `Assignment "${assignment.title}" has been assigned to all ${classroom.student_emails?.length || 0} students in the classroom`,
+        students_count: classroom.student_emails?.length || 0
+      });
+
+    } catch (error) {
+      logger.error('Assign assignment error:', error);
+      res.status(500).json({
+        error: 'Failed to assign assignment',
+        message: error.message
+      });
+    }
+  })
+);
+
+/**
+ * GET /api/assignments/classroom/:classroomId/assigned
+ * Get assignments assigned to current student in a classroom
+ */
+router.get('/classroom/:classroomId/assigned',
+  validateParams({ classroomId: schemas.objectId }),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const classroomId = req.params.classroomId;
+
+      // Verify classroom access
+      const classroom = await Classroom.findById(classroomId).lean();
+      if (!classroom) {
+        return res.status(404).json({
+          error: 'Classroom not found'
+        });
+      }
+
+      const hasAccess = 
+        classroom.faculty_email === user.email ||
+        classroom.student_emails.includes(user.email) ||
+        user.role === 'admin';
+
+      if (!hasAccess) {
+        return res.status(403).json({
+          error: 'Access denied to this classroom'
+        });
+      }
+
+      // Get assigned assignments for this classroom
+      const assignments = await Assignment.find({
+        classroom_id: classroomId,
+        is_assigned: true,
+        is_published: true
+      })
+        .sort({ assigned_date: -1 })
+        .lean();
+
+      const serializedAssignments = assignments.map((assignment) => ({
+        ...assignment,
+        id: assignment._id?.toString()
+      }));
+
+      res.json({
+        success: true,
+        assignments: serializedAssignments
+      });
+
+    } catch (error) {
+      logger.error('Get assigned assignments error:', error);
+      res.status(500).json({
+        error: 'Failed to fetch assigned assignments',
+        message: error.message
+      });
+    }
+  })
+);
+
 export default router;

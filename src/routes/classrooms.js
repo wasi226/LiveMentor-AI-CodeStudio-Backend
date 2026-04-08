@@ -7,6 +7,7 @@ import express from 'express';
 import { Classroom, User, StudentActivity, InterventionRoom } from '../models/index.js';
 import { validateBody, validateParams, classroomSchemas, schemas } from '../middleware/validation.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
+import { getSocketIOServer } from '../services/socketio.js';
 import logger from '../utils/logger.js';
 
 const router = express.Router();
@@ -267,6 +268,104 @@ router.post('/join',
       logger.error(`Join classroom error: ${error.message}`);
       res.status(500).json({
         error: 'Failed to join classroom',
+        message: error.message
+      });
+    }
+  })
+);
+
+/**
+ * POST /api/classrooms/:id/students/remove
+ * Remove a student from a classroom (faculty/admin only)
+ */
+router.post('/:id/students/remove',
+  validateParams({ id: schemas.objectId }),
+  validateBody(classroomSchemas.removeStudent),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const classroom = await Classroom.findById(req.params.id);
+      const studentEmail = String(req.body.student_email || '').trim().toLowerCase();
+
+      if (!classroom) {
+        return res.status(404).json({
+          error: 'Classroom not found'
+        });
+      }
+
+      if (classroom.faculty_email !== user.email && user.role !== 'admin') {
+        return res.status(403).json({
+          error: 'Only the classroom creator can remove students'
+        });
+      }
+
+      const isEnrolled = (classroom.student_emails || []).includes(studentEmail);
+      if (!isEnrolled) {
+        return res.status(404).json({
+          error: 'Student is not enrolled in this classroom'
+        });
+      }
+
+      const updatedClassroom = await Classroom.findByIdAndUpdate(
+        classroom._id,
+        {
+          $pull: { student_emails: studentEmail }
+        },
+        { new: true }
+      );
+
+      const io = getSocketIOServer();
+      if (io) {
+        io.sockets.sockets.forEach((activeSocket) => {
+          const isRemovedStudent = activeSocket.user?.email === studentEmail;
+          const inSameClassroom = String(activeSocket.data?.classroomId || '') === String(classroom._id);
+
+          if (isRemovedStudent && inSameClassroom) {
+            activeSocket.emit('collaboration:error', {
+              message: 'You were removed from this classroom by faculty.'
+            });
+
+            activeSocket.emit('collaboration:removed', {
+              classroomId: String(classroom._id),
+              removedBy: user.email,
+              timestamp: Date.now()
+            });
+
+            activeSocket.disconnect(true);
+          }
+        });
+      }
+
+      await InterventionRoom.updateMany(
+        {
+          classroom_id: classroom._id,
+          student_email: studentEmail,
+          status: 'active'
+        },
+        {
+          $set: {
+            status: 'closed',
+            ended_at: new Date(),
+            ended_by: user.email,
+            ended_reason: 'student_removed'
+          }
+        }
+      );
+
+      const serializedClassroom = serializeClassroom(updatedClassroom);
+      const [classroomWithDetails] = await attachStudentDetails([serializedClassroom]);
+
+      res.json({
+        success: true,
+        classroom: classroomWithDetails,
+        message: `${studentEmail} was removed from classroom`
+      });
+
+      logger.info(`Faculty ${user.email} removed ${studentEmail} from classroom ${classroom._id}`);
+    } catch (error) {
+      logger.error(`Remove student from classroom error: ${error.message}`);
+      res.status(500).json({
+        error: 'Failed to remove student from classroom',
         message: error.message
       });
     }
