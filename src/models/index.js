@@ -178,6 +178,10 @@ const AssignmentSchema = new Schema({
     type: Boolean,
     default: false
   },
+  auto_grade: {
+    type: Boolean,
+    default: true
+  },
   is_assigned: {
     type: Boolean,
     default: false

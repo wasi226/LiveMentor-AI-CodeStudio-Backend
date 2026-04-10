@@ -9,6 +9,7 @@ import { validateBody, validateQuery, validateParams, schemas } from '../middlew
 import { asyncHandler } from '../middleware/errorHandler.js';
 import logger from '../utils/logger.js';
 import Joi from 'joi';
+import { executeCode } from '../services/codeExecution.js';
 
 const router = express.Router();
 
@@ -28,6 +29,46 @@ const emitSubmissionEvent = (eventName, submission) => {
     createdAt: submission.created_at || submission.createdAt || new Date().toISOString(),
     updatedAt: submission.updated_at || submission.updatedAt || new Date().toISOString()
   });
+};
+
+const normalizeTestCases = (testCases = []) => {
+  return testCases.map((testCase) => ({
+    input: testCase.input || '',
+    expectedOutput: testCase.expected_output || testCase.expectedOutput || '',
+    description: testCase.description || '',
+    weight: Number(testCase.weight) || 1
+  }));
+};
+
+const gradeSubmission = async ({ code, language, assignment }) => {
+  const testCases = normalizeTestCases(assignment?.test_cases || []);
+  const executionResult = await executeCode({
+    code,
+    language,
+    testCases
+  });
+
+  const hasTestCases = testCases.length > 0;
+  const maxScore = Number(assignment?.max_score) || 100;
+  let score = 0;
+
+  if (hasTestCases) {
+    const percentageScore = Number(executionResult.score) || 0;
+    score = Math.max(0, Math.min(maxScore, Math.round((percentageScore * maxScore) / 100)));
+  } else {
+    score = executionResult.success ? maxScore : 0;
+  }
+
+  return {
+    score,
+    status: 'graded',
+    test_results: executionResult.testResults || [],
+    execution_time: executionResult.executionTime || 0,
+    memory_used: executionResult.memoryUsage || 0,
+    feedback: executionResult.error || executionResult.output || '',
+    graded_at: new Date(),
+    graded_by: 'system'
+  };
 };
 
 // Submission validation schemas
@@ -371,9 +412,33 @@ router.post('/:id/submit',
         });
       }
 
-      submission.status = assignment.auto_grade ? 'grading' : 'submitted';
+      const shouldAutoGrade = assignment.auto_grade !== false || (assignment.test_cases || []).length > 0;
+      let gradingResult = null;
+
+      if (shouldAutoGrade) {
+        gradingResult = await gradeSubmission({
+          code: submission.code,
+          language: submission.language,
+          assignment
+        });
+      }
+
+      submission.status = shouldAutoGrade ? 'grading' : 'submitted';
       submission.submitted_at = new Date();
       submission.updated_at = new Date();
+
+      if (gradingResult) {
+        submission.status = gradingResult.status;
+        submission.score = gradingResult.score;
+        submission.max_score = Number(assignment.max_score) || submission.max_score || 100;
+        submission.test_results = gradingResult.test_results;
+        submission.execution_time = gradingResult.execution_time;
+        submission.memory_used = gradingResult.memory_used;
+        submission.feedback = gradingResult.feedback;
+        submission.graded_at = gradingResult.graded_at;
+        submission.graded_by = gradingResult.graded_by;
+      }
+
       await submission.save();
 
       const updatedSubmission = {
@@ -389,9 +454,8 @@ router.post('/:id/submit',
 
       emitSubmissionEvent('submission:updated', updatedSubmission);
 
-      if (assignment.auto_grade) {
-        logger.info(`Auto-grading triggered for submission ${req.params.id}`);
-        // This would integrate with the code execution service
+      if (gradingResult) {
+        logger.info(`Auto-grading completed for submission ${req.params.id} with score ${gradingResult.score}`);
       }
 
     } catch (error) {

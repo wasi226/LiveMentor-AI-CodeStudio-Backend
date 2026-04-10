@@ -189,6 +189,7 @@ router.post('/',
         memory_limit: req.body.memory_limit,
         due_date: req.body.due_date,
         is_published: true,
+        auto_grade: req.body.auto_grade,
         created_by: user.email,
         metadata: {
           auto_grade: req.body.auto_grade
