@@ -6,7 +6,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { userService } from '../services/userService.js';
+import { userService, isMongoDBConnected } from '../services/userService.js';
 import logger from '../utils/logger.js';
 
 const router = express.Router();
@@ -18,6 +18,14 @@ const getJwtSecret = () => process.env.JWT_SECRET || 'your-jwt-secret-key-change
  */
 router.post('/register', async (req, res) => {
   try {
+    if (!isMongoDBConnected()) {
+      return res.status(503).json({
+        success: false,
+        error: 'Service unavailable',
+        message: 'Authentication database is not connected. Please try again after MongoDB is available.'
+      });
+    }
+
     const { email, password, fullName, role = 'student', rollNumber } = req.body;
     const normalizedEmail = String(email || '').trim().toLowerCase();
 
@@ -102,8 +110,17 @@ router.post('/register', async (req, res) => {
  */
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    if (!isMongoDBConnected()) {
+      return res.status(503).json({
+        success: false,
+        error: 'Service unavailable',
+        message: 'Authentication database is not connected. Please try again after MongoDB is available.'
+      });
+    }
+
+    const { email, password, role } = req.body;
     const normalizedEmail = String(email || '').trim().toLowerCase();
+    const requestedRole = role ? String(role).trim().toLowerCase() : null;
 
     if (!normalizedEmail || !password) {
       return res.status(400).json({
@@ -130,6 +147,16 @@ router.post('/login', async (req, res) => {
         success: false,
         error: 'Authentication failed',
         message: 'Invalid email or password'
+      });
+    }
+
+    // Enforce role-based login when a role is explicitly requested by client.
+    // Admin can log in from any selected role view.
+    if (requestedRole && user.role !== 'admin' && requestedRole !== user.role) {
+      return res.status(403).json({
+        success: false,
+        error: 'Role mismatch',
+        message: `This account is registered as ${user.role}. Please login as ${user.role}.`
       });
     }
 
@@ -180,9 +207,17 @@ router.post('/login', async (req, res) => {
  */
 router.get('/me', async (req, res) => {
   try {
+    if (!isMongoDBConnected()) {
+      return res.status(503).json({
+        success: false,
+        error: 'Service unavailable',
+        message: 'Authentication database is not connected. Please try again after MongoDB is available.'
+      });
+    }
+
     const authHeader = req.headers.authorization;
     
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    if (!authHeader?.startsWith('Bearer ')) {
       return res.status(401).json({
         success: false,
         error: 'Unauthorized',

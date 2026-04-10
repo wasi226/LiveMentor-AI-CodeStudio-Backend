@@ -23,6 +23,7 @@ import codeRoutes from './routes/code.js';
 import analyticsRoutes from './routes/analytics.js';
 import healthRoutes from './routes/health.js';
 import debugRoutes from './routes/debug.js';
+import adminRoutes from './routes/admin.js';
 
 // Import middleware
 import errorHandler from './middleware/errorHandler.js';
@@ -101,6 +102,7 @@ app.use('/api/submissions', authMiddleware, submissionRoutes);
 app.use('/api/chat', authMiddleware, chatRoutes);
 app.use('/api/code', authMiddleware, codeRoutes);
 app.use('/api/analytics', authMiddleware, analyticsRoutes);
+app.use('/api/admin', authMiddleware, adminRoutes);
 app.use('/api/debug', debugRoutes); // Debug endpoints for development
 
 // Default route
@@ -121,6 +123,7 @@ app.get('/', (req, res) => {
       chat: '/api/chat',
       code: '/api/code',
       analytics: '/api/analytics',
+      admin: '/api/admin',
       debug: '/api/debug' // Development only
     },
     database: {
