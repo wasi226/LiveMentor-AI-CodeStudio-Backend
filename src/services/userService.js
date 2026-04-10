@@ -20,22 +20,12 @@ export const setMongoDBAvailable = (available) => {
   isMongoDBAvailable = available;
 };
 
-// Initialize with default admin user for memory fallback
+// In-memory storage is only a transient fallback when MongoDB is unavailable
 export const initializeMemoryStorage = () => {
   if (!isMongoDBConnected()) {
     logger.info('Initializing in-memory user storage...');
-    // Add default admin user for testing
-    memoryUsers.set('admin@livementor.com', {
-      id: 'admin-001',
-      email: 'admin@livementor.com',
-      password: '$2b$10$rQqW9J8TjOEjq1YKl.IIi.TBSqHVE4d9TI0tGLCHE0eJ5E5GK7Ly2', // "admin123"
-      full_name: 'Admin User',
-      role: 'admin',
-      createdAt: new Date()
-    });
-    logger.info('✅ Default admin user created in memory');
-    logger.info('   Email: admin@livementor.com');
-    logger.info('   Password: admin123');
+    memoryUsers.clear();
+    logger.info('✅ In-memory user storage cleared');
   }
 };
 
@@ -46,8 +36,7 @@ export const userService = {
       if (isMongoDBConnected()) {
         return await User.findOne({ email: email.toLowerCase() });
       } else {
-        const user = memoryUsers.get(email.toLowerCase());
-        return user || null;
+        return memoryUsers.get(email.toLowerCase()) || null;
       }
     } catch (error) {
       logger.error('FindByEmail error:', error);
@@ -65,9 +54,10 @@ export const userService = {
         return await user.save();
       } else {
         // In-memory storage
+        const randomSuffix = Math.random().toString(36).slice(2, 11);
         const user = {
-          _id: `user-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-          id: `user-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          _id: `user-${Date.now()}-${randomSuffix}`,
+          id: `user-${Date.now()}-${randomSuffix}`,
           ...userData,
           email: userData.email.toLowerCase(),
           createdAt: new Date(),
@@ -120,6 +110,10 @@ export const userService = {
         const query = excludePassword ? { password: 0 } : {};
         return await User.find({}, query).limit(20);
       } else {
+        if (memoryUsers.size === 0) {
+          return [];
+        }
+
         const users = Array.from(memoryUsers.values()).slice(0, 20);
         if (excludePassword) {
           return users.map(user => {
