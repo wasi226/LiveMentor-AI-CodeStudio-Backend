@@ -217,7 +217,15 @@ export const classroomSchemas = {
   }),
 
   join: Joi.object({
-    code: schemas.classroomCode.required()
+    code: Joi.string().custom((value, helpers) => {
+      const normalized = String(value || '').trim().replaceAll(/\s+/g, '').toUpperCase();
+
+      if (!/^[A-Z0-9]{6}$/.test(normalized)) {
+        return helpers.message('Invalid classroom code');
+      }
+
+      return normalized;
+    }).required()
   }),
 
   removeStudent: Joi.object({

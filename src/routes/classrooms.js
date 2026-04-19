@@ -4,6 +4,7 @@
  */
 
 import express from 'express';
+import Joi from 'joi';
 import { Classroom, User, StudentActivity, InterventionRoom } from '../models/index.js';
 import { validateBody, validateParams, classroomSchemas, schemas } from '../middleware/validation.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
@@ -65,6 +66,70 @@ const hasClassroomAccess = (classroom, user) => {
     classroom.faculty_email === user.email ||
     classroom.student_emails.includes(user.email)
   );
+};
+
+const getCodeStateScope = ({ user, requestedScope }) => {
+  if (requestedScope === 'shared') {
+    return 'shared';
+  }
+
+  if (requestedScope === 'personal') {
+    return 'personal';
+  }
+
+  return user.role === 'faculty' || user.role === 'admin' ? 'shared' : 'personal';
+};
+
+const normalizeCodeState = (state, fallbackLanguage = 'javascript') => {
+  if (!state || typeof state !== 'object') {
+    return null;
+  }
+
+  const code = typeof state.code === 'string' ? state.code : '';
+  const language = typeof state.language === 'string' && state.language.trim()
+    ? state.language
+    : fallbackLanguage;
+
+  return {
+    code,
+    language,
+    updated_at: state.updated_at || null,
+    updated_by: state.updated_by || null
+  };
+};
+
+const getPersonalCodeState = (metadata, email, fallbackLanguage) => {
+  const items = Array.isArray(metadata?.user_code_states) ? metadata.user_code_states : [];
+  const found = items.find((entry) => String(entry?.email || '').toLowerCase() === String(email || '').toLowerCase());
+  return normalizeCodeState(found, fallbackLanguage);
+};
+
+const setPersonalCodeState = (metadata, email, nextState) => {
+  const items = Array.isArray(metadata?.user_code_states) ? [...metadata.user_code_states] : [];
+  const index = items.findIndex((entry) => String(entry?.email || '').toLowerCase() === String(email || '').toLowerCase());
+  const nextEntry = {
+    email,
+    code: nextState.code,
+    language: nextState.language,
+    updated_at: nextState.updated_at,
+    updated_by: nextState.updated_by
+  };
+
+  if (index >= 0) {
+    items[index] = nextEntry;
+  } else {
+    items.push(nextEntry);
+  }
+
+  if (metadata && typeof metadata === 'object') {
+    const updatedMetadata = { ...metadata };
+    updatedMetadata.user_code_states = items;
+    return updatedMetadata;
+  }
+
+  return {
+    user_code_states: items
+  };
 };
 
 /**
@@ -194,6 +259,118 @@ router.get('/:id',
 );
 
 /**
+ * GET /api/classrooms/:id/code-state
+ * Get persistent classroom code state (shared for faculty/admin, personal for student by default)
+ */
+router.get('/:id/code-state',
+  validateParams({ id: schemas.objectId }),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const requestedScope = String(req.query.scope || '').toLowerCase();
+      const classroom = await Classroom.findById(req.params.id);
+
+      if (!classroom) {
+        return res.status(404).json({ error: 'Classroom not found' });
+      }
+
+      if (!hasClassroomAccess(classroom, user)) {
+        return res.status(403).json({ error: 'Access denied to this classroom' });
+      }
+
+      const scope = getCodeStateScope({ user, requestedScope });
+
+      const fallbackLanguage = classroom.language || 'javascript';
+      const metadata = classroom.metadata || {};
+      const state = scope === 'shared'
+        ? normalizeCodeState(metadata.shared_code_state, fallbackLanguage)
+        : getPersonalCodeState(metadata, user.email, fallbackLanguage);
+
+      return res.json({
+        success: true,
+        scope,
+        state
+      });
+    } catch (error) {
+      logger.error(`Get classroom code-state error: ${error.message}`);
+      return res.status(500).json({
+        error: 'Failed to load code state',
+        message: error.message
+      });
+    }
+  })
+);
+
+/**
+ * PUT /api/classrooms/:id/code-state
+ * Persist classroom code state. Faculty/admin can write shared state; any participant can write personal state.
+ */
+router.put('/:id/code-state',
+  validateParams({ id: schemas.objectId }),
+  validateBody(Joi.object({
+    code: Joi.string().max(500000).allow('').required(),
+    language: schemas.language.required(),
+    scope: Joi.string().valid('shared', 'personal').optional()
+  })),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const classroom = await Classroom.findById(req.params.id);
+
+      if (!classroom) {
+        return res.status(404).json({ error: 'Classroom not found' });
+      }
+
+      if (!hasClassroomAccess(classroom, user)) {
+        return res.status(403).json({ error: 'Access denied to this classroom' });
+      }
+
+      const requestedScope = String(req.body.scope || '').toLowerCase();
+      const scope = getCodeStateScope({ user, requestedScope });
+      const isFacultyOrAdmin = user.role === 'faculty' || user.role === 'admin';
+
+      if (scope === 'shared' && !isFacultyOrAdmin) {
+        return res.status(403).json({ error: 'Only faculty can update shared classroom code state' });
+      }
+
+      const nowIso = new Date().toISOString();
+      const nextState = {
+        code: String(req.body.code || ''),
+        language: String(req.body.language || classroom.language || 'javascript').toLowerCase(),
+        updated_at: nowIso,
+        updated_by: user.email
+      };
+
+      if (scope === 'shared') {
+        if (classroom.metadata && typeof classroom.metadata === 'object') {
+          classroom.metadata.shared_code_state = nextState;
+        } else {
+          classroom.metadata = {
+            shared_code_state: nextState
+          };
+        }
+      } else {
+        classroom.metadata = setPersonalCodeState(classroom.metadata, user.email, nextState);
+      }
+
+      await classroom.save();
+
+      return res.json({
+        success: true,
+        scope,
+        state: nextState
+      });
+    } catch (error) {
+      logger.error(`Update classroom code-state error: ${error.message}`);
+      return res.status(500).json({
+        error: 'Failed to save code state',
+        message: error.message
+      });
+    }
+  })
+);
+
+/**
  * POST /api/classrooms/join
  * Join a classroom using invite code
  */
@@ -202,12 +379,13 @@ router.post('/join',
   asyncHandler(async (req, res) => {
     try {
       const user = req.user;
-      const { code } = req.body;
+      const code = String(req.body.code || '').trim().split(/\s+/).join('').toUpperCase();
       const normalizedUserEmail = String(user.email || '').trim().toLowerCase();
 
-      const classroom = await Classroom.findOne({ code: code.toUpperCase() });
+      const classroom = await Classroom.findOne({ code });
 
       if (!classroom) {
+        logger.warn(`Join classroom failed: no classroom found for code ${code} requested by ${normalizedUserEmail}`);
         return res.status(404).json({
           error: 'Invalid classroom code'
         });
@@ -481,6 +659,8 @@ router.post('/:id/interventions',
     try {
       const user = req.user;
       const classroom = await Classroom.findById(req.params.id);
+      const requesterEmail = String(user?.email || '').trim().toLowerCase();
+      const facultyEmail = String(classroom?.faculty_email || '').trim().toLowerCase();
       const studentEmail = String(req.body?.student_email || '').trim().toLowerCase();
 
       if (!classroom) {
@@ -489,7 +669,7 @@ router.post('/:id/interventions',
         });
       }
 
-      if (classroom.faculty_email !== user.email && user.role !== 'admin') {
+      if (facultyEmail !== requesterEmail && user.role !== 'admin') {
         return res.status(403).json({
           error: 'Only the classroom faculty can create intervention rooms'
         });
@@ -501,7 +681,11 @@ router.post('/:id/interventions',
         });
       }
 
-      if (!classroom.student_emails.includes(studentEmail)) {
+      const isEnrolledStudent = (classroom.student_emails || []).some(
+        (email) => String(email || '').trim().toLowerCase() === studentEmail
+      );
+
+      if (!isEnrolledStudent) {
         return res.status(400).json({
           error: 'Student is not enrolled in this classroom'
         });
@@ -527,7 +711,10 @@ router.post('/:id/interventions',
         });
       }
 
-      const roomId = `intervention_${classroom._id}_${studentEmail.replaceAll(/[^a-z0-9]/gi, '_')}_${Date.now()}`;
+      const sanitizedStudentEmail = Array.from(studentEmail).map((char) => (
+        /[a-z0-9]/i.test(char) ? char : '_'
+      )).join('');
+      const roomId = `intervention_${classroom._id}_${sanitizedStudentEmail}_${Date.now()}`;
 
       const room = await InterventionRoom.create({
         room_id: roomId,
@@ -568,8 +755,10 @@ router.get('/:id/interventions/active',
   asyncHandler(async (req, res) => {
     try {
       const user = req.user;
-      const requestedStudentEmail = String(req.query?.student_email || '').trim().toLowerCase();
       const classroom = await Classroom.findById(req.params.id);
+      const requesterEmail = String(user?.email || '').trim().toLowerCase();
+      const facultyEmail = String(classroom?.faculty_email || '').trim().toLowerCase();
+      const requestedStudentEmail = String(req.query?.student_email || '').trim().toLowerCase();
 
       if (!classroom) {
         return res.status(404).json({
@@ -579,8 +768,10 @@ router.get('/:id/interventions/active',
 
       const hasAccess =
         user.role === 'admin' ||
-        classroom.faculty_email === user.email ||
-        classroom.student_emails.includes(user.email);
+        facultyEmail === requesterEmail ||
+        (classroom.student_emails || []).some(
+          (email) => String(email || '').trim().toLowerCase() === requesterEmail
+        );
 
       if (!hasAccess) {
         return res.status(403).json({
@@ -594,7 +785,7 @@ router.get('/:id/interventions/active',
       };
 
       if (user.role === 'faculty') {
-        query.faculty_email = user.email;
+        query.faculty_email = classroom.faculty_email;
 
         if (requestedStudentEmail) {
           query.student_email = requestedStudentEmail;
@@ -602,7 +793,7 @@ router.get('/:id/interventions/active',
       }
 
       if (user.role === 'student') {
-        query.student_email = user.email;
+        query.student_email = requesterEmail;
       }
 
       const activeRoom = await InterventionRoom.findOne(query).sort({ createdAt: -1 }).lean();
@@ -634,7 +825,10 @@ router.get('/:id/interventions/active',
  * Close an active intervention room and notify connected participants
  */
 router.post('/:id/interventions/:roomId/close',
-  validateParams({ id: schemas.objectId }),
+  validateParams({
+    id: schemas.objectId,
+    roomId: Joi.string().min(1).required()
+  }),
   asyncHandler(async (req, res) => {
     try {
       const user = req.user;

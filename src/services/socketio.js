@@ -16,7 +16,7 @@ import logger from '../utils/logger.js';
 
 let io = null;
 
-// roomKey -> Map<socketId, user>
+// classroomId -> Map<socketId, user>
 const classroomPresence = new Map();
 const interactiveSessions = new Map();
 
@@ -373,15 +373,19 @@ const handleInteractiveStop = async (socket) => {
   await stopInteractiveSession(socket.id, 'stopped_by_user');
 };
 
-const emitPresence = (roomKey) => {
+const emitPresence = (classroomId) => {
   if (!io) {
     return;
   }
 
-  const participants = Array.from((classroomPresence.get(roomKey) || new Map()).values());
+  if (!classroomId) {
+    return;
+  }
 
-  io.to(roomKey).emit('collaboration:presence', {
-    roomKey,
+  const participants = Array.from((classroomPresence.get(classroomId) || new Map()).values());
+
+  io.to(classroomId).emit('collaboration:presence', {
+    roomKey: classroomId,
     participants,
     totalParticipants: participants.length,
     timestamp: Date.now()
@@ -434,27 +438,32 @@ const persistActivity = async (payload) => {
 };
 
 const removeSocketFromClassroom = (socket, reason = 'left') => {
+  const classroomId = socket.data.classroomId;
   const roomKey = socket.data.roomKey;
-  if (!roomKey) {
+
+  if (!classroomId) {
     return;
   }
 
-  const roomPresence = classroomPresence.get(roomKey);
+  const roomPresence = classroomPresence.get(classroomId);
   const participant = roomPresence?.get(socket.id);
 
   if (roomPresence) {
     roomPresence.delete(socket.id);
 
     if (roomPresence.size === 0) {
-      classroomPresence.delete(roomKey);
+      classroomPresence.delete(classroomId);
     }
   }
 
-  socket.leave(roomKey);
+  if (roomKey && roomKey !== classroomId) {
+    socket.leave(roomKey);
+  }
+  socket.leave(classroomId);
 
   if (participant) {
     socket.to(roomKey).emit('collaboration:event', buildCollaborationPayload({
-      classroomId: socket.data.classroomId,
+      classroomId,
       eventType: 'user_leave',
       user: participant,
       data: {
@@ -463,7 +472,7 @@ const removeSocketFromClassroom = (socket, reason = 'left') => {
     }));
   }
 
-  emitPresence(roomKey);
+  emitPresence(classroomId);
   socket.data.roomKey = null;
   socket.data.classroomId = null;
   socket.data.isPrivateRoom = false;
@@ -535,17 +544,21 @@ const handleJoinClassroom = async (socket, payload = {}) => {
     removeSocketFromClassroom(socket, 'switched_classroom');
   }
 
-  socket.join(roomKey);
+  socket.join(classroomId);
+  if (isPrivateRoom && roomKey !== classroomId) {
+    socket.join(roomKey);
+  }
+
   socket.data.classroomId = classroomId;
   socket.data.roomKey = roomKey;
   socket.data.isPrivateRoom = isPrivateRoom;
   socket.data.interventionRoomId = isPrivateRoom ? roomId : null;
 
-  if (!classroomPresence.has(roomKey)) {
-    classroomPresence.set(roomKey, new Map());
+  if (!classroomPresence.has(classroomId)) {
+    classroomPresence.set(classroomId, new Map());
   }
 
-  const roomPresence = classroomPresence.get(roomKey);
+  const roomPresence = classroomPresence.get(classroomId);
   const participant = {
     ...socket.user,
     socketId: socket.id,
@@ -573,7 +586,7 @@ const handleJoinClassroom = async (socket, payload = {}) => {
     }
   }));
 
-  emitPresence(roomKey);
+  emitPresence(classroomId);
 
   logger.info(`Socket ${socket.id} joined room ${roomKey} (classroom ${classroomId}) as ${participant.email}`);
 };

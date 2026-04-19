@@ -1,4 +1,8 @@
-const DEFAULT_ALLOWED_ORIGINS = ['http://localhost:5173'];
+const DEFAULT_ALLOWED_ORIGINS = [
+  'http://localhost:5173',
+  'https://live-mentor.vercel.app',
+  'https://*.vercel.app'
+];
 
 const normalizeOriginValue = (value) => {
   if (typeof value !== 'string') {
@@ -48,7 +52,12 @@ export const parseCorsOrigins = (rawValue, fallback = DEFAULT_ALLOWED_ORIGINS) =
     .map((entry) => normalizeOriginValue(String(entry)))
     .filter(Boolean);
 
-  const uniqueOrigins = Array.from(new Set(origins));
+  // Keep fallback origins active (localhost + stable preview patterns)
+  // and merge with explicitly configured origins.
+  const uniqueOrigins = Array.from(new Set([
+    ...fallback.map((entry) => normalizeOriginValue(String(entry))).filter(Boolean),
+    ...origins
+  ]));
 
   return uniqueOrigins.length ? uniqueOrigins : [...fallback];
 };
