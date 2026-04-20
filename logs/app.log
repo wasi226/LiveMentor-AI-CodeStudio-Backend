@@ -45729,3 +45729,279 @@ TypeError: schema.validate is not a function
   "environment": "development",
   "version": "1.0.0"
 }
+2026-04-20 12:20:47.750 [INFO]: Logger initialized
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "logsDirectory": "C:\\Users\\wasi haider\\OneDrive\\Desktop\\Major project 2\\liveMentor AI CodeStudio\\Backend\\logs",
+  "transports": [
+    "Console",
+    "File",
+    "File"
+  ]
+}
+2026-04-20 12:20:48.327 [WARN]: Base44 credentials not provided, using mock client
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.329 [INFO]: Using mock Base44 client for development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.337 [INFO]: Using Base44 client for backend services
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.354 [INFO]: 🚀 liveMentor Backend server running on port 3001
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.355 [INFO]: 📊 Environment: development
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.355 [INFO]: 🔗 CORS enabled for: http://localhost:5173, https://live-mentor.vercel.app, https://*.vercel.app
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.356 [INFO]: Initializing MongoDB and services...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.357 [INFO]: Connecting to MongoDB...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.357 [INFO]: MongoDB URI: mongodb://localhost:27017/livementor_db
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.467 [INFO]: ✅ MongoDB connected successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.467 [INFO]: Initializing database...
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.468 [INFO]: MongoDB is connected - using persistent storage
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.468 [INFO]: ✅ Database initialization completed
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.469 [INFO]: Database initialized with MongoDB
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.472 [INFO]: Socket.IO server started on path: /socket.io
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.473 [INFO]: Socket.IO server started
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:20:48.474 [INFO]: ✅ All services initialized successfully
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:29.861 [INFO]: User logged in: kumarreetik1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:29.863 [INFO]: ::1 - - [20/Apr/2026:06:51:29 +0000] "POST /api/auth/login HTTP/1.1" 200 525 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:29.988 [INFO]: ::1 - - [20/Apr/2026:06:51:29 +0000] "GET /api/classrooms HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:30.040 [INFO]: ::1 - - [20/Apr/2026:06:51:30 +0000] "GET /api/submissions?limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:30.067 [INFO]: ::1 - - [20/Apr/2026:06:51:30 +0000] "GET /api/assignments/classroom/69e3382a5046c84b14e9f3ea/assigned?limit=100 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:30.081 [INFO]: Socket connected: rUsUMYY10TKwK_MJAAAB (kumarreetik1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:30.099 [INFO]: Socket rUsUMYY10TKwK_MJAAAB joined room 69e3382a5046c84b14e9f3ea (classroom 69e3382a5046c84b14e9f3ea) as kumarreetik1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.115 [INFO]: ::1 - - [20/Apr/2026:06:51:32 +0000] "GET /api/chat/messages?classroom_id=69e3382a5046c84b14e9f3ea&limit=100 HTTP/1.1" 404 31 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.144 [INFO]: Socket disconnected: rUsUMYY10TKwK_MJAAAB (kumarreetik1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.157 [INFO]: ::1 - - [20/Apr/2026:06:51:32 +0000] "GET /api/classrooms/69e3382a5046c84b14e9f3ea/code-state?scope=personal HTTP/1.1" 200 342 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.170 [INFO]: ::1 - - [20/Apr/2026:06:51:32 +0000] "GET /api/submissions?classroom_id=69e3382a5046c84b14e9f3ea&limit=200&sort=desc&sortBy=createdAt HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.178 [INFO]: ::1 - - [20/Apr/2026:06:51:32 +0000] "GET /api/classrooms/69e3382a5046c84b14e9f3ea/interventions/active HTTP/1.1" 200 263 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.181 [INFO]: ::1 - - [20/Apr/2026:06:51:32 +0000] "GET /api/classrooms/69e3382a5046c84b14e9f3ea HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.188 [INFO]: Socket connected: uHDiDoN9izl3f9QOAAAD (kumarreetik1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.192 [INFO]: ::1 - - [20/Apr/2026:06:51:32 +0000] "GET /api/assignments?classroom_id=69e3382a5046c84b14e9f3ea&limit=1&sort=desc&sortBy=createdAt HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.204 [INFO]: Socket uHDiDoN9izl3f9QOAAAD joined room 69e3382a5046c84b14e9f3ea (classroom 69e3382a5046c84b14e9f3ea) as kumarreetik1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.308 [INFO]: Socket disconnected: uHDiDoN9izl3f9QOAAAD (kumarreetik1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.324 [INFO]: Socket connected: Fzasjw2fny7G2INiAAAF (kumarreetik1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:32.345 [INFO]: Socket Fzasjw2fny7G2INiAAAF joined room intervention_69e3382a5046c84b14e9f3ea_kumarreetik1999_gmail_com_1776619518421 (classroom 69e3382a5046c84b14e9f3ea) as kumarreetik1999@gmail.com
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:33.347 [INFO]: ::1 - - [20/Apr/2026:06:51:33 +0000] "PUT /api/classrooms/69e3382a5046c84b14e9f3ea/code-state HTTP/1.1" 200 342 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:35.708 [INFO]: Code execution request from kumarreetik1999@gmail.com for java
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:37.061 [WARN]: Piston authorization unavailable, using fallback execution service
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:37.061 [INFO]: Using local fallback execution service for java
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:38.423 [INFO]: Code execution completed for kumarreetik1999@gmail.com: success in 2712ms
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:38.425 [INFO]: ::1 - - [20/Apr/2026:06:51:38 +0000] "POST /api/code/execute HTTP/1.1" 200 362 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:21:46.120 [INFO]: Socket disconnected: Fzasjw2fny7G2INiAAAF (kumarreetik1999@gmail.com)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
+2026-04-20 12:34:18.202 [INFO]: Received SIGINT signal. Graceful shutdown initiated.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}
