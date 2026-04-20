@@ -32,10 +32,11 @@ const DEFAULT_COMPILE_TIMEOUT = 10000;
 const DEFAULT_RUN_TIMEOUT = 5000;
 const DEFAULT_RUN_MEMORY_LIMIT = 128 * 1024 * 1024;
 const DEFAULT_COMPILE_MEMORY_LIMIT = 256 * 1024 * 1024;
+const DEFAULT_PISTON_EXECUTE_URL = 'https://emkc.org/api/v2/piston/execute';
 
 function getExecutionConfig() {
   return {
-    apiUrl: normalizePistonApiUrl(process.env.PISTON_API_URL),
+    apiUrl: normalizePistonApiUrl(process.env.PISTON_API_URL || DEFAULT_PISTON_EXECUTE_URL),
     requestTimeout: parseInteger(process.env.PISTON_REQUEST_TIMEOUT, DEFAULT_REQUEST_TIMEOUT),
     compileTimeout: parseInteger(process.env.PISTON_COMPILE_TIMEOUT, DEFAULT_COMPILE_TIMEOUT),
     runTimeout: parseInteger(process.env.PISTON_RUN_TIMEOUT, DEFAULT_RUN_TIMEOUT),
@@ -136,17 +137,45 @@ export async function executeCode({
 
 async function executeSingleRun({ code, runtimeConfig, input, executionConfig }) {
   try {
+    const headers = buildPistonHeaders();
+    const requestUrl = `${executionConfig.apiUrl}/execute`;
+    const requestPayload = buildPistonPayload({ code, runtimeConfig, input, executionConfig });
+
+    console.log('[PISTON] Request:', {
+      url: requestUrl,
+      language: runtimeConfig.runtime,
+      version: runtimeConfig.version,
+      hasAuthorization: Boolean(headers.Authorization),
+      inputLength: String(input || '').length,
+      codeLength: String(code || '').length
+    });
+
     const response = await axios.post(
-      `${executionConfig.apiUrl}/execute`,
-      buildPistonPayload({ code, runtimeConfig, input, executionConfig }),
+      requestUrl,
+      requestPayload,
       {
-        headers: buildPistonHeaders(),
+        headers,
         timeout: executionConfig.requestTimeout
       }
     );
 
+    console.log('[PISTON] Response:', {
+      status: response.status,
+      language: response.data?.language,
+      version: response.data?.version,
+      hasCompileStage: Boolean(response.data?.compile),
+      hasRunStage: Boolean(response.data?.run)
+    });
+
     return formatPistonResponse(response.data);
   } catch (error) {
+    console.error('[PISTON] Error:', {
+      message: error.message,
+      code: error.code,
+      status: error.response?.status,
+      responseData: error.response?.data
+    });
+
     if (error.response?.status === 401 || error.response?.status === 403) {
       const authorizationError = new Error('Piston authorization failed');
       authorizationError.code = 'PISTON_AUTH';
@@ -242,15 +271,27 @@ function buildPistonHeaders() {
     'Content-Type': 'application/json'
   };
 
-  const token = process.env.PISTON_API_TOKEN;
+  const token = sanitizeToken(process.env.PISTON_API_TOKEN);
 
   if (token) {
-    const headerName = process.env.PISTON_API_AUTH_HEADER || 'Authorization';
-    const authScheme = process.env.PISTON_API_AUTH_SCHEME;
-    headers[headerName] = authScheme ? `${authScheme} ${token}` : token;
+    headers.Authorization = `Bearer ${token}`;
   }
 
   return headers;
+}
+
+function sanitizeToken(tokenValue) {
+  if (tokenValue === undefined || tokenValue === null) {
+    return '';
+  }
+
+  const trimmed = String(tokenValue).trim();
+
+  if (!trimmed || trimmed === '""' || trimmed === "''") {
+    return '';
+  }
+
+  return trimmed;
 }
 
 function formatPistonResponse(responseData) {
