@@ -422,6 +422,10 @@ function getPistonErrorMessage(error, executionConfig) {
     return `Piston request rejected: ${apiMessage}`;
   }
 
+  if (statusCode === 405) {
+    return `Piston API rejected the HTTP method for ${executionConfig?.apiUrl || 'configured URL'}. Ensure POST is used with the /execute endpoint.`;
+  }
+
   if (error.code === 'ECONNABORTED') {
     return 'Piston request timed out before the execution service responded.';
   }

@@ -108,6 +108,17 @@ router.post('/execute', validateBody(codeSchemas.execute), async (req, res) => {
   }
 });
 
+router.all('/execute', (req, res) => {
+  logger.warn(`Method not allowed on /api/code/execute: ${req.method}`);
+  res.set('Allow', 'POST');
+  return res.status(405).json({
+    success: false,
+    error: 'Method Not Allowed',
+    message: 'Use POST /api/code/execute with JSON body.',
+    allowedMethods: ['POST']
+  });
+});
+
 /**
  * @route POST /api/code/validate
  * @desc Validate code syntax and security
