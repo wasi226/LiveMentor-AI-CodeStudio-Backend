@@ -104,6 +104,17 @@ const getPersonalCodeState = (metadata, email, fallbackLanguage) => {
   return normalizeCodeState(found, fallbackLanguage);
 };
 
+const normalizeEmail = (value) => String(value || '').trim().toLowerCase();
+
+const isStudentEnrolled = (classroom, studentEmail) => {
+  const normalizedEmail = normalizeEmail(studentEmail);
+  if (!normalizedEmail) {
+    return false;
+  }
+
+  return (classroom.student_emails || []).some((email) => normalizeEmail(email) === normalizedEmail);
+};
+
 const setPersonalCodeState = (metadata, email, nextState) => {
   const items = Array.isArray(metadata?.user_code_states) ? [...metadata.user_code_states] : [];
   const index = items.findIndex((entry) => String(entry?.email || '').toLowerCase() === String(email || '').toLowerCase());
@@ -268,6 +279,7 @@ router.get('/:id/code-state',
     try {
       const user = req.user;
       const requestedScope = String(req.query.scope || '').toLowerCase();
+      const targetStudentEmail = normalizeEmail(req.query.targetStudentEmail || req.query.target_student_email);
       const classroom = await Classroom.findById(req.params.id);
 
       if (!classroom) {
@@ -279,17 +291,24 @@ router.get('/:id/code-state',
       }
 
       const scope = getCodeStateScope({ user, requestedScope });
+      const isFacultyOrAdmin = user.role === 'faculty' || user.role === 'admin';
 
       const fallbackLanguage = classroom.language || 'javascript';
       const metadata = classroom.metadata || {};
-      const state = scope === 'shared'
-        ? normalizeCodeState(metadata.shared_code_state, fallbackLanguage)
-        : getPersonalCodeState(metadata, user.email, fallbackLanguage);
+      const shouldUseTargetedStudentState = Boolean(targetStudentEmail && isFacultyOrAdmin && isStudentEnrolled(classroom, targetStudentEmail));
+      const effectiveScope = shouldUseTargetedStudentState ? 'personal' : scope;
+      const effectiveEmail = shouldUseTargetedStudentState ? targetStudentEmail : user.email;
+      const sharedState = normalizeCodeState(metadata.shared_code_state, fallbackLanguage);
+      const personalState = getPersonalCodeState(metadata, effectiveEmail, fallbackLanguage);
+      const state = effectiveScope === 'shared'
+        ? sharedState
+        : personalState || sharedState;
 
       return res.json({
         success: true,
-        scope,
-        state
+        scope: effectiveScope,
+        state,
+        targetStudentEmail: shouldUseTargetedStudentState ? targetStudentEmail : null
       });
     } catch (error) {
       logger.error(`Get classroom code-state error: ${error.message}`);
@@ -310,7 +329,8 @@ router.put('/:id/code-state',
   validateBody(Joi.object({
     code: Joi.string().max(500000).allow('').required(),
     language: schemas.language.required(),
-    scope: Joi.string().valid('shared', 'personal').optional()
+    scope: Joi.string().valid('shared', 'personal').optional(),
+    targetStudentEmail: schemas.email.optional()
   })),
   asyncHandler(async (req, res) => {
     try {
@@ -326,6 +346,7 @@ router.put('/:id/code-state',
       }
 
       const requestedScope = String(req.body.scope || '').toLowerCase();
+      const targetStudentEmail = normalizeEmail(req.body.targetStudentEmail);
       const scope = getCodeStateScope({ user, requestedScope });
       const isFacultyOrAdmin = user.role === 'faculty' || user.role === 'admin';
 
@@ -341,18 +362,42 @@ router.put('/:id/code-state',
         updated_by: user.email
       };
 
-      if (scope === 'shared') {
-        if (classroom.metadata && typeof classroom.metadata === 'object') {
-          classroom.metadata.shared_code_state = nextState;
-        } else {
-          classroom.metadata = {
-            shared_code_state: nextState
-          };
+      const shouldSaveTargetedStudentState = Boolean(targetStudentEmail);
+
+      if (shouldSaveTargetedStudentState) {
+        if (!isFacultyOrAdmin) {
+          return res.status(403).json({ error: 'Only faculty can update targeted student code state' });
         }
+
+        if (!isStudentEnrolled(classroom, targetStudentEmail)) {
+          return res.status(400).json({ error: 'targetStudentEmail is not enrolled in this classroom' });
+        }
+
+        classroom.metadata = setPersonalCodeState(classroom.metadata, targetStudentEmail, nextState);
+        await classroom.save();
+
+        return res.json({
+          success: true,
+          scope: 'personal',
+          state: nextState,
+          targetStudentEmail
+        });
+      }
+
+      if (scope === 'shared') {
+        const currentMetadata = classroom.metadata && typeof classroom.metadata === 'object'
+          ? classroom.metadata
+          : {};
+
+        classroom.metadata = {
+          ...currentMetadata,
+          shared_code_state: nextState
+        };
       } else {
         classroom.metadata = setPersonalCodeState(classroom.metadata, user.email, nextState);
       }
 
+      classroom.markModified('metadata');
       await classroom.save();
 
       return res.json({
@@ -699,6 +744,26 @@ router.post('/:id/interventions',
       }).sort({ createdAt: -1 });
 
       if (existingRoom) {
+        const socketServer = getSocketIOServer();
+        if (socketServer) {
+          socketServer.to(String(classroom._id)).emit('collaboration:event', {
+            id: `evt_${Date.now()}`,
+            classroom_id: classroom._id,
+            sender_email: user.email,
+            sender_name: user.full_name || user.name || user.email,
+            type: 'intervention_opened',
+            metadata: {
+              room_id: existingRoom.room_id,
+              student_email: existingRoom.student_email,
+              classroom_id: classroom._id.toString(),
+              timestamp: Date.now()
+            },
+            created_date: new Date().toISOString(),
+            is_private: false,
+            room_id: null
+          });
+        }
+
         return res.json({
           success: true,
           room: {
@@ -723,6 +788,26 @@ router.post('/:id/interventions',
         student_email: studentEmail,
         status: 'active'
       });
+
+      const socketServer = getSocketIOServer();
+      if (socketServer) {
+        socketServer.to(String(classroom._id)).emit('collaboration:event', {
+          id: `evt_${Date.now()}`,
+          classroom_id: classroom._id,
+          sender_email: user.email,
+          sender_name: user.full_name || user.name || user.email,
+          type: 'intervention_opened',
+          metadata: {
+            room_id: room.room_id,
+            student_email: room.student_email,
+            classroom_id: classroom._id.toString(),
+            timestamp: Date.now()
+          },
+          created_date: new Date().toISOString(),
+          is_private: false,
+          room_id: null
+        });
+      }
 
       res.status(201).json({
         success: true,
@@ -981,7 +1066,11 @@ router.get('/:id/activity-history',
           }
         }
 
-        if (event.event_type === 'code_change' && !current.last_code && typeof event.metadata?.code === 'string') {
+        if (
+          (event.event_type === 'code_change' || event.event_type === 'personal_code_change') &&
+          !current.last_code &&
+          typeof event.metadata?.code === 'string'
+        ) {
           current.last_code = event.metadata.code;
           current.last_language = event.metadata?.language || current.last_language;
         }

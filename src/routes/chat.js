@@ -4,13 +4,61 @@
  */
 
 import express from 'express';
-import { base44 } from '../services/base44.js';
+import { Classroom, ChatMessage } from '../models/index.js';
 import { validateBody, validateQuery, validateParams, schemas } from '../middleware/validation.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
 import logger from '../utils/logger.js';
 import Joi from 'joi';
 
 const router = express.Router();
+
+const hasClassroomAccess = (classroom, user) => {
+  return (
+    user.role === 'admin' ||
+    classroom.faculty_email === user.email ||
+    (classroom.student_emails || []).includes(user.email)
+  );
+};
+
+const normalizeMessageTypeForStorage = (type) => {
+  if (type === 'announcement') {
+    return 'announcement';
+  }
+
+  if (type === 'system') {
+    return 'system';
+  }
+
+  return 'text';
+};
+
+const normalizeMessageTypeForResponse = (messageType) => {
+  if (messageType === 'announcement') {
+    return 'announcement';
+  }
+
+  if (messageType === 'system') {
+    return 'system';
+  }
+
+  return 'message';
+};
+
+const serializeChatMessage = (message) => {
+  const plainMessage = message.toObject ? message.toObject({ virtuals: true }) : message;
+  const createdAtIso = plainMessage.createdAt
+    ? new Date(plainMessage.createdAt).toISOString()
+    : plainMessage.created_at || new Date().toISOString();
+
+  return {
+    ...plainMessage,
+    id: plainMessage.id || plainMessage._id?.toString(),
+    classroom_id: plainMessage.classroom_id?.toString ? plainMessage.classroom_id.toString() : plainMessage.classroom_id,
+    type: normalizeMessageTypeForResponse(plainMessage.message_type),
+    created_at: createdAtIso,
+    created_date: createdAtIso
+  };
+};
 
 // Chat validation schemas
 const chatSchemas = {
@@ -36,23 +84,18 @@ router.get('/messages',
   validateQuery(chatSchemas.getMessages),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       const { classroom_id, before, after, limit } = req.query;
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', classroom_id);
+      const classroom = await Classroom.findById(classroom_id).lean();
       if (!classroom) {
         return res.status(404).json({
           error: 'Classroom not found'
         });
       }
 
-      const hasAccess = 
-        classroom.faculty_email === user.email ||
-        classroom.student_emails.includes(user.email) ||
-        user.role === 'admin';
-
-      if (!hasAccess) {
+      if (!hasClassroomAccess(classroom, user)) {
         return res.status(403).json({
           error: 'Access denied to this classroom'
         });
@@ -61,25 +104,28 @@ router.get('/messages',
       // Build query for messages
       let query = { 
         classroom_id,
-        type: { $in: ['message', 'announcement', 'system'] }
+        message_type: { $in: ['text', 'announcement', 'system'] }
       };
 
       if (before) {
-        query.created_at = { ...query.created_at, $lt: before };
+        query.createdAt = { ...query.createdAt, $lt: new Date(before) };
       }
       if (after) {
-        query.created_at = { ...query.created_at, $gt: after };
+        query.createdAt = { ...query.createdAt, $gt: new Date(after) };
       }
 
-      const messages = await base44.database.entity.find('ChatMessage', query, {
-        limit: parseInt(limit),
-        sort: { created_at: -1 }  // Most recent first
-      });
+      const messages = await ChatMessage.find(query)
+        .sort({ createdAt: -1 })
+        .limit(Number.parseInt(limit, 10) || 50)
+        .lean();
+
+      const orderedMessages = messages.toReversed();
+      const serializedMessages = orderedMessages.map(serializeChatMessage);
 
       res.json({
         success: true,
-        messages: messages.reverse(), // Return oldest first for chat display
-        count: messages.length,
+        messages: serializedMessages,
+        count: serializedMessages.length,
         classroom_id
       });
 
@@ -101,23 +147,18 @@ router.post('/messages',
   validateBody(chatSchemas.sendMessage),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       const { classroom_id, message, type } = req.body;
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', classroom_id);
+      const classroom = await Classroom.findById(classroom_id).lean();
       if (!classroom) {
         return res.status(404).json({
           error: 'Classroom not found'
         });
       }
 
-      const hasAccess = 
-        classroom.faculty_email === user.email ||
-        classroom.student_emails.includes(user.email) ||
-        user.role === 'admin';
-
-      if (!hasAccess) {
+      if (!hasClassroomAccess(classroom, user)) {
         return res.status(403).json({
           error: 'Access denied to this classroom'
         });
@@ -135,26 +176,25 @@ router.post('/messages',
         sender_email: user.email,
         sender_name: user.full_name || user.name || user.email,
         message,
-        type,
+        message_type: normalizeMessageTypeForStorage(type),
         metadata: {
           sender_role: user.role || 'student',
           message_length: message.length,
           client_timestamp: new Date().toISOString()
-        },
-        created_at: new Date().toISOString()
+        }
       };
 
-      const chatMessage = await base44.database.entity.create('ChatMessage', messageData);
+      const chatMessage = await ChatMessage.create(messageData);
 
       res.status(201).json({
         success: true,
-        message: chatMessage,
+        message: serializeChatMessage(chatMessage),
         message_text: 'Message sent successfully'
       });
 
       logger.info(`Chat message sent in classroom ${classroom_id} by ${user.email}`);
 
-      // TODO: Broadcast to WebSocket clients in the same classroom
+      // Broadcast to WebSocket clients in the same classroom when chat events are wired.
       // This would integrate with the WebSocket service
       // broadcastToClassroom(classroom_id, {
       //   type: 'new_message',
@@ -179,8 +219,8 @@ router.get('/messages/:id',
   validateParams({ id: schemas.objectId }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const message = await base44.database.entity.findById('ChatMessage', req.params.id);
+      const user = req.user;
+      const message = await ChatMessage.findById(req.params.id);
 
       if (!message) {
         return res.status(404).json({
@@ -189,13 +229,8 @@ router.get('/messages/:id',
       }
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', message.classroom_id);
-      const hasAccess = 
-        classroom.faculty_email === user.email ||
-        classroom.student_emails.includes(user.email) ||
-        user.role === 'admin';
-
-      if (!hasAccess) {
+      const classroom = await Classroom.findById(message.classroom_id).lean();
+      if (!classroom || !hasClassroomAccess(classroom, user)) {
         return res.status(403).json({
           error: 'Access denied to this message'
         });
@@ -203,7 +238,7 @@ router.get('/messages/:id',
 
       res.json({
         success: true,
-        message
+        message: serializeChatMessage(message)
       });
 
     } catch (error) {
@@ -224,8 +259,8 @@ router.delete('/messages/:id',
   validateParams({ id: schemas.objectId }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
-      const message = await base44.database.entity.findById('ChatMessage', req.params.id);
+      const user = req.user;
+      const message = await ChatMessage.findById(req.params.id).lean();
 
       if (!message) {
         return res.status(404).json({
@@ -234,10 +269,10 @@ router.delete('/messages/:id',
       }
 
       // Check permissions - sender or faculty can delete
-      const classroom = await base44.database.entity.findById('Classroom', message.classroom_id);
+      const classroom = await Classroom.findById(message.classroom_id).lean();
       const canDelete = 
         message.sender_email === user.email ||
-        classroom.faculty_email === user.email ||
+        classroom?.faculty_email === user.email ||
         user.role === 'admin';
 
       if (!canDelete) {
@@ -246,7 +281,7 @@ router.delete('/messages/:id',
         });
       }
 
-      await base44.database.entity.delete('ChatMessage', req.params.id);
+      await ChatMessage.findByIdAndDelete(req.params.id);
 
       res.json({
         success: true,
@@ -255,7 +290,7 @@ router.delete('/messages/:id',
 
       logger.info(`Chat message deleted: ${req.params.id} by ${user.email}`);
 
-      // TODO: Broadcast deletion to WebSocket clients
+      // Broadcast deletion to WebSocket clients when chat events are wired.
       // broadcastToClassroom(message.classroom_id, {
       //   type: 'message_deleted',
       //   message_id: req.params.id
@@ -287,33 +322,28 @@ router.get('/active-users',
   }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       const { classroom_id, since } = req.query;
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', classroom_id);
+      const classroom = await Classroom.findById(classroom_id).lean();
       if (!classroom) {
         return res.status(404).json({
           error: 'Classroom not found'
         });
       }
 
-      const hasAccess = 
-        classroom.faculty_email === user.email ||
-        classroom.student_emails.includes(user.email) ||
-        user.role === 'admin';
-
-      if (!hasAccess) {
+      if (!hasClassroomAccess(classroom, user)) {
         return res.status(403).json({
           error: 'Access denied to this classroom'
         });
       }
 
       // Get recent messages to determine active users
-      const recentMessages = await base44.database.entity.find('ChatMessage', {
+      const recentMessages = await ChatMessage.find({
         classroom_id,
-        created_at: { $gte: since }
-      });
+        createdAt: { $gte: new Date(since) }
+      }).lean();
 
       // Extract unique active users
       const activeUsers = [];
@@ -326,7 +356,7 @@ router.get('/active-users',
             email: msg.sender_email,
             name: msg.sender_name,
             role: msg.metadata?.sender_role || 'student',
-            last_activity: msg.created_at
+            last_activity: msg.createdAt ? new Date(msg.createdAt).toISOString() : null
           });
         }
       });
@@ -360,23 +390,18 @@ router.post('/typing',
   }),
   asyncHandler(async (req, res) => {
     try {
-      const user = await base44.auth.me();
+      const user = req.user;
       const { classroom_id, is_typing } = req.body;
 
       // Verify classroom access
-      const classroom = await base44.database.entity.findById('Classroom', classroom_id);
+      const classroom = await Classroom.findById(classroom_id).lean();
       if (!classroom) {
         return res.status(404).json({
           error: 'Classroom not found'
         });
       }
 
-      const hasAccess = 
-        classroom.faculty_email === user.email ||
-        classroom.student_emails.includes(user.email) ||
-        user.role === 'admin';
-
-      if (!hasAccess) {
+      if (!hasClassroomAccess(classroom, user)) {
         return res.status(403).json({
           error: 'Access denied to this classroom'
         });
@@ -387,7 +412,7 @@ router.post('/typing',
         message: `Typing indicator ${is_typing ? 'started' : 'stopped'}`
       });
 
-      // TODO: Broadcast typing indicator to WebSocket clients
+      // Broadcast typing indicator to WebSocket clients when chat events are wired.
       // broadcastToClassroom(classroom_id, {
       //   type: is_typing ? 'user_typing_start' : 'user_typing_stop',
       //   user: {
