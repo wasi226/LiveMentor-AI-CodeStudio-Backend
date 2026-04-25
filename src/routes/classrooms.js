@@ -6,7 +6,7 @@
 import express from 'express';
 import Joi from 'joi';
 import { Classroom, User, StudentActivity, InterventionRoom } from '../models/index.js';
-import { validateBody, validateParams, classroomSchemas, schemas } from '../middleware/validation.js';
+import { validateBody, validateQuery, validateParams, classroomSchemas, schemas } from '../middleware/validation.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
 import { getSocketIOServer } from '../services/socketio.js';
 import logger from '../utils/logger.js';
@@ -140,6 +140,120 @@ const setPersonalCodeState = (metadata, email, nextState) => {
 
   return {
     user_code_states: items
+  };
+};
+
+const versionSchemas = {
+  create: Joi.object({
+    code: Joi.string().max(500000).allow('').required(),
+    language: schemas.language.required(),
+    version_type: Joi.string().valid('initial', 'auto', 'manual', 'checkpoint', 'submission').default('manual'),
+    description: Joi.string().max(300).allow('').default(''),
+    related_submission_id: Joi.string().allow('').optional()
+  }),
+  cleanupQuery: Joi.object({
+    user_email: schemas.email.optional(),
+    userEmail: schemas.email.optional(),
+    max_total_history: Joi.number().integer().min(20).max(1000).optional(),
+    maxTotalHistory: Joi.number().integer().min(20).max(1000).optional(),
+    max_auto_snapshots: Joi.number().integer().min(10).max(1000).optional(),
+    maxAutoSnapshots: Joi.number().integer().min(10).max(1000).optional(),
+    dry_run: Joi.boolean().optional(),
+    dryRun: Joi.boolean().optional()
+  })
+};
+
+const serializeVersionEvent = (event, fallbackLanguage = 'javascript') => {
+  const metadata = event?.metadata && typeof event.metadata === 'object' ? event.metadata : {};
+
+  return {
+    id: event?._id?.toString?.() || event?.id,
+    timestamp: event?.createdAt ? new Date(event.createdAt).toISOString() : new Date().toISOString(),
+    description: String(metadata.description || event?.event_type || 'Version saved'),
+    version_type: String(metadata.version_type || 'manual'),
+    language: String(metadata.language || fallbackLanguage),
+    code_content: String(metadata.code_content || ''),
+    metadata: JSON.stringify(metadata),
+    created_by: event?.sender_email || null
+  };
+};
+
+const VERSION_EVENT_TYPE = 'code_version';
+const DEFAULT_MAX_TOTAL_HISTORY = Number.parseInt(process.env.VERSION_HISTORY_MAX_TOTAL || '200', 10);
+const DEFAULT_MAX_AUTO_SNAPSHOTS = Number.parseInt(process.env.VERSION_HISTORY_MAX_AUTO || '120', 10);
+
+const getVersionTypeFromEvent = (event) => {
+  const metadata = event?.metadata && typeof event.metadata === 'object' ? event.metadata : {};
+  return String(metadata.version_type || 'manual');
+};
+
+const enforceVersionRetention = async ({
+  classroomId,
+  userEmail,
+  maxTotalHistory = DEFAULT_MAX_TOTAL_HISTORY,
+  maxAutoSnapshots = DEFAULT_MAX_AUTO_SNAPSHOTS,
+  dryRun = false
+}) => {
+  const normalizedMaxTotal = Math.max(20, Number.parseInt(String(maxTotalHistory), 10) || DEFAULT_MAX_TOTAL_HISTORY);
+  const normalizedMaxAuto = Math.max(10, Number.parseInt(String(maxAutoSnapshots), 10) || DEFAULT_MAX_AUTO_SNAPSHOTS);
+
+  const events = await StudentActivity.find({
+    classroom_id: classroomId,
+    event_type: VERSION_EVENT_TYPE,
+    sender_email: userEmail
+  })
+    .sort({ createdAt: -1 })
+    .select('_id metadata createdAt')
+    .lean();
+
+  const idsMarkedForDeletion = new Set();
+
+  let autoSeenCount = 0;
+  events.forEach((event) => {
+    const versionType = getVersionTypeFromEvent(event);
+    if (versionType !== 'auto') {
+      return;
+    }
+
+    autoSeenCount += 1;
+    if (autoSeenCount > normalizedMaxAuto && event?._id) {
+      idsMarkedForDeletion.add(String(event._id));
+    }
+  });
+
+  const keptAfterAutoTrim = events.filter((event) => !idsMarkedForDeletion.has(String(event?._id)));
+
+  if (keptAfterAutoTrim.length > normalizedMaxTotal) {
+    keptAfterAutoTrim.slice(normalizedMaxTotal).forEach((event) => {
+      if (event?._id) {
+        idsMarkedForDeletion.add(String(event._id));
+      }
+    });
+  }
+
+  const removedIds = Array.from(idsMarkedForDeletion);
+
+  if (!dryRun && removedIds.length > 0) {
+    await StudentActivity.deleteMany({
+      _id: { $in: removedIds },
+      classroom_id: classroomId,
+      event_type: VERSION_EVENT_TYPE,
+      sender_email: userEmail
+    });
+  }
+
+  const resultingCount = Math.max(0, events.length - removedIds.length);
+
+  return {
+    total_before: events.length,
+    removed_count: removedIds.length,
+    total_after: resultingCount,
+    removed_ids: removedIds,
+    dry_run: Boolean(dryRun),
+    limits: {
+      max_total_history: normalizedMaxTotal,
+      max_auto_snapshots: normalizedMaxAuto
+    }
   };
 };
 
@@ -1113,6 +1227,179 @@ router.get('/:id/activity-history',
       logger.error(`Get activity history error: ${error.message}`);
       res.status(500).json({
         error: 'Failed to fetch activity history',
+        message: error.message
+      });
+    }
+  })
+);
+
+/**
+ * GET /api/classrooms/:id/versions
+ * Get code version history for classroom/user
+ */
+router.get('/:id/versions',
+  validateParams({ id: schemas.objectId }),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const classroom = await Classroom.findById(req.params.id);
+      const limit = Math.min(Number.parseInt(req.query.limit, 10) || 50, 200);
+
+      if (!classroom) {
+        return res.status(404).json({ error: 'Classroom not found' });
+      }
+
+      if (!hasClassroomAccess(classroom, user)) {
+        return res.status(403).json({ error: 'Access denied to this classroom' });
+      }
+
+      const isFacultyOrAdmin = user.role === 'faculty' || user.role === 'admin';
+      const requestedUserEmail = normalizeEmail(req.query.user_email || req.query.userEmail || user.email);
+      const effectiveUserEmail = isFacultyOrAdmin ? requestedUserEmail : normalizeEmail(user.email);
+
+      const query = {
+        classroom_id: classroom._id,
+        event_type: 'code_version',
+        sender_email: effectiveUserEmail
+      };
+
+      const events = await StudentActivity.find(query)
+        .sort({ createdAt: -1 })
+        .limit(limit)
+        .lean();
+
+      const versions = events.map((event) => serializeVersionEvent(event, classroom.language || 'javascript'));
+
+      return res.json({
+        success: true,
+        versions,
+        count: versions.length,
+        classroom_id: classroom._id.toString(),
+        user_email: effectiveUserEmail
+      });
+    } catch (error) {
+      logger.error(`Get version history error: ${error.message}`);
+      return res.status(500).json({
+        error: 'Failed to fetch version history',
+        message: error.message
+      });
+    }
+  })
+);
+
+/**
+ * DELETE /api/classrooms/:id/versions/cleanup
+ * Remove stale auto snapshots and enforce max history retention.
+ */
+router.delete('/:id/versions/cleanup',
+  validateParams({ id: schemas.objectId }),
+  validateQuery(versionSchemas.cleanupQuery),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const classroom = await Classroom.findById(req.params.id);
+
+      if (!classroom) {
+        return res.status(404).json({ error: 'Classroom not found' });
+      }
+
+      if (!hasClassroomAccess(classroom, user)) {
+        return res.status(403).json({ error: 'Access denied to this classroom' });
+      }
+
+      const isFacultyOrAdmin = user.role === 'faculty' || user.role === 'admin';
+      const requestedUserEmail = normalizeEmail(req.query.user_email || req.query.userEmail || user.email);
+
+      if (!isFacultyOrAdmin && requestedUserEmail !== normalizeEmail(user.email)) {
+        return res.status(403).json({ error: 'Students can only cleanup their own version history' });
+      }
+
+      const dryRun = String(req.query.dry_run ?? req.query.dryRun ?? 'false') === 'true';
+      const maxTotalHistory = req.query.max_total_history ?? req.query.maxTotalHistory ?? DEFAULT_MAX_TOTAL_HISTORY;
+      const maxAutoSnapshots = req.query.max_auto_snapshots ?? req.query.maxAutoSnapshots ?? DEFAULT_MAX_AUTO_SNAPSHOTS;
+
+      const result = await enforceVersionRetention({
+        classroomId: classroom._id,
+        userEmail: requestedUserEmail,
+        maxTotalHistory,
+        maxAutoSnapshots,
+        dryRun
+      });
+
+      return res.json({
+        success: true,
+        classroom_id: classroom._id.toString(),
+        user_email: requestedUserEmail,
+        retention: result
+      });
+    } catch (error) {
+      logger.error(`Cleanup version history error: ${error.message}`);
+      return res.status(500).json({
+        error: 'Failed to cleanup version history',
+        message: error.message
+      });
+    }
+  })
+);
+
+/**
+ * POST /api/classrooms/:id/versions
+ * Create a new code version snapshot
+ */
+router.post('/:id/versions',
+  validateParams({ id: schemas.objectId }),
+  validateBody(versionSchemas.create),
+  asyncHandler(async (req, res) => {
+    try {
+      const user = req.user;
+      const classroom = await Classroom.findById(req.params.id);
+
+      if (!classroom) {
+        return res.status(404).json({ error: 'Classroom not found' });
+      }
+
+      if (!hasClassroomAccess(classroom, user)) {
+        return res.status(403).json({ error: 'Access denied to this classroom' });
+      }
+
+      const code = String(req.body.code || '');
+      const language = String(req.body.language || classroom.language || 'javascript').toLowerCase();
+      const versionType = String(req.body.version_type || 'manual');
+      const description = String(req.body.description || '').trim();
+      const metadata = {
+        version_type: versionType,
+        description: description || `Version saved (${versionType})`,
+        language,
+        code_content: code,
+        code_length: code.length,
+        line_count: code.split('\n').length,
+        related_submission_id: String(req.body.related_submission_id || '').trim() || null,
+        client_timestamp: Date.now()
+      };
+
+      const createdEvent = await StudentActivity.create({
+        classroom_id: classroom._id,
+        sender_email: user.email,
+        sender_name: user.full_name || user.name || user.email,
+        event_type: 'code_version',
+        is_private: true,
+        metadata
+      });
+
+      const retention = await enforceVersionRetention({
+        classroomId: classroom._id,
+        userEmail: user.email
+      });
+
+      return res.status(201).json({
+        success: true,
+        version: serializeVersionEvent(createdEvent, classroom.language || 'javascript'),
+        retention
+      });
+    } catch (error) {
+      logger.error(`Create version error: ${error.message}`);
+      return res.status(500).json({
+        error: 'Failed to create version snapshot',
         message: error.message
       });
     }

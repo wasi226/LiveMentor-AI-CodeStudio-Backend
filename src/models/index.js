@@ -72,7 +72,7 @@ const ClassroomSchema = new Schema({
     type: String,
     required: true,
     default: 'javascript',
-    enum: ['javascript', 'python', 'java', 'cpp', 'typescript', 'go', 'rust', 'c', 'csharp']
+    enum: ['javascript', 'python', 'java']
   },
   faculty_email: {
     type: String,
@@ -133,7 +133,7 @@ const AssignmentSchema = new Schema({
   language: {
     type: String,
     required: true,
-    enum: ['javascript', 'python', 'java', 'cpp', 'typescript', 'go', 'rust', 'c', 'csharp']
+    enum: ['javascript', 'python', 'java']
   },
   difficulty: {
     type: String,
@@ -245,7 +245,7 @@ const SubmissionSchema = new Schema({
   language: {
     type: String,
     required: true,
-    enum: ['javascript', 'python', 'java', 'cpp', 'typescript', 'go', 'rust', 'c', 'csharp']
+    enum: ['javascript', 'python', 'java']
   },
   status: {
     type: String,
@@ -254,6 +254,15 @@ const SubmissionSchema = new Schema({
   },
   submitted_at: {
     type: Date
+  },
+  archive_after: {
+    type: Date
+  },
+  archived_at: {
+    type: Date
+  },
+  archive_reason: {
+    type: String
   },
   score: {
     type: Number,
@@ -340,7 +349,7 @@ const ChatMessageSchema = new Schema({
   },
   code_language: {
     type: String,
-    enum: ['javascript', 'python', 'java', 'cpp', 'typescript', 'go', 'rust', 'c', 'csharp']
+    enum: ['javascript', 'python', 'java']
   },
   is_private: {
     type: Boolean,

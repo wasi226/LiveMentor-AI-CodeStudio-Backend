@@ -160,10 +160,7 @@ export const schemas = {
   classroomCode: Joi.string().length(6).alphanum().uppercase(),
   
   // Programming language validation
-  language: Joi.string().valid(
-    'javascript', 'python', 'java', 'cpp', 'c',
-    'typescript', 'go', 'rust', 'php', 'ruby'
-  ),
+  language: Joi.string().valid('javascript', 'python', 'java'),
   
   // Pagination schema
   pagination: Joi.object({

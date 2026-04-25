@@ -1138,3 +1138,15 @@ TypeError: schema.validate is not a function
   "ip": "::1",
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
 }
+2026-04-23 13:05:12.581 [ERROR]: Uncaught Exception
+ReferenceError: validateQuery is not defined
+    at file:///C:/Users/wasi%20haider/OneDrive/Desktop/Major%20project%202/liveMentor%20AI%20CodeStudio/Backend/src/routes/classrooms.js:1295:3
+    at ModuleJob.run (node:internal/modules/esm/module_job:370:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:99:5)
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0",
+  "error": "validateQuery is not defined"
+}

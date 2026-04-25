@@ -1,5 +1,7 @@
 # LiveMentor AI CodeStudio Backend
 
+![AI Pair Programmer APIs](https://img.shields.io/badge/AI%20Pair%20Programmer%20APIs-Live-22c55e)
+
 Backend API for the LiveMentor platform, built with Express and a hybrid data approach.
 
 This service handles authentication, classroom management, coding workflows, analytics, and integration with external services such as Piston and optional AI providers.
@@ -117,6 +119,29 @@ Example endpoints:
 - POST /api/classrooms
 - POST /api/classrooms/join
 - POST /api/code/execute
+
+AI Pair Programmer endpoints:
+
+- POST /api/ai/pair/explain
+- POST /api/ai/pair/review
+- POST /api/ai/pair/complete
+- POST /api/ai/assistant (general tutor chat)
+
+Version control endpoints:
+
+- GET /api/classrooms/:id/versions
+- POST /api/classrooms/:id/versions
+- DELETE /api/classrooms/:id/versions/cleanup
+
+Retention housekeeping:
+
+- Server enforces retention automatically after each new version snapshot.
+- Defaults:
+	- max total history per user/classroom: 200
+	- max auto snapshots per user/classroom: 120
+- Override with env vars:
+	- VERSION_HISTORY_MAX_TOTAL
+	- VERSION_HISTORY_MAX_AUTO
 
 ## Deployment
 

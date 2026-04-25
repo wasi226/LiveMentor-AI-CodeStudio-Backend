@@ -1,0 +1,6 @@
+2026-04-24 16:26:40.997 [WARN]: AI grading unavailable, fallback to deterministic grading models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+{
+  "service": "livementor-backend",
+  "environment": "development",
+  "version": "1.0.0"
+}

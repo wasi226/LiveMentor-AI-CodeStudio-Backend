@@ -10,8 +10,66 @@ import { asyncHandler } from '../middleware/errorHandler.js';
 import logger from '../utils/logger.js';
 import Joi from 'joi';
 import { executeCode } from '../services/codeExecution.js';
+import { evaluateSubmissionWithAI } from '../services/aiGrading.js';
 
 const router = express.Router();
+const SUBMISSION_RETENTION_HOURS = 48;
+const SUBMISSION_RETENTION_MS = SUBMISSION_RETENTION_HOURS * 60 * 60 * 1000;
+const FINAL_SUBMISSION_STATUSES = new Set(['submitted', 'grading', 'graded', 'returned', 'running', 'passed', 'failed', 'error']);
+
+const getSubmissionArchiveAfter = (submission) => {
+  const archiveAfter = submission?.archive_after || submission?.archiveAfter;
+  if (archiveAfter) {
+    const parsedArchiveAfter = new Date(archiveAfter);
+    if (!Number.isNaN(parsedArchiveAfter.getTime())) {
+      return parsedArchiveAfter;
+    }
+  }
+
+  const submittedAt = submission?.submitted_at || submission?.submittedAt;
+  if (!submittedAt) {
+    return null;
+  }
+
+  const parsedSubmittedAt = new Date(submittedAt);
+  if (Number.isNaN(parsedSubmittedAt.getTime())) {
+    return null;
+  }
+
+  return new Date(parsedSubmittedAt.getTime() + SUBMISSION_RETENTION_MS);
+};
+
+const isSubmissionActive = (submission, now = new Date()) => {
+  const status = String(submission?.status || '').toLowerCase();
+
+  if (status === 'draft') {
+    return true;
+  }
+
+  if (!FINAL_SUBMISSION_STATUSES.has(status)) {
+    return false;
+  }
+
+  const archiveAfter = getSubmissionArchiveAfter(submission);
+  if (!archiveAfter) {
+    return true;
+  }
+
+  return archiveAfter.getTime() > now.getTime();
+};
+
+const normalizeSubmissionForResponse = (submission) => {
+  const archivedAt = submission?.archived_at || submission?.archivedAt || null;
+  const archiveAfter = getSubmissionArchiveAfter(submission);
+
+  return {
+    ...submission,
+    id: submission.id || submission._id?.toString(),
+    archive_after: archiveAfter,
+    archived_at: archivedAt ? new Date(archivedAt) : null,
+    is_archived: Boolean(archivedAt) || Boolean(archiveAfter && archiveAfter.getTime() <= Date.now())
+  };
+};
 
 const emitSubmissionEvent = (eventName, submission) => {
   const socketServer = globalThis.__socketIO;
@@ -40,6 +98,21 @@ const normalizeTestCases = (testCases = []) => {
   }));
 };
 
+const getLetterGrade = (percentage) => {
+  if (percentage >= 90) return 'A+';
+  if (percentage >= 80) return 'A';
+  if (percentage >= 70) return 'B';
+  if (percentage >= 60) return 'C';
+  if (percentage >= 40) return 'D';
+  return 'F';
+};
+
+const getPerformanceCategory = (percentage) => {
+  if (percentage >= 75) return 'strong';
+  if (percentage >= 40) return 'average';
+  return 'weak';
+};
+
 const gradeSubmission = async ({ code, language, assignment }) => {
   const testCases = normalizeTestCases(assignment?.test_cases || []);
   const executionResult = await executeCode({
@@ -51,23 +124,83 @@ const gradeSubmission = async ({ code, language, assignment }) => {
   const hasTestCases = testCases.length > 0;
   const maxScore = Number(assignment?.max_score) || 100;
   let score = 0;
+  let gradingRule = hasTestCases ? 'legacy' : 'no-test-cases';
+  let aiEvaluation = null;
 
   if (hasTestCases) {
-    const percentageScore = Number(executionResult.score) || 0;
-    score = Math.max(0, Math.min(maxScore, Math.round((percentageScore * maxScore) / 100)));
+    const totalTests = Number(executionResult.totalTests) || testCases.length;
+    const passedTests = Number(executionResult.passedTests) || 0;
+    const allTestsPassed = totalTests > 0 && passedTests === totalTests;
+    const anyRuntimeOrCompileError = (executionResult.testResults || []).some((testResult) => {
+      const testStatus = String(testResult?.status || '').toLowerCase();
+      return Boolean(testResult?.error) || (testStatus && testStatus !== 'completed');
+    });
+
+    if (allTestsPassed) {
+      score = maxScore;
+      gradingRule = 'all-tests-passed';
+    } else {
+      aiEvaluation = await evaluateSubmissionWithAI({
+        assignment,
+        code,
+        language,
+        executionResult
+      });
+
+      if (aiEvaluation) {
+        const aiBasedScore = Math.round((aiEvaluation.scorePercentage * maxScore) / 100);
+        const minimumScoreForMismatch = anyRuntimeOrCompileError ? 0 : Math.round(maxScore * 0.4);
+
+        score = Math.max(minimumScoreForMismatch, aiBasedScore);
+        gradingRule = anyRuntimeOrCompileError ? 'ai-validated-after-execution-error' : 'ai-validated-tests-mismatch';
+      } else {
+        // Deterministic fallback: never force 0 for non-empty submissions when AI is unavailable.
+        score = Math.round(maxScore * 0.4);
+        gradingRule = anyRuntimeOrCompileError ? 'fallback-partial-after-execution-error' : 'tests-mismatch-executable';
+      }
+    }
   } else {
     score = executionResult.success ? maxScore : 0;
+    gradingRule = executionResult.success ? 'no-tests-success' : 'no-tests-failure';
   }
 
+  const normalizedScore = Math.max(0, Math.min(maxScore, score));
+  const percentageScore = maxScore > 0 ? Math.round((normalizedScore / maxScore) * 100) : 0;
+  const letterGrade = getLetterGrade(percentageScore);
+  const performanceCategory = getPerformanceCategory(percentageScore);
+
+  const feedbackMessage =
+    gradingRule === 'all-tests-passed'
+      ? 'All test cases passed. Full marks awarded.'
+      : gradingRule === 'tests-mismatch-executable'
+        ? 'Code executed successfully but outputs did not match all test cases. Partial marks (40%) awarded.'
+        : gradingRule === 'ai-validated-tests-mismatch'
+          ? 'Tests did not fully match, but AI code evaluation detected substantial correctness. Score awarded based on code quality and logic.'
+          : gradingRule === 'ai-validated-after-execution-error'
+            ? 'Execution had issues, but AI code evaluation identified correct/partially correct logic. Score awarded based on semantic correctness.'
+            : gradingRule === 'fallback-partial-after-execution-error'
+            ? 'Execution had issues and AI grading is unavailable. Baseline partial credit awarded to avoid unfair zero for attempted logic.'
+        : executionResult.error || executionResult.output || 'Submission graded.';
+
   return {
-    score,
+    score: normalizedScore,
     status: 'graded',
     test_results: executionResult.testResults || [],
     execution_time: executionResult.executionTime || 0,
     memory_used: executionResult.memoryUsage || 0,
-    feedback: executionResult.error || executionResult.output || '',
+    feedback: feedbackMessage,
     graded_at: new Date(),
-    graded_by: 'system'
+    graded_by: 'system',
+    grading_details: {
+      rule: gradingRule,
+      score_percentage: percentageScore,
+      letter_grade: letterGrade,
+      performance_category: performanceCategory,
+      passed_tests: Number(executionResult.passedTests) || 0,
+      total_tests: Number(executionResult.totalTests) || testCases.length,
+      ai_confidence: aiEvaluation?.confidence || null,
+      ai_reason: aiEvaluation?.reason || null
+    }
   };
 };
 
@@ -87,6 +220,19 @@ const submissionSchemas = {
   }).min(1)
 };
 
+const addRetentionWindow = (submission, status = submission?.status) => {
+  const normalizedStatus = String(status || submission?.status || '').toLowerCase();
+  if (!FINAL_SUBMISSION_STATUSES.has(normalizedStatus)) {
+    return submission;
+  }
+
+  const now = new Date();
+  submission.archive_after = submission.archive_after || new Date(now.getTime() + SUBMISSION_RETENTION_MS);
+  submission.archived_at = submission.archived_at || null;
+  submission.archive_reason = submission.archive_reason || '48-hour live feed retention';
+  return submission;
+};
+
 /**
  * GET /api/submissions
  * Get submissions for a user or assignment
@@ -97,14 +243,19 @@ router.get('/',
     classroom_id: Joi.string().optional(),
     student_email: Joi.string().email().optional(),
     status: Joi.string().valid('draft', 'submitted', 'grading', 'graded', 'returned').optional(),
+    active_only: Joi.boolean().default(false),
+    latest_per_assignment: Joi.boolean().default(false),
   }).concat(schemas.pagination)),
   asyncHandler(async (req, res) => {
     try {
       const user = req.user;
-      const { assignment_id, classroom_id, student_email, status, page, limit, sort, sortBy } = req.query;
+      const { assignment_id, classroom_id, student_email, status, active_only, latest_per_assignment, page, limit, sort, sortBy } = req.query;
 
       // Build query based on user role and filters
       let query = {};
+      const normalizedActiveOnly = String(active_only) === 'true';
+      const normalizedLatestPerAssignment = String(latest_per_assignment) === 'true';
+      const retentionCutoff = new Date(Date.now() - SUBMISSION_RETENTION_MS);
       
       if (user.role === 'student') {
         // Students can only see their own submissions
@@ -130,24 +281,62 @@ router.get('/',
       if (assignment_id) query.assignment_id = assignment_id;
       if (status) query.status = status;
 
+      if (normalizedActiveOnly) {
+        query.status = query.status || { $ne: 'draft' };
+
+        const activeWindow = {
+          $or: [
+            { archive_after: { $gt: new Date() } },
+            { archive_after: null, submitted_at: { $gte: retentionCutoff } },
+            { archive_after: { $exists: false }, submitted_at: { $gte: retentionCutoff } }
+          ]
+        };
+
+        if (query.$and) {
+          query.$and.push(activeWindow);
+        } else {
+          query.$and = [activeWindow];
+        }
+      }
+
       const normalizedPage = Math.max(Number.parseInt(page, 10) || 1, 1);
       const normalizedLimit = Math.max(Number.parseInt(limit, 10) || 20, 1);
       const sortDirection = sort === 'asc' ? 1 : -1;
       const allowedSortFields = new Set(['createdAt', 'updatedAt', 'submitted_at', 'score', 'status']);
       const sortField = allowedSortFields.has(sortBy) ? sortBy : 'createdAt';
 
-      const submissions = await Submission.find(query)
-        .sort({ [sortField]: sortDirection })
-        .skip((normalizedPage - 1) * normalizedLimit)
-        .limit(normalizedLimit)
-        .lean();
+      let submissions = [];
+      let total = 0;
 
-      const total = await Submission.countDocuments(query);
+      if (normalizedLatestPerAssignment) {
+        const groupedSubmissions = await Submission.aggregate([
+          { $match: query },
+          { $sort: { [sortField]: -1, _id: -1 } },
+          {
+            $group: {
+              _id: '$assignment_id',
+              submission: { $first: '$$ROOT' }
+            }
+          },
+          { $replaceRoot: { newRoot: '$submission' } },
+          { $sort: { [sortField]: sortDirection, _id: sortDirection } },
+          { $skip: (normalizedPage - 1) * normalizedLimit },
+          { $limit: normalizedLimit }
+        ]);
 
-      const serializedSubmissions = submissions.map((submission) => ({
-        ...submission,
-        id: submission._id?.toString()
-      }));
+        submissions = groupedSubmissions;
+        total = groupedSubmissions.length;
+      } else {
+        submissions = await Submission.find(query)
+          .sort({ [sortField]: sortDirection })
+          .skip((normalizedPage - 1) * normalizedLimit)
+          .limit(normalizedLimit)
+          .lean();
+
+        total = await Submission.countDocuments(query);
+      }
+
+      const serializedSubmissions = submissions.map((submission) => normalizeSubmissionForResponse(submission));
 
       res.json({
         success: true,
@@ -223,7 +412,10 @@ router.post('/',
         score: 0,
         submitted_at: new Date().toISOString(),
         created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
+        archive_after: null,
+        archived_at: null,
+        archive_reason: null
       };
 
       const submission = await Submission.create(submissionData);
@@ -342,6 +534,9 @@ router.put('/:id',
       if (req.body.code !== undefined) submission.code = req.body.code;
       if (req.body.language !== undefined) submission.language = req.body.language;
       if (req.body.status !== undefined) submission.status = req.body.status;
+      if (FINAL_SUBMISSION_STATUSES.has(String(req.body.status || submission.status || '').toLowerCase())) {
+        addRetentionWindow(submission, req.body.status || submission.status);
+      }
       submission.updated_at = new Date();
 
       const updatedSubmission = await submission.save();
@@ -426,6 +621,7 @@ router.post('/:id/submit',
       submission.status = shouldAutoGrade ? 'grading' : 'submitted';
       submission.submitted_at = new Date();
       submission.updated_at = new Date();
+      addRetentionWindow(submission, submission.status);
 
       if (gradingResult) {
         submission.status = gradingResult.status;
@@ -437,13 +633,24 @@ router.post('/:id/submit',
         submission.feedback = gradingResult.feedback;
         submission.graded_at = gradingResult.graded_at;
         submission.graded_by = gradingResult.graded_by;
+
+        const nextMetadata = submission.metadata ? { ...submission.metadata } : {};
+        nextMetadata.grading_rule = gradingResult.grading_details?.rule;
+        nextMetadata.score_percentage = gradingResult.grading_details?.score_percentage;
+        nextMetadata.grade = gradingResult.grading_details?.letter_grade;
+        nextMetadata.performance_category = gradingResult.grading_details?.performance_category;
+        nextMetadata.passed_tests = gradingResult.grading_details?.passed_tests;
+        nextMetadata.total_tests = gradingResult.grading_details?.total_tests;
+        nextMetadata.ai_confidence = gradingResult.grading_details?.ai_confidence;
+        nextMetadata.ai_reason = gradingResult.grading_details?.ai_reason;
+        submission.metadata = nextMetadata;
+        addRetentionWindow(submission, submission.status);
       }
 
       await submission.save();
 
       const updatedSubmission = {
-        ...submission.toObject(),
-        id: submission._id.toString()
+        ...normalizeSubmissionForResponse(submission.toObject())
       };
 
       res.json({

@@ -13,18 +13,7 @@ import logger from '../utils/logger.js';
 export const LANGUAGE_CONFIGS = {
   javascript: { runtime: 'javascript', version: '*', fileName: 'main.js', displayName: 'JavaScript' },
   python: { runtime: 'python', version: '*', fileName: 'main.py', displayName: 'Python' },
-  java: { runtime: 'java', version: '*', fileName: 'Main.java', displayName: 'Java' },
-  cpp: { runtime: 'c++', version: '*', fileName: 'main.cpp', displayName: 'C++' },
-  c: { runtime: 'c', version: '*', fileName: 'main.c', displayName: 'C' },
-  typescript: { runtime: 'typescript', version: '*', fileName: 'main.ts', displayName: 'TypeScript' },
-  go: { runtime: 'go', version: '*', fileName: 'main.go', displayName: 'Go' },
-  rust: { runtime: 'rust', version: '*', fileName: 'main.rs', displayName: 'Rust' },
-  php: { runtime: 'php', version: '*', fileName: 'main.php', displayName: 'PHP' },
-  ruby: { runtime: 'ruby', version: '*', fileName: 'main.rb', displayName: 'Ruby' },
-  csharp: { runtime: 'csharp', version: '*', fileName: 'Program.cs', displayName: 'C#' },
-  kotlin: { runtime: 'kotlin', version: '*', fileName: 'Main.kt', displayName: 'Kotlin' },
-  swift: { runtime: 'swift', version: '*', fileName: 'main.swift', displayName: 'Swift' },
-  scala: { runtime: 'scala', version: '*', fileName: 'Main.scala', displayName: 'Scala' }
+  java: { runtime: 'java', version: '*', fileName: 'Main.java', displayName: 'Java' }
 };
 
 const DEFAULT_REQUEST_TIMEOUT = 15000;
@@ -578,7 +567,7 @@ async function executeLocalSingleRun({ code, language, input }) {
         success: false,
         output: '',
         rawOutput: '',
-        error: `Local fallback does not support language: ${language}. Configure PISTON_API_URL and PISTON_API_TOKEN for remote execution.`,
+        error: `Local fallback does not support language: ${language}. Install a local compiler/runtime or configure PISTON_API_URL and PISTON_API_TOKEN for remote execution.`,
         executionTime: 0,
         memoryUsage: 0,
         testResults: [],
@@ -590,9 +579,8 @@ async function executeLocalSingleRun({ code, language, input }) {
     await fs.writeFile(runtimePlan.sourceFilePath, code, 'utf8');
 
     if (runtimePlan.compile) {
-      const compileResult = await runLocalCommand({
-        command: runtimePlan.compile.command,
-        args: runtimePlan.compile.args,
+      const compileResult = await runLocalCommandWithFallback({
+        commands: runtimePlan.compile,
         cwd: tempDir,
         input: '',
         timeoutMs: DEFAULT_COMPILE_TIMEOUT
@@ -674,8 +662,98 @@ function getLocalRuntimePlan(language, tempDir) {
         run: { command: 'java', args: ['-cp', tempDir, 'Main'] }
       };
     default:
-      return null;
+      return getNativeRuntimePlan(language, tempDir);
   }
+}
+
+function getNativeRuntimePlan(language, tempDir) {
+  if (language === 'cpp') {
+    return createCppRuntimePlan(tempDir);
+  }
+
+  if (language === 'c') {
+    return createCRuntimePlan(tempDir);
+  }
+
+  return null;
+}
+
+function getNativeExecutablePath(tempDir) {
+  return path.join(tempDir, process.platform === 'win32' ? 'main.exe' : 'main.out');
+}
+
+function createCppRuntimePlan(tempDir) {
+  const executablePath = getNativeExecutablePath(tempDir);
+
+  return createNativeCompileRuntimePlan({
+    sourceFilePath: path.join(tempDir, 'main.cpp'),
+    executablePath,
+    compilerCandidates: [
+      { command: 'g++', args: ['-std=c++17', '-O2', 'main.cpp', '-o', executablePath] },
+      { command: 'clang++', args: ['-std=c++17', '-O2', 'main.cpp', '-o', executablePath] }
+    ],
+    runCommand: process.platform === 'win32' ? 'main.exe' : './main.out'
+  });
+}
+
+function createCRuntimePlan(tempDir) {
+  const executablePath = getNativeExecutablePath(tempDir);
+
+  return createNativeCompileRuntimePlan({
+    sourceFilePath: path.join(tempDir, 'main.c'),
+    executablePath,
+    compilerCandidates: [
+      { command: 'gcc', args: ['-std=c11', '-O2', 'main.c', '-o', executablePath] },
+      { command: 'clang', args: ['-std=c11', '-O2', 'main.c', '-o', executablePath] }
+    ],
+    runCommand: process.platform === 'win32' ? 'main.exe' : './main.out'
+  });
+}
+
+function createNativeCompileRuntimePlan({ sourceFilePath, executablePath, compilerCandidates, runCommand }) {
+  return {
+    sourceFilePath,
+    compile: compilerCandidates.map((candidate) => ({
+      command: candidate.command,
+      args: candidate.args
+    })),
+    run: {
+      command: runCommand,
+      args: []
+    },
+    executablePath
+  };
+}
+
+async function runLocalCommandWithFallback({ commands, cwd, input, timeoutMs }) {
+  const commandList = Array.isArray(commands) ? commands : [commands];
+  let lastResult = null;
+
+  for (const commandSpec of commandList) {
+    const result = await runLocalCommand({
+      command: commandSpec.command,
+      args: commandSpec.args,
+      cwd,
+      input,
+      timeoutMs
+    });
+
+    lastResult = result;
+
+    if (result.success) {
+      return result;
+    }
+
+    if (!String(result.error || '').includes('not installed or not in PATH')) {
+      return result;
+    }
+  }
+
+  return lastResult || {
+    success: false,
+    stdout: '',
+    error: 'Compiler not available'
+  };
 }
 
 function runLocalCommand({ command, args, cwd, input, timeoutMs }) {
