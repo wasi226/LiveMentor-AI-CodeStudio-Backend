@@ -628,11 +628,20 @@ const handleCollaborationEvent = async (socket, payload = {}) => {
     data: payload.data || {}
   });
 
-  socket.to(roomKey).emit('collaboration:event', {
+  const eventPayload = {
     ...message,
     room_id: socket.data.interventionRoomId || null,
     is_private: Boolean(socket.data.isPrivateRoom)
-  });
+  };
+
+  // Broadcast to the room (intervention room or classroom)
+  socket.to(roomKey).emit('collaboration:event', eventPayload);
+
+  // For intervention rooms, also broadcast to the parent classroom
+  // so students viewing the classroom receive faculty updates
+  if (socket.data.isPrivateRoom && roomKey !== classroomId) {
+    socket.to(classroomId).emit('collaboration:event', eventPayload);
+  }
 
   await persistActivity({
     classroom_id: classroomId,
